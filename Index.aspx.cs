@@ -13,7 +13,8 @@ public partial class Index : System.Web.UI.Page
 
     protected void loadMovie()
     {
-        String sqlString = "Data Source=WIN7-1609251229;Initial Catalog=movie;Integrated Security=True";
+       // String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\WebSites\\aspWork\\App_Data\\movie.mdf;Integrated Security=True";
+        String sqlString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=aspWork\\App_Data\\movie.mdf;Integrated Security=True";
         SqlConnection myConnection = new SqlConnection(sqlString);
         myConnection.Open();
         SqlCommand myCommand = new SqlCommand("select * from movie", myConnection);
