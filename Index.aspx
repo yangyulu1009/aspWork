@@ -177,7 +177,7 @@
                 <div class="wthree_agile-requested-movies">
                     <!-- 第一个电影 -->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[0].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[0].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -186,7 +186,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[0].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[0].id %>"><%# mMovie[0].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[0].year %></p>
@@ -229,7 +229,7 @@
 
                     <!--第二个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[1].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[1].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -238,7 +238,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[1].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[1].id %>"><%# mMovie[1].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[1].year %></p>
@@ -281,7 +281,7 @@
 
                     <!--第三个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[2].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[2].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -290,7 +290,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[2].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[2].id %>"><%# mMovie[2].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[2].year %></p>
@@ -333,7 +333,7 @@
 
                     <!--第四个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[3].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[3].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -342,7 +342,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[3].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[3].id %>"><%# mMovie[3].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[3].year %></p>
@@ -385,7 +385,7 @@
 
                     <!--第五个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[4].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[4].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -394,7 +394,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[4].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[4].id %>"><%# mMovie[4].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[4].year %></p>
@@ -437,7 +437,7 @@
 
                     <!--第六个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[5].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[5].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -446,7 +446,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[5].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[5].id %>"><%# mMovie[5].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[5].year %></p>
@@ -489,7 +489,7 @@
 
                     <!--第七个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[6].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[6].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -498,7 +498,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[6].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[6].id %>"><%# mMovie[6].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[6].year %></p>
@@ -541,7 +541,7 @@
 
                     <!--第八个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[7].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[7].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -550,7 +550,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[7].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[7].id %>"><%# mMovie[7].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[7].year %></p>
@@ -593,7 +593,7 @@
 
                     <!--第九个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[8].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[8].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -602,7 +602,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[8].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[8].id %>"><%# mMovie[8].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[8].year %></p>
@@ -645,7 +645,7 @@
 
                     <!--第十个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                        <a href="single.html" class="hvr-sweep-to-bottom">
+                        <a href="Single.aspx?id=<%# mMovie[9].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[9].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <i class="fa fa-play-circle-o" aria-hidden="true"></i>
@@ -654,7 +654,7 @@
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
                             <div class="w3l-movie-text">
                                 <h6>
-                                    <a href="single.html"><%# mMovie[9].name %></a></h6>
+                                    <a href="Single.aspx?id=<%# mMovie[9].id %>"><%# mMovie[9].name %></a></h6>
                             </div>
                             <div class="mid-2 agile_mid_2_home">
                                 <p><%# mMovie[9].year %></p>

@@ -13,32 +13,20 @@ public partial class Index : System.Web.UI.Page
 
     protected void loadMovie()
     {
-        SqlConnection myConnection = new SqlConnection(Constants.DB_CONN_STR);
-        myConnection.Open();
-        SqlCommand myCommand = new SqlCommand("select * from movie", myConnection);
-        SqlDataReader myReader = myCommand.ExecuteReader();
+        SqlDataReader myReader = SqlData.getInstance().ExecuteRead("select * from movie");
+
         for (int index = 0; myReader.Read(); index++)
         {
-            Movie movie = new Movie();
-            movie.id = myReader[0].ToString();
-            movie.name = myReader[1].ToString();
-            movie.year = myReader[2].ToString();
-            movie.image = myReader[3].ToString();
+            Movie movie = new Movie(myReader);
             mMovie[index] = movie;
         }
+
+        myReader.Close();
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
         loadMovie();
         Page.DataBind();
-    }
-
-    public class Movie
-    {
-        public String id;
-        public String name;
-        public String year;
-        public String image;
     }
 }
