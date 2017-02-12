@@ -14,7 +14,18 @@ public class SqlData
     private SqlCommand cmd;
     private SqlDataAdapter da;
 
-    public SqlData()
+    private static SqlData sInstance;
+
+    public static SqlData getInstance()
+    {
+        if (sInstance == null)
+        {
+            sInstance = new SqlData();
+        }
+        return sInstance;
+    }
+
+    private SqlData()
     {
         con = new SqlConnection(System.Web.Configuration.WebConfigurationManager.ConnectionStrings["movie"].ConnectionString);
         con.Open();
@@ -32,7 +43,7 @@ public class SqlData
 
         finally
         {
-            con.Close();
+            //con.Close();
         }
     }
 
@@ -49,7 +60,7 @@ public class SqlData
         }
         finally
         {
-            con.Close();
+        //    con.Close();
         }
     }
 
@@ -64,7 +75,7 @@ public class SqlData
         }
         finally
         {
-            con.Close();
+        //    con.Close();
         }
     }
 
@@ -79,7 +90,7 @@ public class SqlData
 
         finally
         {
-            con.Close();
+       //     con.Close();
         }
     }
 }
