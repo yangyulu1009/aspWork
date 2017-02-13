@@ -57,10 +57,49 @@
                                 <ul class="nav navbar-nav">
                                     <li class="active">
                                         <a href="index.html">Home</a></li>
+                                    <!-- 恢复注视 --><li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Genre <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<li>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+										<!-- 修改了链接 -->	<li><a href="action.html">Action</a></li>
+											<li><a href="biography.html">Biography</a></li>
+											<li><a href="crime.html">Crime</a></li>
+											<li><a href="family.html">Family</a></li>
+											<li><a href="horror.html">Horror</a></li>
+											<li><a href="romance.html">Romance</a></li>
+											<li><a href="Sports.html">Sports</a></li>
+											<li><a href="war.html">War</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="genre.html">Adventure</a></li>
+											<li><a href="comedy.html">Comedy</a></li>
+											<li><a href="genre.html">Documentary</a></li>
+											<li><a href="genre.html">Fantasy</a></li>
+											<li><a href="genre.html">Thriller</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="genre.html">Animation</a></li>
+											<li><a href="genre.html">Costume</a></li>
+											<li><a href="genre.html">Drama</a></li>
+											<li><a href="genre.html">History</a></li>
+											<li><a href="genre.html">Musical</a></li>
+											<li><a href="genre.html">Psychological</a></li>
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+									</li>
+								</ul>
+							</li><!-- 恢复注释 -->
                                     <li>
                                         <a href="series.html">User</a></li>
-                                    <li>
-                                        <a href="contact.html">Contact</a></li>
+                                   <!-- <li>
+                                        <a href="contact.html">Contact</a></li> -->
                                 </ul>
                             </div>
                             <div class="clearfix"></div>
@@ -180,7 +219,7 @@
                         <a href="Single.aspx?id=<%# mMovie[0].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[0].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -193,27 +232,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -222,9 +261,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第二个电影-->
@@ -232,7 +273,7 @@
                         <a href="Single.aspx?id=<%# mMovie[1].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[1].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -245,27 +286,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -274,9 +315,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
-                        <div class="ribben one">
+                       <!--
+                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第三个电影-->
@@ -284,7 +327,7 @@
                         <a href="Single.aspx?id=<%# mMovie[2].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[2].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -297,27 +340,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -326,9 +369,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第四个电影-->
@@ -336,7 +381,7 @@
                         <a href="Single.aspx?id=<%# mMovie[3].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[3].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -349,27 +394,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -378,9 +423,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第五个电影-->
@@ -388,7 +435,7 @@
                         <a href="Single.aspx?id=<%# mMovie[4].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[4].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                              <!--  <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -401,27 +448,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -430,9 +477,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第六个电影-->
@@ -440,7 +489,7 @@
                         <a href="Single.aspx?id=<%# mMovie[5].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[5].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -453,27 +502,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -482,9 +531,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第七个电影-->
@@ -492,7 +543,7 @@
                         <a href="Single.aspx?id=<%# mMovie[6].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[6].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -505,27 +556,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -534,9 +585,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第八个电影-->
@@ -544,7 +597,7 @@
                         <a href="Single.aspx?id=<%# mMovie[7].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[7].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                              <!--  <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -557,27 +610,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -586,9 +639,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第九个电影-->
@@ -596,7 +651,7 @@
                         <a href="Single.aspx?id=<%# mMovie[8].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[8].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -609,27 +664,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -638,9 +693,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
 
                     <!--第十个电影-->
@@ -648,7 +705,7 @@
                         <a href="Single.aspx?id=<%# mMovie[9].id %>" class="hvr-sweep-to-bottom">
                             <img src="<%# mMovie[9].image %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
-                                <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                                <!--<i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -661,27 +718,27 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <a href="#">
+                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
                                             </a>
                                         </li>
@@ -690,9 +747,11 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--
                         <div class="ribben one">
                             <p>NEW</p>
                         </div>
+                        -->
                     </div>
                     <div class="clearfix"></div>
                 </div>
