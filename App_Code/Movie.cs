@@ -12,43 +12,27 @@ public class Movie
 
     public String id;
     public String name;
-    public String year;
-    public String image;
-
-    public String story;
     public String release;
+    public String language;
     public String country;
-    public String genre;
-    public String keywords;
     public String star;
+    public String allSales;
+    public String story;
     public String description;
+    public String genre;
 
+    public List<String> keywords;
+    public List<Image> images;
+    public List<Video> videos;
     public List<Response> responses;
     public List<News> news;
     public List<Sales> sales;
 
-    public String image1;
-    public String image2;
-    public String image3;
-    public String image4;
-
-    public String video1Img;
-    public String video1Url;
-
-    public String video2Img;
-    public String video2Url;
-
-    public String video3Img;
-    public String video3Url;
-
-    public String video4Img;
-    public String video4Url;
-
+   
     public String toString()
     {
         return "id = " + id + ", "
-             + "name = " + name + ", "
-             + "year = " + year;
+             + "name = " + name + ", ";
     }
 
     public static Movie get(String id)
@@ -67,71 +51,91 @@ public class Movie
         //
         id = reader[0].ToString();
         name = reader[1].ToString();
-        image = reader[2].ToString();
-        story = reader[3].ToString();
-        release = reader[4].ToString();
-        country = reader[5].ToString();
-        genre = reader[6].ToString();
-        keywords = reader[7].ToString();
+        release = reader[2].ToString();
+        language = reader[3].ToString();
+        country = reader[4].ToString();
+        star = reader[5].ToString();
+        allSales = reader[6].ToString();
+        story = reader[7].ToString();
         description = reader[8].ToString();
+        genre = reader[9].ToString();
 
-        image1 = reader[9].ToString();
-        image2 = reader[10].ToString();
-        image3 = reader[11].ToString();
-        image4 = reader[12].ToString();
+        keywords = new List<String>();
+        keywords.Add(reader[10].ToString());
+        keywords.Add(reader[11].ToString());
+        keywords.Add(reader[12].ToString());
+        keywords.Add(reader[13].ToString());
+        keywords.Add(reader[14].ToString());
 
-        video1Img = reader[13].ToString();
-        video1Url = reader[14].ToString();
-        video2Img = reader[15].ToString();
-        video2Url = reader[16].ToString();
-        video3Img = reader[17].ToString();
-        video3Url = reader[18].ToString();
-        video4Img = reader[19].ToString();
-        video4Url = reader[20].ToString();
-
-        year = reader[21].ToString();
-        star = reader[22].ToString();
+        loadImages();
+        loadVideos();
+        loadResponses();
+        loadNews();
+        loadSales();
     }
 
-    public List<Response> loadResponses()
+    public void loadImages()
+    {
+        images = new List<Image>();
+
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from image where movie_id=" + id);
+        for (int index = 0; reader.Read(); index++)
+        {
+            Image image = new Image(reader);
+            images.Add(image);
+        }
+        reader.Close();
+    }
+
+    public void loadVideos()
+    {
+        videos = new List<Video>();
+
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from video where movie_id=" + id);
+        for (int index = 0; reader.Read(); index++)
+        {
+            Video video = new Video(reader);
+            videos.Add(video);
+        }
+        reader.Close();
+    }
+
+    public void loadResponses()
     {
         responses = new List<Response>();
 
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from Response where MovieId=" + id);
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from responses where movie_id=" + id);
         for (int index = 0; reader.Read(); index++)
         {
             Response response = new Response(reader);
             responses.Add(response);
         }
         reader.Close();
-        return responses;
     }
 
-    public List<News> loadNews()
+    public void loadNews()
     {
         news = new List<News>();
 
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from News where movie=" + id);
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from news where movie_id=" + id);
         for (int index = 0; reader.Read(); index++)
         {
             News item = new News(reader);
             news.Add(item);
         }
         reader.Close();
-        return news;
     }
 
-    public List<Sales> loadSales()
+    public void loadSales()
     {
         sales = new List<Sales>();
 
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from Sales where movie=" + id);
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from sales where movie_id=" + id);
         for (int index = 0; reader.Read(); index++)
         {
             Sales item = new Sales(reader);
             sales.Add(item);
         }
         reader.Close();
-        return sales;
     }
 }
