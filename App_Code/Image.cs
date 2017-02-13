@@ -5,25 +5,22 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for Response
+/// Summary description for Image
 /// </summary>
-public class Response
+public class Image
 {
     public String id;
     public String movie;
-    public String user;
-    public String date;
-    public String comment;
-    
-    public Response(SqlDataReader reader)
+    public String url;
+
+
+    public Image(SqlDataReader reader)
     {
         //
         // TODO: Add constructor logic here
         //
         id = reader[0].ToString();
         movie = reader[1].ToString();
-        user = reader[2].ToString();
-        date = reader[3].ToString();
-        comment = reader[4].ToString();
+        url = reader[2].ToString();
     }
 }

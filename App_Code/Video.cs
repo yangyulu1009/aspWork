@@ -5,28 +5,23 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for News
+/// Summary description for Video
 /// </summary>
-public class News
+public class Video
 {
     public String id;
-    public String title;
-    public String content;
-    public String url;
     public String movie;
-    public String time;
-    
+    public String image;
+    public String url;
 
-    public News(SqlDataReader reader)
+    public Video(SqlDataReader reader)
     {
         //
         // TODO: Add constructor logic here
         //
         id = reader[0].ToString();
-        title = reader[1].ToString();
-        content = reader[2].ToString();
+        movie = reader[1].ToString();
+        image = reader[2].ToString();
         url = reader[3].ToString();
-        movie = reader[4].ToString();
-        time = reader[5].ToString();
     }
 }
