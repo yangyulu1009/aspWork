@@ -12,13 +12,25 @@ public partial class NewsManager : System.Web.UI.Page
         
     }
 
-
-
-    protected void LinkButton2_Command(object sender, CommandEventArgs e)
+    protected void LinkButton1_Command(object sender, CommandEventArgs e)
     {
         String id = e.CommandName;
         SqlData.getInstance().ExecuteSQL("delete from news where id=" + id);
         Response.Redirect(Request.Url.ToString());
     }
-    
+
+    protected void LinkButton2_Command(object sender, CommandEventArgs e)
+    {
+        String id = e.CommandName;
+        SqlData.getInstance().ExecuteSQL("delete from people where id=" + id);
+        Response.Redirect(Request.Url.ToString());
+    }
+
+    protected void LinkButton3_Command(object sender, CommandEventArgs e)
+    {
+        String id = e.CommandName;
+        SqlData.getInstance().ExecuteSQL("delete from responses where id=" + id);
+        Response.Redirect(Request.Url.ToString());
+    }
+
 }
