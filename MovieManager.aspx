@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NewsManager.aspx.cs" Inherits="NewsManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MovieManager.aspx.cs" Inherits="NewsManager" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,7 @@
     
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSourceNews">
             <HeaderTemplate>
-                <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
+                <table style="width:100%; color:white; font-weight:700; font-size: 18px; font-family:'Microsoft YaHei'" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>
                         <th style="width:5%;">电影</th>
@@ -25,7 +25,7 @@
             </HeaderTemplate>
 
             <ItemTemplate>
-                <table style="width: 100%; color: black; border-collapse: collapse; font-family:'Times New Roman', Times, serif;" border="0">
+                <table style="width: 100%; color: black; border-collapse: collapse; font-family:'Microsoft YaHei';" border="0">
                     <tr style="height: 35px">
                         <td style="width: 5%; text-align: center"><%# Eval("id") %></td>
                         <td style="width: 5%; text-align: center"><%# Eval("movie_id") %></td>
