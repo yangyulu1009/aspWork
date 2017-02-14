@@ -12,7 +12,7 @@ public class Movie
 
     public String id;
     public String name;
-    public String release;
+    public String year;
     public String language;
     public String country;
     public String star;
@@ -20,6 +20,7 @@ public class Movie
     public String story;
     public String description;
     public String genre;
+    public String image;
 
     public List<String> keywords;
     public List<Image> images;
@@ -29,11 +30,7 @@ public class Movie
     public List<Sales> sales;
 
    
-    public String toString()
-    {
-        return "id = " + id + ", "
-             + "name = " + name + ", ";
-    }
+   
 
     public static Movie get(String id)
     {
@@ -51,7 +48,7 @@ public class Movie
         //
         id = reader[0].ToString();
         name = reader[1].ToString();
-        release = reader[2].ToString();
+        year = reader[2].ToString();
         language = reader[3].ToString();
         country = reader[4].ToString();
         star = reader[5].ToString();
@@ -137,5 +134,11 @@ public class Movie
             sales.Add(item);
         }
         reader.Close();
+    }
+
+    public String toString()
+    {
+        return "id = " + id + ", "
+             + "name = " + name + ", ";
     }
 }
