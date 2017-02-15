@@ -63,12 +63,6 @@ public class Movie
         keywords.Add(reader[12].ToString());
         keywords.Add(reader[13].ToString());
         keywords.Add(reader[14].ToString());
-
-        loadImages();
-        loadVideos();
-        loadResponses();
-        loadNews();
-        loadSales();
     }
 
     public void loadImages()

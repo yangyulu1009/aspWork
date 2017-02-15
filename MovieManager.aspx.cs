@@ -12,6 +12,18 @@ public partial class NewsManager : System.Web.UI.Page
         
     }
 
+    public String getMovieName(String movieId)
+    {
+        Movie movie = Movie.get(movieId);
+        return movie.name;
+    }
+
+    public String getUserName(String userId)
+    {
+        Users user = Users.get(userId);
+        return user.name;
+    }
+
     protected void LinkButton1_Command(object sender, CommandEventArgs e)
     {
         String id = e.CommandName;

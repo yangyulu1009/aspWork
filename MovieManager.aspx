@@ -14,9 +14,9 @@
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>
-                        <th style="width:5%;">电影</th>
-                        <th style="width:20%">标题</th>
-                        <th style="width:40%">内容</th>
+                        <th style="width:15%;">电影</th>
+                        <th style="width:15%">标题</th>
+                        <th style="width:35%">内容</th>
                         <th style="width:20%">链接</th>
                         <th style="width:5%">编辑</th>
                         <th style="width:5%">删除</th>
@@ -24,13 +24,14 @@
                 </table>
             </HeaderTemplate>
 
+           
             <ItemTemplate>
                 <table style="width: 100%; color: black; border-collapse: collapse;" border="0">
                     <tr style="height: 35px">
                         <td style="width: 5%; text-align: center"><%# Eval("id") %></td>
-                        <td style="width: 5%; text-align: center"><%# Eval("movie_id") %></td>
-                        <td style="width: 20%; text-align: left"><%# Eval("title") %></td>
-                        <td style="width: 40%; text-align: left"><%# Eval("content") %></td>
+                        <td style="width: 15%; text-align: left"><%# getMovieName(Eval("id").ToString()) %></td>
+                        <td style="width: 15%; text-align: left"><%# Eval("title") %></td>
+                        <td style="width: 35%; text-align: left"><%# Eval("content") %></td>
                         <td style="width: 20%; text-align: left"><%# Eval("url") %></td>
                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditNews.aspx?id={0}") %>">编辑</a></td>
                         <td style="width: 5%; text-align: center">
@@ -95,8 +96,8 @@
                 <table style="width: 100%; color: black; border-collapse: collapse;" border="0">
                     <tr style="height: 35px">
                         <td style="width: 5%; text-align: center"><%# Eval("id") %></td>
-                        <td style="width: 10%; text-align: center"><%# Eval("movie_id") %></td>
-                        <td style="width: 5%; text-align: center"><%# Eval("user_id") %></td>
+                        <td style="width: 10%; text-align: center"><%# getMovieName(Eval("id").ToString()) %></td>
+                        <td style="width: 5%; text-align: center"><%# getUserName(Eval("user_id").ToString()) %></td>
                         <td style="width: 60%; text-align: center"><%# Eval("comment") %></td>
                         <td style="width: 10%; text-align: left"><%# Eval("reply_time") %></td>
                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
