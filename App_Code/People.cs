@@ -14,6 +14,15 @@ public class People
     public String name;
     public String url;
 
+    public static People get(String id)
+    {
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from people where id=" + id);
+        reader.Read();
+        People people = new People(reader);
+        reader.Close();
+        return people;
+    }
+
     public People(SqlDataReader reader)
     {
         //

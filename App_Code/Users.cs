@@ -15,11 +15,11 @@ public class Users
     public String head;
     public String level;
     public String password;
-    public String register_time;
+    public String regtime;
 
     public static Users get(String id)
     {
-       
+        MyLog.v("userid = " + id);
         SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from users where id=" + id);
         reader.Read();
         Users user = new Users(reader);
@@ -37,6 +37,6 @@ public class Users
         head = reader[2].ToString();
         level = reader[3].ToString();
         password = reader[4].ToString();
-        register_time = reader[5].ToString();
+        regtime = reader[5].ToString();
     }
 }

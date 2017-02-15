@@ -112,7 +112,7 @@
         <asp:SqlDataSource ID="SqlDataSourceResponses" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" SelectCommand="SELECT * FROM [responses]"></asp:SqlDataSource>
 
 
-        <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSourceResponses">
+        <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSourceRole">
             <HeaderTemplate>
                 <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">Roles</p>
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
@@ -132,7 +132,7 @@
                     <tr style="height: 35px">
                         <td style="width: 5%; text-align: center"><%# Eval("id") %></td>
                         <td style="width: 25%; text-align: center"><%# getMovieName(Eval("movie_id").ToString()) %></td>
-                        <td style="width: 20%; text-align: center"><%# getUserName(Eval("people_id").ToString()) %></td>
+                        <td style="width: 20%; text-align: center"><%# getPeopleName(Eval("people_id").ToString()) %></td>
                         <td style="width: 40%; text-align: center"><%# Eval("role") %></td>
                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
                         <td style="width: 5%; text-align: center">
@@ -144,6 +144,39 @@
             </ItemTemplate>
         </asp:Repeater>
         <asp:SqlDataSource ID="SqlDataSourceRole" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" SelectCommand="SELECT * FROM [role]"></asp:SqlDataSource>
+
+        <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSourceSales">
+            <HeaderTemplate>
+                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">Sales</p>
+                <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
+                    <tr style="background-color: black; height: 35px">
+                        <th style="width:5%;">ID</th>
+                        <th style="width:35%;">电影</th>
+                        <th style="width:30%">票房</th>
+                        <th style="width:20%">时间</th>
+                        <th style="width:5%">编辑</th>
+                        <th style="width:5%">删除</th>
+                    </tr>
+                </table>
+            </HeaderTemplate>
+
+            <ItemTemplate>
+                <table style="width: 100%; color: black; border-collapse: collapse;" border="0">
+                    <tr style="height: 35px">
+                        <td style="width: 5%; text-align: center"><%# Eval("id") %></td>
+                        <td style="width: 35%; text-align: center"><%# getMovieName(Eval("movie_id").ToString()) %></td>
+                        <td style="width: 30%; text-align: center"><%# Eval("sales") %></td>
+                        <td style="width: 20%; text-align: center"><%# Eval("date") %></td>
+                        <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
+                        <td style="width: 5%; text-align: center">
+                            <asp:LinkButton ID="LinkButton2" runat="server" OnCommand="LinkButton5_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
+                    </tr>
+
+                </table>
+
+            </ItemTemplate>
+        </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSourceSales" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" SelectCommand="SELECT * FROM [sales]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
