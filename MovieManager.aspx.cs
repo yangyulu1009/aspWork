@@ -24,6 +24,13 @@ public partial class NewsManager : System.Web.UI.Page
         return user.name;
     }
 
+    public String getKeywords(String key1, String key2, String key3)
+    {
+        String keys = key1.Trim() + " " + key2.Trim();
+        keys = keys.Trim() + " " + key3.Trim();
+        return keys.Trim();
+    }
+
     public String getPeopleName(String peopleId)
     {
         People people = People.get(peopleId);
@@ -62,6 +69,13 @@ public partial class NewsManager : System.Web.UI.Page
     {
         String id = e.CommandName;
         SqlData.getInstance().ExecuteSQL("delete from sales where id=" + id);
+        Response.Redirect(Request.Url.ToString());
+    }
+
+    protected void LinkButton6_Command(object sender, CommandEventArgs e)
+    {
+        String id = e.CommandName;
+        SqlData.getInstance().ExecuteSQL("delete from movie where id=" + id);
         Response.Redirect(Request.Url.ToString());
     }
 

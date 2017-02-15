@@ -13,11 +13,9 @@ public class Movie
     public String id;
     public String name;
     public String year;
-    public String language;
-    public String country;
     public String star;
+
     public String allSales;
-    public String story;
     public String description;
     public String genre;
     public String image;
@@ -49,20 +47,18 @@ public class Movie
         id = reader[0].ToString();
         name = reader[1].ToString();
         year = reader[2].ToString();
-        language = reader[3].ToString();
-        country = reader[4].ToString();
-        star = reader[5].ToString();
-        allSales = reader[6].ToString();
-        story = reader[7].ToString();
-        description = reader[8].ToString();
-        genre = reader[9].ToString();
+        star = reader[3].ToString();
+        allSales = reader[4].ToString();
+        description = reader[5].ToString();
+        genre = reader[6].ToString();
+        
 
         keywords = new List<String>();
-        keywords.Add(reader[10].ToString());
-        keywords.Add(reader[11].ToString());
-        keywords.Add(reader[12].ToString());
-        keywords.Add(reader[13].ToString());
-        keywords.Add(reader[14].ToString());
+        keywords.Add(reader[7].ToString());
+        keywords.Add(reader[8].ToString());
+        keywords.Add(reader[9].ToString());
+
+        image = reader[10].ToString();
     }
 
     public void loadImages()
