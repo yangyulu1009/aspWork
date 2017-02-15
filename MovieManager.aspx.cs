@@ -45,4 +45,11 @@ public partial class NewsManager : System.Web.UI.Page
         Response.Redirect(Request.Url.ToString());
     }
 
+    protected void LinkButton4_Command(object sender, CommandEventArgs e)
+    {
+        String id = e.CommandName;
+        SqlData.getInstance().ExecuteSQL("delete from role where id=" + id);
+        Response.Redirect(Request.Url.ToString());
+    }
+
 }

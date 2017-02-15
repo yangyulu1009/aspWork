@@ -19,7 +19,8 @@ public class Users
 
     public static Users get(String id)
     {
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from user where id=" + id);
+       
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from users where id=" + id);
         reader.Read();
         Users user = new Users(reader);
         reader.Close();
