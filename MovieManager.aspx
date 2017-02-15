@@ -8,6 +8,49 @@
 </head>
 <body style="font-family: 'Microsoft YaHei'">
     <form id="form1" runat="server">
+        <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSourceMovie">
+            <HeaderTemplate>
+                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">Movie</p>
+                <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
+                    <tr style="background-color: black; height: 35px">
+                        <th style="width:5%">ID</th>
+                        <th style="width:10%">名称</th>
+                        <th style="width:30%">简介</th>
+                        <th style="width:10%">图标</th>
+                         <th style="width:15%">关键词</th>
+                        <th style="width:5%">年份</th>
+                        <th style="width:5%">星级</th>
+                        <th style="width:5%">票房</th>
+                        <th style="width:5%">类型</th>
+                        <th style="width:5%">编辑</th>
+                        <th style="width:5%">删除</th>
+                    </tr>
+                </table>
+            </HeaderTemplate>
+
+            <ItemTemplate>
+                <table style="width: 100%; color: black; border-collapse: collapse;" border="0">
+                    <tr style="height: 35px">
+                        <td style="width: 5%; text-align: center"><%# Eval("id") %></td>
+                        <td style="width: 10%; text-align: center"><%# Eval("name") %></td>
+                        <td style="width: 30%; text-align: center"><%# Eval("description") %></td>
+                        <td style="width: 10%; text-align: center"><%# Eval("image") %></td>
+                        <td style="width: 15%; text-align: center"><%# getKeywords(Eval("keyword1").ToString(), Eval("keyword2").ToString(), Eval("keyword3").ToString()) %></td>
+                        <td style="width: 5%; text-align: center"><%# Eval("year") %></td>
+                        <td style="width: 5%; text-align: center"><%# Eval("star") %></td>
+                        <td style="width: 5%; text-align: center"><%# Eval("allsales") %></td>
+                        <td style="width: 5%; text-align: center"><%# Eval("genre") %></td>
+                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
+                        <td style="width: 5%; text-align: center">
+                            <asp:LinkButton ID="LinkButton6" runat="server" OnCommand="LinkButton6_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
+                    </tr>
+
+                </table>
+
+            </ItemTemplate>
+        </asp:Repeater>
+        <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" SelectCommand="SELECT * FROM [movie]"></asp:SqlDataSource>
+
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSourceNews">
             <HeaderTemplate>
                 <p style="font-size:30px; margin: 0px; padding: 0px; ">News</p>
@@ -35,7 +78,7 @@
                         <td style="width: 20%; text-align: left"><%# Eval("url") %></td>
                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditNews.aspx?id={0}") %>">编辑</a></td>
                         <td style="width: 5%; text-align: center">
-                            <asp:LinkButton ID="LinkButton2" runat="server" OnCommand="LinkButton1_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnCommand="LinkButton1_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
                     </tr>
 
                 </table>
@@ -102,7 +145,7 @@
                         <td style="width: 10%; text-align: left"><%# Eval("reply_time") %></td>
                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
                         <td style="width: 5%; text-align: center">
-                            <asp:LinkButton ID="LinkButton2" runat="server" OnCommand="LinkButton3_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
+                            <asp:LinkButton ID="LinkButton3" runat="server" OnCommand="LinkButton3_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
                     </tr>
 
                 </table>
@@ -136,7 +179,7 @@
                         <td style="width: 40%; text-align: center"><%# Eval("role") %></td>
                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
                         <td style="width: 5%; text-align: center">
-                            <asp:LinkButton ID="LinkButton2" runat="server" OnCommand="LinkButton4_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
+                            <asp:LinkButton ID="LinkButton4" runat="server" OnCommand="LinkButton4_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
                     </tr>
 
                 </table>
@@ -169,7 +212,7 @@
                         <td style="width: 20%; text-align: center"><%# Eval("date") %></td>
                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
                         <td style="width: 5%; text-align: center">
-                            <asp:LinkButton ID="LinkButton2" runat="server" OnCommand="LinkButton5_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
+                            <asp:LinkButton ID="LinkButton5" runat="server" OnCommand="LinkButton5_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
                     </tr>
 
                 </table>
