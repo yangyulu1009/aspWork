@@ -18,6 +18,7 @@ public partial class Index : System.Web.UI.Page
         for (int index = 0; myReader.Read(); index++)
         {
             Movie movie = new Movie(myReader);
+            movie.images = Image.get(movie.id);
             mMovie[index] = movie;
         }
 

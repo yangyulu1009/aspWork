@@ -49,4 +49,17 @@ public class Movie
         description = reader[5].ToString();
         genre = reader[6].ToString();
     }
+
+    public String getIndexImage()
+    {
+        for (int i = 0; i < images.Count(); i++)
+        {
+            Image image = images.ElementAt(i);
+            if (image.type == Image.TYPE_INDEX)
+            {
+                return image.url;
+            }
+        }
+        return "";
+    }
 }

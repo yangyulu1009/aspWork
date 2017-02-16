@@ -217,7 +217,7 @@
                     <!-- 第一个电影 -->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[0].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[0].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[0].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -271,7 +271,7 @@
                     <!--第二个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[1].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[1].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[1].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -325,7 +325,7 @@
                     <!--第三个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[2].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[2].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[2].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -379,7 +379,7 @@
                     <!--第四个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[3].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[3].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[3].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -433,7 +433,7 @@
                     <!--第五个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[4].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[4].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[4].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                               <!--  <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -487,7 +487,7 @@
                     <!--第六个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[5].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[5].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[5].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -541,7 +541,7 @@
                     <!--第七个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[6].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[6].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[6].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -595,7 +595,7 @@
                     <!--第八个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[7].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[7].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[7].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                               <!--  <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -649,7 +649,7 @@
                     <!--第九个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[8].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[8].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[8].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -703,7 +703,7 @@
                     <!--第十个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[9].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[9].image %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[9].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
                             <div class="w3l-action-icon">
                                 <!--<i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
