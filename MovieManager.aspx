@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSourceMovie">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">Movie</p>
+                <p style="font-size:30px; margin: 0px; padding: 0px; ">Movie</p>
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%">ID</th>
@@ -53,7 +53,7 @@
 
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSourceNews">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; ">News</p>
+                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">News</p>
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>

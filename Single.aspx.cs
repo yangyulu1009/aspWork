@@ -7,13 +7,17 @@ using System.Web.UI.WebControls;
 
 public partial class Single : System.Web.UI.Page
 {
-    private Movie mMovie;
+    public Movie mMovie;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         String id = Request.QueryString["id"];
+        if (id == null || id.Length == 0)
+        {
+            throw new Exception("no movie id");
+        }
+
         mMovie = Movie.get(id);
-        Response.Write(mMovie.toString());
     }
 
    

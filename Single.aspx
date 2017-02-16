@@ -209,31 +209,24 @@
 				<div class="w3_content_agilleinfo_inner">
 						<div class="agile_featured_movies">
 				            <div class="inner-agile-w3l-part-head">
-					            <h3 class="w3l-inner-h-title">Single Page</h3>
-								<p class="w3ls_head_para">Add short Description</p>
+					            <h3 class="w3l-inner-h-title"><%# mMovie.name %></h3>
+								<p class="w3ls_head_para"><%# mMovie.description %></p>
 							</div>
 							   <div class="latest-news-agile-info">
 								   <div class="col-md-8 latest-news-agile-left-content">
 											<div class="single video_agile_player">
 											       
 										            <div class="video-grid-single-page-agileits">
-														<div data-video="f2Z65fobH2I" id="video"> <img src="images/1.jpg" alt="" class="img-responsive" /> </div>
+														<div data-video="f2Z65fobH2I" id="video"> <img src="<%# mMovie.image %>" alt="" class="img-responsive" /> </div>
 													</div>
 													 <!-- <h4>Force 2 | Official Trailer | John Abraham, Sonakshi Sinha and Tahir Raj Bhasin</h4> -->
 
 
 													 <div class="player-text side-bar-info">
 														<p class="fexi_header">Me Before You </p>
-														<p class="fexi_header_para"><span class="conjuring_w3">Story Line<label>:</label></span>Me Before You Official Trailer #2 (2016) - Emilia Clarke, Sam Claflin Movie HD
-														A girl in a small town forms an unlikely....</p>
-														<p class="fexi_header_para"><span>Release On<label>:</label></span>Feb 3, 2016 </p>
-														<!-- <p class="fexi_header_para">
-															<span>Genres<label>:</label> </span>
-															Drama|Adventure|Family
-															<a href="genre.html">Drama</a> | 
-															<a href="genre.html">Adventure</a> | 
-															<a href="genre.html">Family</a>								
-														</p> -->
+														<p class="fexi_header_para"><span class="conjuring_w3">Story Line<label>:</label></span><%# mMovie.description %></p>
+														<p class="fexi_header_para"><span>Release On<label>:</label></span><%# mMovie.year %></p>
+													
 														
 														<p class="fexi_header_para"><span>Country<label>:</label></span>America</p>
 
