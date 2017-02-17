@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -20,26 +21,25 @@ public class News
     {
         List<News> news = new List<News>();
 
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from news where movie_id=" + id);
-        for (int index = 0; reader.Read(); index++)
+        DataTable table = SqlData.getInstance().datasetExecute("select * from news where movie_id=" + id, "news");
+        for (int index = 0; index < table.Rows.Count; index++)
         {
-            News item = new News(reader);
+            News item = new News(table.Rows[index]);
             news.Add(item);
         }
-        reader.Close();
         return news;
     }
 
-    public News(SqlDataReader reader)
+    public News(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        title = reader[1].ToString();
-        content = reader[2].ToString();
-        url = reader[3].ToString();
-        movie = reader[4].ToString();
-        time = reader[5].ToString();
+        id = row["id"].ToString();
+        title = row["title"].ToString();
+        content = row["content"].ToString();
+        url = row["url"].ToString();
+        movie = row["movie_id"].ToString();
+        time = row["time"].ToString();
     }
 }

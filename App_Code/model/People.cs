@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,20 +17,18 @@ public class People
 
     public static People get(String id)
     {
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from people where id=" + id);
-        reader.Read();
-        People people = new People(reader);
-        reader.Close();
+        DataTable table = SqlData.getInstance().datasetExecute("select * from people where id=" + id, "people");
+        People people = new People(table.Rows[0]);
         return people;
     }
 
-    public People(SqlDataReader reader)
+    public People(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        name = reader[1].ToString();
-        url = reader[2].ToString();
+        id = row["id"].ToString();
+        name = row["name"].ToString();
+        url = row["url"].ToString();
     }
 }

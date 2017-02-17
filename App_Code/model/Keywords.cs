@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,23 +17,22 @@ public class Keywords
     public static List<Keywords> get(String id)
     {
         List<Keywords> keys = new List<Keywords>();
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from keywords where movie_id=" + id);
-        for (int i = 0; reader.Read(); i++)
+        DataTable table = SqlData.getInstance().datasetExecute("select * from keywords where movie_id=" + id, "keywords");
+        for (int i = 0; i < table.Rows.Count; i++)
         {
-            Keywords word = new Keywords(reader);
+            Keywords word = new Keywords(table.Rows[i]);
             keys.Add(word);
         }
-        reader.Close();
         return keys;
     }
 
-    public Keywords(SqlDataReader reader)
+    public Keywords(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        name = reader[1].ToString();
-        movie = reader[2].ToString();
+        id = row["id"].ToString();
+        name = row["name"].ToString();
+        movie = row["movie_id"].ToString();
     }
 }

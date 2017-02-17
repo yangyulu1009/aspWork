@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -19,25 +20,24 @@ public class Response
     {
         List<Response> responses = new List<Response>();
 
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from responses where movie_id=" + id);
-        for (int index = 0; reader.Read(); index++)
+        DataTable table = SqlData.getInstance().datasetExecute("select * from responses where movie_id=" + id, "responses");
+        for (int index = 0; index < table.Rows.Count; index++)
         {
-            Response response = new Response(reader);
+            Response response = new Response(table.Rows[index]);
             responses.Add(response);
         }
-        reader.Close();
         return responses;
     }
 
-    public Response(SqlDataReader reader)
+    public Response(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        movie = reader[1].ToString();
-        user = reader[2].ToString();
-        date = reader[3].ToString();
-        comment = reader[4].ToString();
+        id = row["id"].ToString();
+        movie = row["movie_id"].ToString();
+        user = row["user_id"].ToString();
+        date = row["reply_time"].ToString();
+        comment = row["comment"].ToString();
     }
 }
