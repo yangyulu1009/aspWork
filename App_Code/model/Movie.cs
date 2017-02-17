@@ -19,14 +19,14 @@ public class Movie
     public String allSales;
     public String description;
     public String genre;
-    public String image;
 
-    public List<String> keywords;
+    public List<Keywords> keywords;
     public List<Image> images;
     public List<Video> videos;
     public List<Response> responses;
     public List<News> news;
     public List<Sales> sales;
+    public List<Role> roles;
 
     public static Movie get(String id)
     {
@@ -47,18 +47,40 @@ public class Movie
         allSales = row["allSales"].ToString();
         description = row["description"].ToString();
         genre = row["genre"].ToString();
+
+        Image.get(id);
+    }
+
+    public void loadExtraData()
+    {
+        images = Image.get(id);
+        keywords = Keywords.get(id);
+        news = News.get(id);
+        roles = Role.get(id);
+        sales = Sales.get(id);
+        videos = Video.get(id);
     }
 
     public String getIndexImage()
     {
-        for (int i = 0; i < images.Count(); i++)
-        {
-            Image image = images.ElementAt(i);
+        foreach (Image image in images) {
             if (image.type == Image.TYPE_INDEX)
             {
                 return image.url;
             }
         }
-        return "";
+        return null;
+    }
+
+    public String getSingleImage()
+    {
+        foreach (Image image in images)
+        {
+            if (image.type == Image.TYPE_LARGE)
+            {
+                return image.url;
+            }
+        }
+        return null;
     }
 }

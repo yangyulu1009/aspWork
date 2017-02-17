@@ -14,11 +14,14 @@ public partial class Single : System.Web.UI.Page
         String id = Request.QueryString["id"];
         if (id == null || id.Length == 0)
         {
-            throw new Exception("no movie id");
+            Response.Write("<p>invalid id</p>");
+            return;
         }
 
         mMovie = Movie.get(id);
+        mMovie.loadExtraData();
+        Page.DataBind();
     }
 
-   
+    
 }

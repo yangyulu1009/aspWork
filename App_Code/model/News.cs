@@ -17,7 +17,7 @@ public class News
     public String movie;
     public String time;
 
-    public List<News> get(String id)
+    public static List<News> get(String id)
     {
         List<News> news = new List<News>();
 
