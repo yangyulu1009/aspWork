@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -19,24 +20,23 @@ public class Role
     {
         List<Role> roles = new List<Role>();
 
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from role where movie_id=" + id);
-        for (int index = 0; reader.Read(); index++)
+        DataTable table = SqlData.getInstance().datasetExecute("select * from role where movie_id=" + id, "role");
+        for (int index = 0; index < table.Rows.Count; index++)
         {
-            Role item = new Role(reader);
+            Role item = new Role(table.Rows[index]);
             roles.Add(item);
         }
-        reader.Close();
         return roles;
     }
 
-    public Role(SqlDataReader reader)
+    public Role(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        movie = reader[1].ToString();
-        people = reader[2].ToString();
-        role = reader[3].ToString();
+        id = row["id"].ToString();
+        movie = row["movie_id"].ToString();
+        people = row["people_id"].ToString();
+        role = row["role"].ToString();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -31,24 +32,24 @@ public class Image
     {
         List<Image> images = new List<Image>();
 
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from image where movie_id=" + id);
-        for (int index = 0; reader.Read(); index++)
+        DataTable table = SqlData.getInstance().datasetExecute("select * from image where movie_id=" + id, "image");
+        
+        for (int index = 0; index < table.Rows.Count; index++)
         {
-            Image image = new Image(reader);
+            Image image = new Image(table.Rows[index]);
             images.Add(image);
         }
-        reader.Close();
         return images;
     }
 
-    public Image(SqlDataReader reader)
+    public Image(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        movie = reader[1].ToString();
-        url = reader[2].ToString();
-        type = int.Parse(reader[3].ToString());
+        id = row["id"].ToString();
+        movie = row["movie_id"].ToString();
+        url = row["url"].ToString();
+        type = int.Parse(row["type"].ToString());
     }
 }

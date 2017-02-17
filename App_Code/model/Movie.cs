@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -29,25 +30,23 @@ public class Movie
 
     public static Movie get(String id)
     {
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from movie where id=" + id);
-        reader.Read();
-        Movie movie = new Movie(reader);
-        reader.Close();
-        return movie;
+        DataTable table = SqlData.getInstance().datasetExecute("select * from movie where id=" + id, "movie");
+        DataRow row = table.Rows[0];
+        return new Movie(row);
     }
 
-    public Movie(SqlDataReader reader)
+    public Movie(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        name = reader[1].ToString();
-        year = reader[2].ToString();
-        star = reader[3].ToString();
-        allSales = reader[4].ToString();
-        description = reader[5].ToString();
-        genre = reader[6].ToString();
+        id = row["id"].ToString();
+        name = row["name"].ToString();
+        year = row["year"].ToString();
+        star = row["star"].ToString();
+        allSales = row["allSales"].ToString();
+        description = row["description"].ToString();
+        genre = row["genre"].ToString();
     }
 
     public String getIndexImage()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -19,24 +20,21 @@ public class Users
 
     public static Users get(String id)
     {
-        MyLog.v("userid = " + id);
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select * from users where id=" + id);
-        reader.Read();
-        Users user = new Users(reader);
-        reader.Close();
+        DataTable table = SqlData.getInstance().datasetExecute("select * from users where id=" + id, "users");
+        Users user = new Users(table.Rows[0]);
         return user;
     }
 
-    public Users(SqlDataReader reader)
+    public Users(DataRow row)
     {
         //
         // TODO: Add constructor logic here
         //
-        id = reader[0].ToString();
-        name = reader[1].ToString();
-        head = reader[2].ToString();
-        level = reader[3].ToString();
-        password = reader[4].ToString();
-        regtime = reader[5].ToString();
+        id = row["id"].ToString();
+        name = row["name"].ToString();
+        head = row["head"].ToString();
+        level = row["level"].ToString();
+        password = row["password"].ToString();
+        regtime = row["regtime"].ToString();
     }
 }

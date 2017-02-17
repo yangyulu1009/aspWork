@@ -24,11 +24,15 @@ public partial class NewsManager : System.Web.UI.Page
         return user.name;
     }
 
-    public String getKeywords(String key1, String key2, String key3)
+    public String getKeywords(String movieid)
     {
-        String keys = key1.Trim() + " " + key2.Trim();
-        keys = keys.Trim() + " " + key3.Trim();
-        return keys.Trim();
+        List<Keywords> keys = Keywords.get(movieid);
+        String key = "";
+        for (int i = 0; i < keys.Count; i++)
+        {
+            key = key.Trim() + " " + keys.ElementAt(i);
+        }
+        return key.Trim();
     }
 
     public String getPeopleName(String peopleId)

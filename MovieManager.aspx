@@ -14,10 +14,8 @@
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%">ID</th>
-                        <th style="width:10%">名称</th>
-                        <th style="width:30%">简介</th>
-                        <th style="width:10%">图标</th>
-                         <th style="width:15%">关键词</th>
+                        <th style="width:20%">名称</th>
+                        <th style="width:45%">简介</th>
                         <th style="width:5%">年份</th>
                         <th style="width:5%">星级</th>
                         <th style="width:5%">票房</th>
@@ -32,10 +30,8 @@
                 <table style="width: 100%; color: black; border-collapse: collapse;" border="0">
                     <tr style="height: 35px">
                         <td style="width: 5%; text-align: center"><%# Eval("id") %></td>
-                        <td style="width: 10%; text-align: center"><%# Eval("name") %></td>
-                        <td style="width: 30%; text-align: center"><%# Eval("description") %></td>
-                        <td style="width: 10%; text-align: center"><%# Eval("image") %></td>
-                        <td style="width: 15%; text-align: center"><%# getKeywords(Eval("keyword1").ToString(), Eval("keyword2").ToString(), Eval("keyword3").ToString()) %></td>
+                        <td style="width: 20%; text-align: center"><%# Eval("name") %></td>
+                        <td style="width: 45%; text-align: center"><%# Eval("description") %></td>
                         <td style="width: 5%; text-align: center"><%# Eval("year") %></td>
                         <td style="width: 5%; text-align: center"><%# Eval("star") %></td>
                         <td style="width: 5%; text-align: center"><%# Eval("allsales") %></td>

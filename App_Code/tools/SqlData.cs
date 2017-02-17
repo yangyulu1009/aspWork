@@ -18,11 +18,7 @@ public class SqlData
 
     public static SqlData getInstance()
     {
-        if (sInstance == null)
-        {
-            sInstance = new SqlData();
-        }
-        return sInstance;
+        return new SqlData();
     }
 
     private SqlData()
@@ -43,10 +39,42 @@ public class SqlData
 
         finally
         {
-            //con.Close();
+            con.Close();
         }
     }
 
+    public DataTable datasetExecute(string str, string tableName)
+    {
+        try
+        {
+            SqlDataAdapter da = new SqlDataAdapter(str, con);
+            DataSet ds = new DataSet();
+            da.Fill(ds, tableName);
+            return ds.Tables[tableName];
+        }
+        finally
+        {
+            con.Close();
+        }
+    }
+
+    /*
+    public SqlDataReader ExecuteRead(string str)
+    {
+        try
+        {
+            cmd = new SqlCommand(str, con);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            return sdr;
+        }
+
+        finally
+        {
+            con.Close();
+        }
+    }*/
+
+    /*
     public DataSet ExecuteDateSet(string str)
     {
         try
@@ -62,35 +90,5 @@ public class SqlData
         {
         //    con.Close();
         }
-    }
-
-    public DataSet datesetExecute(string str, string tableName)
-    {
-        try
-        {
-            SqlDataAdapter da = new SqlDataAdapter(str, con);
-            DataSet ds = new DataSet();
-            da.Fill(ds, tableName);
-            return ds;
-        }
-        finally
-        {
-        //    con.Close();
-        }
-    }
-
-    public SqlDataReader ExecuteRead(string str)
-    {
-        try
-        {
-            cmd = new SqlCommand(str, con);
-            SqlDataReader sdr = cmd.ExecuteReader();
-            return sdr;
-        }
-
-        finally
-        {
-       //     con.Close();
-        }
-    }
+    }*/
 }
