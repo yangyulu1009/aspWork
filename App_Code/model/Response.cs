@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Providers.Entities;
 
 /// <summary>
 /// Summary description for Response
@@ -12,7 +13,7 @@ public class Response
 {
     public String id;
     public String movie;
-    public String user;
+    public Users user;
     public String date;
     public String comment;
 
@@ -36,8 +37,10 @@ public class Response
         //
         id = row["id"].ToString();
         movie = row["movie_id"].ToString();
-        user = row["user_id"].ToString();
+        String userId = row["user_id"].ToString();
+        user = Users.get(userId);
         date = row["reply_time"].ToString();
+        MyLog.v(String.Format("date = {0:s}", date));
         comment = row["comment"].ToString();
     }
 }

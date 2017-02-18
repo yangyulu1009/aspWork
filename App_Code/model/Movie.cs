@@ -61,6 +61,7 @@ public class Movie
         roles = Role.get(id);
         sales = Sales.get(id);
         videos = Video.get(id);
+        responses = Response.get(id);
     }
 
     public String getIndexImage()
