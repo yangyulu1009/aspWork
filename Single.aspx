@@ -224,27 +224,27 @@
 
 													 <div class="player-text side-bar-info">
 														<p class="fexi_header">Me Before You </p>
-														<p class="fexi_header_para"><span class="conjuring_w3">Story Line<label>:</label></span><%# mMovie.description %></p>
+														<p class="fexi_header_para"><span>Story Line<label>:</label></span><%# mMovie.description %></p>
 														<p class="fexi_header_para"><span>Release On<label>:</label></span><%# mMovie.year %></p>
 													
 														
-														<p class="fexi_header_para"><span>Country<label>:</label></span>America</p>
+														<p class="fexi_header_para"><span>Country<label>:</label></span><%# mMovie.country %></p>
 
-														<p class="fexi_header_para"><span>Director<label>:</label></span><a href="https://en.wikipedia.org/wiki/Scott_DerricksonScott">Derrickson</a></p>
-														<p class="fexi_header_para"><span>Writer<label>:</label></span><a href="https://en.wikipedia.org/wiki/Jon_Spaihts">Jon Spaihts</a></p>
-														<p class="fexi_header_para"><span>Actor<label>:</label></span><a href="https://en.wikipedia.org/wiki/Benedict_Cumberbatch">Benedict Cumberbatch</a></p>
-														<p class="fexi_header_para"><span>Genre<label>:</label></span><a href=" http://localhost/zxc/comedy.html ">Comedy</a></p>
-														<p class="fexi_header_para"><span>Key Words<label>:</label></span>lov</p>
+														<p class="fexi_header_para"><span>Director<label>:</label></span><a href="https://en.wikipedia.org/wiki/Scott_DerricksonScott"><%# mMovie.getDirector() %></a></p>
+														<p class="fexi_header_para"><span>Writer<label>:</label></span><a href="https://en.wikipedia.org/wiki/Jon_Spaihts"><%# mMovie.getWriter() %></a></p>
+														<p class="fexi_header_para"><span>Actor<label>:</label></span><a href="https://en.wikipedia.org/wiki/Benedict_Cumberbatch"><%# mMovie.getActor() %></a></p>
+														<p class="fexi_header_para"><span>Genre<label>:</label></span><a href=" http://localhost/zxc/comedy.html "><%# mMovie.genre %></a></p>
+														<p class="fexi_header_para"><span>Key Words<label>:</label></span><%# mMovie.getKeywords() %></p>
 
 
 														
 
 														<p class="fexi_header_para fexi_header_para1"><span>Star Rating<label>:</label></span>
-														<!-- 	<a href="#"> --><i class="fa fa-star" aria-hidden="true"></i></a>
-														<!-- 	<a href="#"> --><i class="fa fa-star" aria-hidden="true"></i></a>
-														<!-- 	<a href="#"> --><i class="fa fa-star-half-o" aria-hidden="true"></i></a>
-														<!-- 	<a href="#"> --><i class="fa fa-star-o" aria-hidden="true"></i></a>
-															<!-- <a href="#"> --><i class="fa fa-star-o" aria-hidden="true"></i></a>
+														<!-- 	<a href="#"> --><i runat="server" id="star1" class ="fa fa-star" aria-hidden="true"></i>
+														<!-- 	<a href="#"> --><i runat="server" id="star2" class="fa fa-star" aria-hidden="true"></i>
+														<!-- 	<a href="#"> --><i runat="server" id="star3" class="fa fa-star-half-o" aria-hidden="true"></i>
+														<!-- 	<a href="#"> --><i runat="server" id="star4" class="fa fa-star-o" aria-hidden="true"></i>
+															<!-- <a href="#"> --><i runat="server" id="star5" class="fa fa-star-o" aria-hidden="true"></i>
 														</p>
 														
 													</div>
@@ -254,19 +254,19 @@
 											<div class="clearfix"> </div>
 										<div class="admin-text">
 												<h5>Photographs</h5>
-												<img src="images/admin.jpg" width="178" height="200" alt=""></a>
-												<img src="images/admin.jpg" width="178" height="200" alt=""></a>
-												<img src="images/admin.jpg" width="178" height="200" alt=""></a>
-												<img src="images/admin.jpg" width="178" height="200" alt=""></a>
+												<img src="<%# mMovie.getOperaImage(0) %>" width="178" height="200" alt=""></a>
+												<img src="<%# mMovie.getOperaImage(1) %>" width="178" height="200" alt=""></a>
+												<img src="<%# mMovie.getOperaImage(2) %>" width="178" height="200" alt=""></a>
+												<img src="<%# mMovie.getOperaImage(3) %>" width="178" height="200" alt=""></a>
 			
 												<div class="clearfix"> </div>
 										</div>
 										<div class="admin-text">
 												<h5>Videos</h5>
-											    <a href="#"><img src="images/admin.jpg" width="178" height="200" alt=""></a>
-												<a href="#"><img src="images/admin.jpg" width="178" height="200" alt=""></a>
-												<a href="#"><img src="images/admin.jpg" width="178" height="200" alt=""></a>
-												<a href="#"><img src="images/admin.jpg" width="178" height="200" alt=""></a>
+											    <a href="<%# mMovie.getVideoUrl(0) %>"><img src="<%# mMovie.getVideoImage(0) %>" width="178" height="200" alt=""></a>
+												<a href="<%# mMovie.getVideoUrl(1) %>"><img src="<%# mMovie.getVideoImage(1) %>" width="178" height="200" alt=""></a>
+												<a href="<%# mMovie.getVideoUrl(2) %>"><img src="<%# mMovie.getVideoImage(2) %>" width="178" height="200" alt=""></a>
+												<a href="<%# mMovie.getVideoUrl(3) %>"><img src="<%# mMovie.getVideoImage(3) %>" width="178" height="200" alt=""></a>
 						
 												<div class="clearfix"> </div>
 										</div>
@@ -286,23 +286,7 @@
 										<li>October 15, 2016</li>
 										<li><a href="single.html"><!-- <i class="fa fa-reply" aria-hidden="true"> --></i> Delete</a></li>
 									</ul>
-									<!-- <div class="media response-info">
-										<div class="media-left response-text-left">
-											<a href="#">
-												<img class="media-object" src="images/admin.jpg" alt="">
-											</a>
-											<h5><a href="#">Admin</a></h5>
-										</div>
-										<div class="media-body response-text-right">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
-												sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.There are many variations of passages of Lorem Ipsum available.</p>
-											<ul>
-												<li>November 02, 2016</li>
-												<li><a href="single.html"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a></li>
-											</ul>		
-										</div>
-										<div class="clearfix"> </div>
-									</div> -->
+									
 								</div>
 								<div class="clearfix"> </div>
 							</div>
