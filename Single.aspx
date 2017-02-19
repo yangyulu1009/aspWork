@@ -14,8 +14,8 @@
             <div class="col-md-8 latest-news-agile-left-content">
                 <div class="single video_agile_player">
                     <div class="video-grid-single-page-agileits">
-                        <div data-video="f2Z65fobH2I" id="video">
-                            <img src="<%# mMovie.getSingleImage() %>" alt="" class="img-responsive" />
+                        <div data-video="<%# mMovie.video %>" id="video">
+                            <img src="<%# mMovie.banner %>" alt="" class="img-responsive" />
                         </div>
                     </div>
                     <!-- <h4>Force 2 | Official Trailer | John Abraham, Sonakshi Sinha and Tahir Raj Bhasin</h4> -->
@@ -80,22 +80,22 @@
                 <div class="clearfix"></div>
                 <div class="admin-text">
                     <h5>Photographs</h5>
-                    <img src="<%# mMovie.getOperaImage(0) %>" width="178" height="200" alt=""></a>
-                    <img src="<%# mMovie.getOperaImage(1) %>" width="178" height="200" alt=""></a>
-                    <img src="<%# mMovie.getOperaImage(2) %>" width="178" height="200" alt=""></a>
-                    <img src="<%# mMovie.getOperaImage(3) %>" width="178" height="200" alt=""></a>
+                    <img src="<%# mMovie.getOperaImage(0) %>" width="178" height="200" alt=""/>
+                    <img src="<%# mMovie.getOperaImage(1) %>" width="178" height="200" alt=""/>
+                    <img src="<%# mMovie.getOperaImage(2) %>" width="178" height="200" alt=""/>
+                    <img src="<%# mMovie.getOperaImage(3) %>" width="178" height="200" alt=""/>
                     <div class="clearfix"></div>
                 </div>
                 <div class="admin-text">
                     <h5>Videos</h5>
                     <a href="<%# mMovie.getVideoUrl(0) %>">
-                        <img src="<%# mMovie.getVideoImage(0) %>" width="178" height="200" alt=""></a>
+                        <img src="<%# mMovie.getVideoImage(0) %>" width="178" height="200" alt=""/></a>
                     <a href="<%# mMovie.getVideoUrl(1) %>">
-                        <img src="<%# mMovie.getVideoImage(1) %>" width="178" height="200" alt=""></a>
+                        <img src="<%# mMovie.getVideoImage(1) %>" width="178" height="200" alt=""/></a>
                     <a href="<%# mMovie.getVideoUrl(2) %>">
-                        <img src="<%# mMovie.getVideoImage(2) %>" width="178" height="200" alt=""></a>
+                        <img src="<%# mMovie.getVideoImage(2) %>" width="178" height="200" alt=""/></a>
                     <a href="<%# mMovie.getVideoUrl(3) %>">
-                        <img src="<%# mMovie.getVideoImage(3) %>" width="178" height="200" alt=""></a>
+                        <img src="<%# mMovie.getVideoImage(3) %>" width="178" height="200" alt=""/></a>
                     <div class="clearfix"></div>
                 </div>
                 <div class="response">
@@ -113,7 +113,7 @@
                 </div>
             </div>
             <div class="col-md-4 latest-news-agile-right-content">
-                <h4 class="side-t-w3l-agile">News</h3>
+                <h4 class="side-t-w3l-agile">News</h4>
                     <%# getNewsHtml() %>
                         <div class="clearfix"></div>
                         <div class="agile-info-recent">

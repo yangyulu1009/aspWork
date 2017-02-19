@@ -1,17 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditMovie.aspx.cs" Inherits="EditMovie" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="EditMovie.aspx.cs" Inherits="EditMovie" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style>
-        .gridheader {text-align:center; height:40px;font-family:'Microsoft YaHei';font-weight:normal;}
-        .griditem {text-align:center;height: 40px;font-family:'Microsoft YaHei';font-weight:normal;}
-        .gridEdit {text-align:center;}
-    </style>
-</head>
-<body>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
     <form id="form1" runat="server">
 
         <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" ForeColor="#333333" GridLines="None">
@@ -66,5 +57,5 @@
         </asp:SqlDataSource>
 
     </form>
-</body>
-</html>
+
+</asp:Content>
