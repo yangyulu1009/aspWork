@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -83,4 +84,19 @@ public partial class NewsManager : System.Web.UI.Page
         Response.Redirect(Request.Url.ToString());
     }
 
+
+    protected void button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("http://baidu.com");
+    }
+
+
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName.Equals("UpdateExtra"))
+        {
+            throw new Exception("oh shit!");
+        }
+    }
 }

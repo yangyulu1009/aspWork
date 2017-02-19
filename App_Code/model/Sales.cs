@@ -4,16 +4,19 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using static DateUtils;
 
 /// <summary>
 /// Summary description for Sales
 /// </summary>
-public class Sales
+public class Sales : IComparable
 {
     public String id;
     public String movie;
     public String date;
     public String sale;
+    private static readonly object b;
+    private static readonly object a;
 
     public static List<Sales> get(String id)
     {
@@ -25,7 +28,33 @@ public class Sales
             Sales item = new Sales(table.Rows[index]);
             sales.Add(item);
         }
+        sales.Sort();
         return sales;
+    }
+
+    public int CompareTo(object obj)
+    {
+        Sales ext = (Sales) obj;
+        MyDate date1 = DateUtils.parseDate(date);
+        MyDate date2 = DateUtils.parseDate(ext.date);
+        if (date1.year != date2.year)
+        {
+            return date2.year - date1.year;
+        }
+        if (date1.month != date2.month)
+        {
+            return date2.month - date1.month;
+        }
+        if (date1.day != date2.day)
+        {
+            return date2.day - date1.day;
+        }
+        return 0;
+    }
+
+    private static Sales Compare(Sales sales1, object a, Sales sales2, object b)
+    {
+        throw new NotImplementedException();
     }
 
     public Sales(DataRow row)

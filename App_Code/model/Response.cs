@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Providers.Entities;
 
 /// <summary>
 /// Summary description for Response
@@ -12,8 +13,8 @@ public class Response
 {
     public String id;
     public String movie;
-    public String user;
-    public String date;
+    public Users user;
+    public String reply_time;
     public String comment;
 
     public static List<Response> get(String id)
@@ -36,8 +37,9 @@ public class Response
         //
         id = row["id"].ToString();
         movie = row["movie_id"].ToString();
-        user = row["user_id"].ToString();
-        date = row["reply_time"].ToString();
+        String userId = row["user_id"].ToString();
+        user = Users.get(userId);
+        reply_time = row["reply_time"].ToString();
         comment = row["comment"].ToString();
     }
 }
