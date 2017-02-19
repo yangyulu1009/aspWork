@@ -5,12 +5,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style>
+        .addbtn {
+            float:right;
+            width:100px;
+            height:28px;
+            position:relative;
+            top:9px;
+            right:2px;
+        }
+
+    </style>
 </head>
 <body style="font-family: 'Microsoft YaHei'">
     <form id="form1" runat="server">
         <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSourceMovie">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; ">Movie</p>
+              
+                <div style="margin-top: 50px">
+                    <span style="font-size:30px; margin: 0px; padding: 0px; float:left;">Movie</span>
+                    <asp:Button CssClass="addbtn" runat="server" ID="button1" OnClick="button1_Click" text="添加"/>
+                </div>
+                
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%">ID</th>
@@ -36,7 +52,7 @@
                         <td style="width: 5%; text-align: center"><%# Eval("star") %></td>
                         <td style="width: 5%; text-align: center"><%# Eval("allsales") %></td>
                         <td style="width: 5%; text-align: center"><%# Eval("genre") %></td>
-                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditResponses.aspx?id={0}") %>">编辑</a></td>
+                         <td style="width: 5%; text-align: center"><a target="_blank" href="<%# Eval("id", "EditMovie.aspx?id={0}") %>">编辑</a></td>
                         <td style="width: 5%; text-align: center">
                             <asp:LinkButton ID="LinkButton6" runat="server" OnCommand="LinkButton6_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
                     </tr>
@@ -49,7 +65,12 @@
 
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSourceNews">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">News</p>
+
+                <div style="margin-top: 50px">
+                    <span style="font-size:30px; margin: 0px; padding: 0px; float:left;">News</span>
+                    <asp:Button CssClass="addbtn" runat="server" ID="button2" OnClick="button1_Click" text="添加"/>
+                </div> 
+
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>
@@ -85,7 +106,12 @@
 
         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSourcePeople">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">People</p>
+
+                <div style="margin-top: 50px">
+                    <span style="font-size:30px; margin: 0px; padding: 0px; float:left;">People</span>
+                    <asp:Button CssClass="addbtn" runat="server" ID="button3" OnClick="button1_Click" text="添加"/>
+                </div>
+
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>
@@ -117,7 +143,12 @@
 
         <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSourceResponses">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">Responses</p>
+              
+                <div style="margin-top: 50px">
+                    <span style="font-size:30px; margin: 0px; padding: 0px; float:left;">Responses</span>
+                    <asp:Button CssClass="addbtn" runat="server" ID="button4" OnClick="button1_Click" text="添加"/>
+                </div>
+
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>
@@ -153,7 +184,12 @@
 
         <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSourceRole">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">Roles</p>
+
+                <div style="margin-top: 50px">
+                    <span style="font-size:30px; margin: 0px; padding: 0px; float:left;">Roles</span>
+                    <asp:Button CssClass="addbtn" runat="server" ID="button5" OnClick="button1_Click" text="添加"/>
+                </div>
+
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>
@@ -186,7 +222,12 @@
 
         <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSourceSales">
             <HeaderTemplate>
-                <p style="font-size:30px; margin: 0px; padding: 0px; margin-top: 50px;">Sales</p>
+          
+                <div style="margin-top: 50px">
+                    <span style="font-size:30px; margin: 0px; padding: 0px; float:left;">People</span>
+                    <asp:Button CssClass="addbtn" runat="server" ID="button1" OnClick="button1_Click" text="添加"/>
+                </div>
+
                 <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
                     <tr style="background-color: black; height: 35px">
                         <th style="width:5%;">ID</th>

@@ -84,4 +84,9 @@ public partial class NewsManager : System.Web.UI.Page
         Response.Redirect(Request.Url.ToString());
     }
 
+
+    protected void button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("http://baidu.com");
+    }
 }
