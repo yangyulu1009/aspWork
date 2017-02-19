@@ -4,7 +4,11 @@
         
         <head runat="server">
             <title></title>
-            <style>.addbtn { float:right; width:100px; height:28px; position:relative; top:9px; right:2px; }</style>
+            <style>
+                .addbtn { float:right; width:100px; height:28px; position:relative; top:9px; right:2px; }
+                .gridheader {text-align:center; height:40px;font-family:'Microsoft YaHei';font-weight:normal;}
+                .griditem {text-align:center;height: 40px;font-family:'Microsoft YaHei';font-weight:normal;}
+            </style>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="" />
@@ -226,59 +230,85 @@
                 <li>Single</li></ul></div> -->
             </div>
             <form id="form1" runat="server">
-                <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSourceMovie">
-                    <HeaderTemplate>
-                        <div style="margin-top: 50px">
-                            <span style="font-size:30px; margin: 0px; padding: 0px; float:left;">Movie</span>
-                            <asp:Button CssClass="addbtn" runat="server" ID="button1" OnClick="button1_Click" text="添加" /></div>
-                        <table style="width:100%; color:white; font-weight:700; font-size: 18px;" border="0">
-                            <tr style="background-color: black; height: 35px;">
-                                <th style="width:5%;text-align:center">ID</th>
-                                <th style="width:15%;text-align:center">名称</th>
-                                <th style="width:30%;text-align:center">简介</th>
-                                <th style="width:10%;text-align:center">年份</th>
-                                <th style="width:10%;text-align:center">星级</th>
-                                <th style="width:10%;text-align:center">总票房</th>
-                                <th style="width:10%;text-align:center">类型</th>
-                                <th style="width:5%;text-align:center">编辑</th>
-                                <th style="width:5%;text-align:center">删除</th></tr>
-                        </table>
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <table style="width: 100%; color: black; border-collapse: collapse;" border="0">
-                            <tr style="height: 35px">
-                                <td style="width: 5%; text-align: center">
-                                    <%# Eval( "id") %></td>
-                                <td style="width: 15%; text-align: center">
-                                    <%# Eval( "name") %></td>
-                                <td style="width: 30%; text-align: center">
-                                    <%# Eval( "description") %></td>
-                                <td style="width: 10%; text-align: center">
-                                    <%# Eval( "year") %></td>
-                                <td style="width: 10%; text-align: center">
-                                    <%# Eval( "star") %></td>
-                                <td style="width: 10%; text-align: center">
-                                    <%# "$" + Eval( "allsales") %></td>
-                                <td style="width: 10%; text-align: center">
-                                    <%# Eval( "genre") %></td>
-                                <td style="width: 5%; text-align: center">
-                                    <a target="_blank" href="<%# Eval(" id ", "EditMovie.aspx?id={0} ") %>">编辑</a></td>
-                                <td style="width: 5%; text-align: center">
-                                    <asp:LinkButton ID="LinkButton6" runat="server" OnCommand="LinkButton6_Command" CommandName='<%# Eval("id") %>'>删除</asp:LinkButton></td>
-                            </tr>
-                        </table>
-                    </ItemTemplate>
-                    
-                    <FooterTemplate>
-                        <div style="height:50px"></div>
-                    </FooterTemplate>
-                </asp:Repeater>
-                <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" SelectCommand="SELECT * FROM [movie]"></asp:SqlDataSource>
+                <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" ForeColor="#333333" GridLines="None" Width="100%" OnRowCommand="GridView1_RowCommand">
+                    <AlternatingRowStyle BackColor="White" Font-Bold="True" Font-Names="microsoft-yahei" />
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem">
+<HeaderStyle HorizontalAlign="Center" CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField DataField="name" HeaderText="电影名称" SortExpression="name"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField DataField="description" HeaderText="剧情简介" SortExpression="description"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField DataField="year" HeaderText="上映年份" SortExpression="year"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField DataField="country" HeaderText="国家" SortExpression="country"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField DataField="star" HeaderText="星级" SortExpression="star"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField DataField="genre" HeaderText="电影类型" SortExpression="genre"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+                        <asp:BoundField DataField="allsales" HeaderText="总票房" SortExpression="allsales"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+
+                        <asp:CommandField EditText="编辑" ShowEditButton="True" />
+                        <asp:CommandField ShowDeleteButton="True" DeleteText="删除" />
+
+
+                        <asp:ButtonField Text="编辑其它" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" CommandName="UpdateExtra" InsertVisible="False" ButtonType="Button">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:ButtonField>
+                    </Columns>
+                    <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                    <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                    <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                    <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                    <SortedDescendingHeaderStyle BackColor="#820000" />
+                </asp:GridView>
+
+                <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
+                    SelectCommand="SELECT movie.* FROM movie"
+                    DeleteCommand="DELETE FROM movie WHERE (id = @id)"
+                    UpdateCommand="Update movie set name=@name, allsales=@allsales, description=@description, genre=@genre, country=@country, star=@star, year=@year WHERE (id=@id)"
+                   ></asp:SqlDataSource>
+
             </form>
+
+
             <div class="w3agile_footer_copy">
                 <p>Copyright &copy; 2017. Movie Expert All rights reserved.</p>
             </div>
-            <a href="#home" id="toTop" class="scroll" style="display: block;">
+            <a href="#home" id="toTop" class="scroll" style="display: block; left: 1101px;">
                 <span id="toTopHover" style="opacity: 1;"></span>
             </a>
             <script src="js/jquery-1.11.1.min.js"></script>

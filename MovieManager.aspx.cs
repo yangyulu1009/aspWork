@@ -89,4 +89,14 @@ public partial class NewsManager : System.Web.UI.Page
     {
         Response.Redirect("http://baidu.com");
     }
+
+
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName.Equals("UpdateExtra"))
+        {
+            throw new Exception("oh shit!");
+        }
+    }
 }

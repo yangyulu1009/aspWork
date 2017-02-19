@@ -12,5 +12,4 @@ public partial class EditMovie : System.Web.UI.Page
 
     }
 
-    
 }
