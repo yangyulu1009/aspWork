@@ -333,70 +333,17 @@
                                 <h5>LEAVE A COMMENT</h5>
                                 <div class="agile-info-wthree-box">
                                     <form>
-                                        <!-- <div class="col-md-6 form-info">
-                                        <input type="text" name="name" placeholder="Your Name" required="">			           					   
-                                        <input type="email" name="email" placeholder="Your Email" required="">
-                                        <input type="text" name="phone" placeholder="Your Phone" required=""></div> -->
                                         <textarea placeholder="Message" required=""></textarea>
-                                        <input type="submit" value="SEND">
-                                        <!-- <div class="col-md-6 form-info"></div> -->
+                                        <input type="submit" value="SEND"/>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 latest-news-agile-right-content">
-                            <!-- <h4 class="side-t-w3l-agile">For Latest Movies</h4> -->
-                            <!-- <div class="side-bar-form">
-                            <form action="#" method="post">
-                            <input type="search" name="email" placeholder="Search here...." required="required">
-                            <input type="submit" value=" "></form>
-                            </div> -->
                             <h4 class="side-t-w3l-agile">News</h3>
-                                <ul class="side-bar-agile">
-                                    <li>
-                                        <a href="single.html">John Abraham, Sonakshi Sinha and Tahir ...</a>
-                                        <p>Sep 29, 2016</p>
-                                    </li>
-                                    <li>
-                                        <a href="single.html">Romantic drama about two people finding out that love</a>
-                                        <p>Feb 3, 2016</p>
-                                    </li>
-                                    <li>
-                                        <a href="single.html">Storks have moved on from delivering babies to packages ...</a>
-                                        <p>Aug 1, 2016</p>
-                                    </li>
-                                    <li>
-                                        <a href="single.html">John Abraham, Sonakshi Sinha and Tahir ...</a>
-                                        <p>Sep 29, 2016</p>
-                                    </li>
-                                    <li>
-                                        <a href="single.html">John Abraham, Sonakshi Sinha and Tahir ...</a>
-                                        <p>Sep 29, 2016</p>
-                                    </li>
-                                </ul>
-                                <!-- <h4 class="side-t-w3l-agile">Latest <span>Trailer</span></h3> -->
-                                <!-- <div class="video_agile_player sidebar-player">
-                                <div class="video-grid-single-page-agileits">
-                                <div data-video="fNKUgX8PhMA" id="video1"> <img src="images/22.jpg" alt="" class="img-responsive"> <div id="play"></div></div></div> -->
-                                <!-- <div class="player-text side-bar-info">
-                                <p class="fexi_header">Me Before You </p>
-                                <p class="fexi_header_para"><span class="conjuring_w3">Story Line<label>:</label></span>Me Before You Official Trailer #2 (2016) - Emilia Clarke, Sam Claflin Movie HD
-                                A girl in a small town forms an unlikely....</p>
-                                <p class="fexi_header_para"><span>Release On<label>:</label></span>Feb 3, 2016 </p>
-                                <p class="fexi_header_para">
-                                <span>Genres<label>:</label></span>
-                                <a href="genre.html">Drama</a> | 
-                                <a href="genre.html">Adventure</a> | 
-                                <a href="genre.html">Family</a></p>
-                                <p class="fexi_header_para fexi_header_para1"><span>Star Rating<label>:</label></span>
-                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></p>
-                                </div> -->
-                                <!-- </div> -->
+                                <%# getNewsHtml() %>
+                                
                                 <div class="clearfix"></div>
                                 <div class="agile-info-recent">
                                     <h4 class="side-t-w3l-agile">Box Office Sales</h4>
@@ -406,41 +353,14 @@
                                                 <th>Date</th>
                                                 <th>Week</th>
                                                 <th>Sales</th></tr>
-                                            <tr>
-                                                <td>2017.01.02</td>
-                                                <td>Monday</td>
-                                                <td>$730.40</td></tr>
-                                            <tr>
-                                                <td>2017.01.02</td>
-                                                <td>Tuesday</td>
-                                                <td>$730.40</td></tr>
-                                            <tr>
-                                                <td>2017.01.02</td>
-                                                <td>Wednesday</td>
-                                                <td>$730.40</td></tr>
-                                            <tr>
-                                                <td>2017.01.02</td>
-                                                <td>Thursday</td>
-                                                <td>$730.40</td></tr>
-                                            <tr>
-                                                <td>2017.01.02</td>
-                                                <td>Friday</td>
-                                                <td>$730.40</td></tr>
-                                            <tr>
-                                                <td>2017.01.02</td>
-                                                <td>Saturday</td>
-                                                <td>$730.40</td></tr>
-                                            <tr>
-                                                <td>2017.01.02</td>
-                                                <td>Sunday</td>
-                                                <td>$730.40</td></tr>
+                                            <%# getSalesHtml() %>
                                         </table>
-                                        <!-- <h5><p>$1,203,759</p></h5> -->
+                                       
                                         <ul class="w3l-sider-list">
                                             <li>
-                                                <i class="fa fa-clock-o" aria-hidden="true"></i>Till Jan 12, 2016</li>
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>Till <%# getTillDate() %></li>
                                             
-                                            <li>Total Sales:$1,203,759</li></ul>
+                                            <li>Total Sales:$ <%# mMovie.allSales %></li></ul>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>

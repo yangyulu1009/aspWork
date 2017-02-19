@@ -17,8 +17,7 @@ public partial class Single : System.Web.UI.Page
         String id = Request.QueryString["id"];
         if (id == null || id.Length == 0)
         {
-            Response.Write("<p>invalid id</p>");
-            return;
+            id = "1";
         }
 
         mMovie = Movie.get(id);
@@ -75,9 +74,7 @@ public partial class Single : System.Web.UI.Page
         sb.AppendFormat("    <div class=\"media-body response-text-right\">");
         sb.AppendFormat("        <p>{0:s}</p>", response.comment);
         sb.AppendFormat("        <ul>");
-
-        DateTime dateTime = Convert.ToDateTime(response.date);
-        sb.AppendFormat("            <li>{0:s}</li>", dateTime.ToString("yyyy年MM月dd日", DateTimeFormatInfo.InvariantInfo));
+        sb.AppendFormat("            <li>{0:s}</li>", response.reply_time);
         sb.AppendFormat("            <li><a href=\"DeleteResponse?id={0:s}\">Delete</a></li>", response.id);
         sb.AppendFormat("        </ul>");
         sb.AppendFormat("    </div>");
@@ -85,5 +82,46 @@ public partial class Single : System.Web.UI.Page
         sb.AppendFormat("</div>");
 
         return sb.ToString();
+    }
+
+    public String getNewsHtml()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendFormat("<ul class=\"side-bar-agile\">");
+        for (int i = 0; i < mMovie.news.Count; i++)
+        {
+            News news = mMovie.news.ElementAt(i);
+            sb.AppendFormat("<li>");
+            sb.AppendFormat("    <a href=\"{0:s}\">{1:s}</a>", news.url, news.content);
+            sb.AppendFormat("    <p>{0:s}</p>", news.release_time);
+            sb.AppendFormat("</li>");
+        }
+        sb.AppendFormat("</ul>");
+
+        return sb.ToString();
+    }
+
+    public String getSalesHtml()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < mMovie.sales.Count; i++)
+        {
+            Sales sales = mMovie.sales.ElementAt(i);
+            sb.AppendFormat("<tr>");
+            sb.AppendFormat("    <td>{0:s}</td>", sales.date);
+            sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getWeekDay(sales.date));
+            sb.AppendFormat("    <td>${0:s}</td>", sales.sale);
+            sb.AppendFormat("</tr>");
+        }
+
+        return sb.ToString();
+    }
+
+    public String getTillDate()
+    {
+        Sales sale = mMovie.sales.ElementAt(0);
+        return sale.date.ToString();
     }
 }

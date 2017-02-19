@@ -14,7 +14,7 @@ public class Response
     public String id;
     public String movie;
     public Users user;
-    public String date;
+    public String reply_time;
     public String comment;
 
     public static List<Response> get(String id)
@@ -39,8 +39,7 @@ public class Response
         movie = row["movie_id"].ToString();
         String userId = row["user_id"].ToString();
         user = Users.get(userId);
-        date = row["reply_time"].ToString();
-        MyLog.v(String.Format("date = {0:s}", date));
+        reply_time = row["reply_time"].ToString();
         comment = row["comment"].ToString();
     }
 }

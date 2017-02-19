@@ -15,7 +15,7 @@ public class News
     public String content;
     public String url;
     public String movie;
-    public String time;
+    public String release_time;
 
     public static List<News> get(String id)
     {
@@ -40,6 +40,6 @@ public class News
         content = row["content"].ToString();
         url = row["url"].ToString();
         movie = row["movie_id"].ToString();
-        time = row["time"].ToString();
+        release_time = row["release_time"].ToString();
     }
 }
