@@ -21,6 +21,10 @@ public class Movie
     public String description;
     public String genre;
 
+    public String video;
+    public String icon;
+    public String banner;
+
     public List<Keywords> keywords;
     public List<Image> images;
     public List<Video> videos;
@@ -49,8 +53,14 @@ public class Movie
         description = row["description"].ToString();
         genre = row["genre"].ToString();
         country = row["country"].ToString();
+        video = row["video"].ToString();
+        icon = row["icon"].ToString();
+        banner = row["banner"].ToString();
+    }
 
-        Image.get(id);
+    public String getIndexImage()
+    {
+        return icon;
     }
 
     public void loadExtraData()
@@ -64,39 +74,9 @@ public class Movie
         responses = Response.get(id);
     }
 
-    public String getIndexImage()
-    {
-        foreach (Image image in images) {
-            if (image.type == Image.TYPE_INDEX)
-            {
-                return image.url;
-            }
-        }
-        return null;
-    }
-
-    public String getSingleImage()
-    {
-        foreach (Image image in images)
-        {
-            if (image.type == Image.TYPE_LARGE)
-            {
-                return image.url;
-            }
-        }
-        return null;
-    }
-
     public String getOperaImage(int index)
     {
-        foreach (Image image in images)
-        {
-            if (image.type == Image.TYPE_OPERA && index-- == 0)
-            {
-                return image.url;
-            }
-        }
-        return null;
+        return images.ElementAt(index).url;
     }
 
     public String getVideoImage(int index)

@@ -40,6 +40,6 @@ public class News
         content = row["content"].ToString();
         url = row["url"].ToString();
         movie = row["movie_id"].ToString();
-        release_time = row["release_time"].ToString();
+        release_time = row["release_date"].ToString();
     }
 }

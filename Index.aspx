@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Home</title>
     <!-- for-mobile-apps -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="" />
     <script type="application/x-javascript">addEventListener("load",
@@ -25,12 +25,12 @@
     <link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="css/zoomslider.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet"/>
     <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
     <!--/web-fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
-    <link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'/>
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'/>
 </head>
 
 <body runat="server">
@@ -116,7 +116,7 @@
                                 <!-- cd-header-buttons --></div>
                             <div id="cd-search" class="cd-search">
                                 <form action="#" method="post">
-                                    <input name="Search" type="search" placeholder="Search..."></form>
+                                    <input name="Search" type="search" placeholder="Search..."/></form>
                             </div>
                         </div>
                     </div>
@@ -153,14 +153,14 @@
                         <h4>Login</h4>
                         <div class="login-form">
                             <form action="#" method="post">
-                                <input type="email" name="email" placeholder="E-mail" required="">
-                                <input type="password" name="password" placeholder="Password" required="">
+                                <input type="email" name="email" placeholder="E-mail" required=""/>
+                                <input type="password" name="password" placeholder="Password" required=""/>
                                 <div class="tp">
-                                    <input type="submit" value="LOGIN NOW"></div>
+                                    <input type="submit" value="LOGIN NOW"/></div>
                                 <div class="forgot-grid">
                                     <div class="log-check">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox">Remember me</label></div>
+                                            <input type="checkbox" name="checkbox"/>Remember me</label></div>
                                     <div class="forgot">
                                         <a href="#" data-toggle="modal" data-target="#myModal2">Forgot Password?</a></div>
                                     <div class="clearfix"></div>
@@ -181,20 +181,20 @@
                         <h4>Register</h4>
                         <div class="login-form">
                             <form action="#" method="post">
-                                <input type="text" name="name" placeholder="Name" required="">
-                                <input type="email" name="email" placeholder="E-mail" required="">
-                                <input type="password" name="password" placeholder="Password" required="">
-                                <input type="password" name="conform password" placeholder="Confirm Password" required="">
+                                <input type="text" name="name" placeholder="Name" required=""/>
+                                <input type="email" name="email" placeholder="E-mail" required=""/>
+                                <input type="password" name="password" placeholder="Password" required=""/>
+                                <input type="password" name="conform password" placeholder="Confirm Password" required=""/>
                                 <div class="signin-rit">
                                     <span class="agree-checkbox">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox">I agree to your
+                                            <input type="checkbox" name="checkbox"/>I agree to your
                                             <a class="w3layouts-t" href="#" target="_blank">Terms of Use</a>and
                                             <a class="w3layouts-t" href="#" target="_blank">Privacy Policy</a></label>
                                     </span>
                                 </div>
                                 <div class="tp">
-                                    <input type="submit" value="REGISTER NOW"></div>
+                                    <input type="submit" value="REGISTER NOW"/></div>
                             </form>
                         </div>
                     </div>
@@ -217,7 +217,7 @@
                     <!-- 第一个电影 -->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[0].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[0].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[0].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -232,29 +232,29 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                           <!-- <a href="#">-->
+                                           
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
+                                           
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
+                                           
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
+                                            
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
+                                           
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                            
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
+                                           
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                           
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
+                                           
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                           
                                         </li>
                                     </ul>
                                 </div>
@@ -271,7 +271,7 @@
                     <!--第二个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[1].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[1].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[1].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -286,29 +286,29 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <!-- <a href="#">-->
+                                           
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
+                                          
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
+                                           
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
+                                          
                                         </li>
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                          
                                         </li>
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                            
                                         </li>
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                            
                                         </li>
                                     </ul>
                                 </div>
@@ -325,7 +325,7 @@
                     <!--第三个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[2].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[2].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[2].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -342,27 +342,27 @@
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
+                                         
                                         </li>
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
+                                          
                                         </li>
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                          
                                         </li>
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                          
                                         </li>
                                         <li>
                                             <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
+                                         
                                         </li>
                                     </ul>
                                 </div>
@@ -379,7 +379,7 @@
                     <!--第四个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[3].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[3].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[3].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -394,29 +394,19 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -433,9 +423,8 @@
                     <!--第五个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[4].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[4].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[4].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
-                              <!--  <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -448,48 +437,32 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
-                        <!--
-                        <div class="ribben one">
-                            <p>NEW</p>
-                        </div>
-                        -->
                     </div>
 
                     <!--第六个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[5].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[5].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[5].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
-                               <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
                         </a>
                         <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -502,29 +475,19 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -541,7 +504,7 @@
                     <!--第七个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[6].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[6].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[6].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -556,29 +519,19 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -595,7 +548,7 @@
                     <!--第八个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[7].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[7].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[7].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                               <!--  <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -610,29 +563,19 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -649,7 +592,7 @@
                     <!--第九个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[8].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[8].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[8].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                                <!-- <i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -664,29 +607,19 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -703,7 +636,7 @@
                     <!--第十个电影-->
                     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
                         <a href="Single.aspx?id=<%# mMovie[9].id %>" class="hvr-sweep-to-bottom">
-                            <img src="<%# mMovie[9].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" ">
+                            <img src="<%# mMovie[9].getIndexImage() %>" title="Movies Pro" class="img-responsive" alt=" "/>
                             <div class="w3l-action-icon">
                                 <!--<i class="fa fa-play-circle-o" aria-hidden="true"></i> -->
                             </div>
@@ -718,29 +651,19 @@
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
                                         <li>
-                                           <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                         <li>
-                                            <!-- <a href="#">-->
                                                 <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -758,7 +681,7 @@
             </div>
         </div>
         <!--//content-inner-section-->
-        <!--/footer-bottom--></div>-->
+       
         <div class="w3agile_footer_copy">
             <p>Copyright &copy; 2017. Movie Expert All rights reserved.</p>
         </div>

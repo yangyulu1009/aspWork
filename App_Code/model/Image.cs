@@ -10,23 +10,10 @@ using System.Web;
 /// </summary>
 public class Image
 {
-    /**
-     * INDEX页展示的电影图
-     */
-    public static int TYPE_INDEX = 1;
-    /**
-     * Single页展示的电影大图
-     */
-    public static int TYPE_LARGE = 2;
-    /**
-     * Single页展示的电影剧照 
-     */
-    public static int TYPE_OPERA = 3;
 
     public String id;
     public String movie;
     public String url;
-    public int type;
 
     public static List<Image> get(String id)
     {
@@ -50,6 +37,5 @@ public class Image
         id = row["id"].ToString();
         movie = row["movie_id"].ToString();
         url = row["url"].ToString();
-        type = int.Parse(row["type"].ToString());
     }
 }
