@@ -1,7 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MovieManager.aspx.cs" Inherits="MovieManager2" %>
 
+<asp:Content ID="Header1" ContentPlaceHolderID="ContentPlaceHolderHeader" runat="server">
+     <style>.addbtn { float:right; width:100px; height:28px; position:relative; top:9px; right:2px; } .gridheader {text-align:center; height:40px;font-family:'Microsoft YaHei';font-weight:normal;} .griditem {text-align:center;height: 40px;font-family:'Microsoft YaHei';font-weight:normal;} .gridEdit {text-align:center;}</style>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form id="form1" runat="server">
+        <h1 style="float:left;padding:0px;">电影</h1>
+        <asp:Button runat="server" ID="btnAdd" onClick="btnAdd_Click" text="添加电影" CssClass="addbtn"/>
             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" ForeColor="#333333" GridLines="None" Width="100%">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>

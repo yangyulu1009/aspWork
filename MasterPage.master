@@ -4,7 +4,10 @@
         
         <head runat="server">
             <title></title>
-            <style>.addbtn { float:right; width:100px; height:28px; position:relative; top:9px; right:2px; } .gridheader {text-align:center; height:40px;font-family:'Microsoft YaHei';font-weight:normal;} .griditem {text-align:center;height: 40px;font-family:'Microsoft YaHei';font-weight:normal;} .gridEdit {text-align:center;}</style>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolderHeader" runat="server">
+                </asp:ContentPlaceHolder>
+
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="" />
@@ -225,14 +228,16 @@
                 <li><a href="index.html">Home</a><i>//</i></li>
                 <li>Single</li></ul></div> --></div>
 
-            <div id="content">
+            
+
+            <div id="content" style="margin-top:50px;margin-bottom:50px;">
     
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
     
             </div>
 
-            <div style="height:100px"></div>
+            
 
             <div class="w3agile_footer_copy">
                 <p>Copyright &copy; 2017. Movie Expert All rights reserved.</p>

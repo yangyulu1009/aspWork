@@ -11,4 +11,9 @@ public partial class MovieManager2 : System.Web.UI.Page
     {
 
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("http://baidu.com");
+    }
 }
