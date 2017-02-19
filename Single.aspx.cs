@@ -28,7 +28,7 @@ public partial class Single : System.Web.UI.Page
 
     private void setStar()
     {
-        int star = (int) (float.Parse(mMovie.star) * 2);
+        int star = (int)(float.Parse(mMovie.star) * 2);
         setStarClass(star1, star);
         setStarClass(star2, star -= 2);
         setStarClass(star3, star -= 2);
@@ -42,10 +42,12 @@ public partial class Single : System.Web.UI.Page
         if (star >= 2)
         {
             className = "fa fa-star";
-        } else if (star == 1)
+        }
+        else if (star == 1)
         {
             className = "fa fa-star-half-o";
-        } else
+        }
+        else
         {
             className = "fa fa-star-o";
         }
@@ -65,7 +67,7 @@ public partial class Single : System.Web.UI.Page
     private String getResponseHtml(Response response)
     {
         StringBuilder sb = new StringBuilder();
-  
+
         sb.AppendFormat("<div class=\"media response-info\">");
         sb.AppendFormat("    <div class=\"media-left response-text-left\">");
         sb.AppendFormat("        <img class=\"media-object\" src=\"{0:s}\">", response.user.head);
