@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
     <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml">
-        
+    <html xmlns="http://www.w3.org/1999/xhtml">        
         <head runat="server">
             <title></title>
 
@@ -35,6 +34,7 @@
             <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' /></head>
         
         <body style="font-family: 'Microsoft YaHei'">
+            
             <div id="demo-1" class="banner-inner">
                 <div class="banner-inner-dott">
                     <!--/header-w3l-->
@@ -120,7 +120,14 @@
                                         </li>
                                         <!-- 恢复 -->
                                         <li>
-                                            <a href="series.html">User</a></li>
+                                            <a runat ="server" id ="Username" onmouseover ="False" onfocus ="false"></a>
+                                            <%--<asp:TextBox ID ="Username" runat ="server">
+
+                                            </asp:TextBox>--%>
+
+                                                
+                                           <!-- <a href="series.html">User</a> -->
+                                                </li>
                                 </div>
                                 <div class="clearfix"></div>
                             </nav>
@@ -152,9 +159,13 @@
                         <ul>
                             <!-- <li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 009 455 4088</li> -->
                             <li>
-                                <a href="#" class="login" data-toggle="modal" data-target="#myModal4">Login</a></li>
+                                <asp:HyperLink ID="LoginButton" runat="server" 
+                                     href="#" class="login" data-toggle="modal" data-target="#myModal4">Login</asp:HyperLink></li>
                             <li>
-                                <a href="#" class="login reg" data-toggle="modal" data-target="#myModal5">Register</a></li>
+                                <asp:HyperLink ID="RegisterButton" runat="server"  
+                                    href="#" class="login reg" data-toggle="modal" data-target="#myModal5">Register</asp:HyperLink>
+
+                            </li>
                         </ul>
                     </div>
                     <div class="col-md-6 wthree_share_agile"></div>
@@ -171,10 +182,18 @@
                             <h4>Login</h4>
                             <div class="login-form">
                                 <form action="#" method="post">
-                                    <input type="email" name="email" placeholder="E-mail" required="">
-                                    <input type="password" name="password" placeholder="Password" required="">
+                                    <input type="email" name="email" placeholder="E-mail" required="" runat ="server" id ="EmailBox1"/>
+                                    <input type="password" name="password" placeholder="Password" required="" runat ="server" id ="PasswordBox1"/>
                                     <div class="tp">
-                                        <input type="submit" value="LOGIN NOW"></div>
+                                       <!-- <input type="submit" value="LOGIN NOW" onclick="BtnLogin_Click"> -->
+                                        
+                                        <form runat ="server">
+
+                                         <asp:Button ID="ImageButton2" runat="server" Text ="LOGIN NOW" 
+                                         onclick="BtnLogin_Click" /> 
+                                            </form>
+                                           
+                                    </div>
                                     <div class="forgot-grid">
                                         <div class="log-check">
                                             <label class="checkbox">
@@ -380,6 +399,7 @@
                 });</script>
             <!--end-smooth-scrolling-->
             <script src="js/bootstrap.js"></script>
+                
         </body>
     
     </html>

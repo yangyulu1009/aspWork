@@ -58,7 +58,7 @@ public class SqlData
         }
     }
 
-    /*
+    
     public SqlDataReader ExecuteRead(string str)
     {
         try
@@ -72,8 +72,16 @@ public class SqlData
         {
             con.Close();
         }
-    }*/
+    }
 
+    public static int getMaxId(string tablename)
+    {
+        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select max(id) from " + tablename);
+        reader.Read();
+        int id = int.Parse(reader[0].ToString());
+        reader.Close();
+        return id;
+    }
     /*
     public DataSet ExecuteDateSet(string str)
     {
