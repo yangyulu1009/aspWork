@@ -17,6 +17,7 @@ public class Users
     public String level;
     public String password;
     public String regtime;
+    public String email;
 
     public static Users get(String id)
     {
@@ -36,5 +37,6 @@ public class Users
         level = row["level"].ToString();
         password = row["password"].ToString();
         regtime = row["regtime"].ToString();
+        email = row["email"].ToString();
     }
 }
