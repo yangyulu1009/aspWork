@@ -11,7 +11,6 @@ using System.Web;
 public class News
 {
     public String id;
-    public String title;
     public String content;
     public String url;
     public String movie;
@@ -36,7 +35,6 @@ public class News
         // TODO: Add constructor logic here
         //
         id = row["id"].ToString();
-        title = row["title"].ToString();
         content = row["content"].ToString();
         url = row["url"].ToString();
         movie = row["movie_id"].ToString();

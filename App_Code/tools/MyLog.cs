@@ -18,7 +18,7 @@ public class MyLog
 
     public static void v(String msg)
     {
-        mWriter.WriteLine(msg);
+        mWriter.WriteLine(String.Format("{0:s}: {1:s}", System.DateTime.Now.ToString(), msg));
         mWriter.Flush();
     }
 

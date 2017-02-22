@@ -1,22 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MovieManager.aspx.cs" Inherits="MovieManager2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MovieManager.aspx.cs" Inherits="MovieManager" %>
 
 <asp:Content ID="Header1" ContentPlaceHolderID="ContentPlaceHolderHeader" runat="server">
-     <style>.addbtn { float:right; width:100px; height:28px; position:relative; top:9px; right:2px; } .gridheader {text-align:center; height:40px;font-family:'Microsoft YaHei';font-weight:normal;} .griditem {text-align:center;height: 40px;font-family:'Microsoft YaHei';font-weight:normal;} .gridEdit {text-align:center;}</style>
+     <style>.addbtn { float:right; width:100px; height:28px; position:relative; top:9px; right:2px; } .gridheader {text-align:center; height:40px;font-family:'Microsoft YaHei';font-weight:normal;} .griditem {text-align:center;height: 40px;font-family:'Microsoft YaHei';font-weight:normal;} .gridEdit {text-align:center;width:5%;}</style>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form id="form1" runat="server">
-        <h1 style="float:left;padding:0px;">电影</h1>
-        <asp:Button runat="server" ID="btnAdd" onClick="btnAdd_Click" text="添加电影" CssClass="addbtn"/>
-            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" ForeColor="#333333" GridLines="None" Width="100%">
-                <AlternatingRowStyle BackColor="White" />
+            <h1 style="float:left;padding:5px;">电影</h1>
+            <asp:Button runat="server" ID="btnAdd" onClick="btnAdd_Click" text="添加电影" CssClass="addbtn"/>
+     
+        
+            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowCommand="GridView1_RowCommand" OnRowEditing="GridView1_RowEditing" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" OnDataBound="GridView1_DataBound" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem">
+                    <asp:BoundField DataField="id" HeaderText="ID"  SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem">
 <HeaderStyle HorizontalAlign="Center" CssClass="gridheader"></HeaderStyle>
 
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
-                    <asp:BoundField DataField="name" HeaderText="电影名称" SortExpression="name"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                    <asp:BoundField DataField="name" HeaderText="电影名称"  SortExpression="name"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
 <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
 <ItemStyle CssClass="griditem"></ItemStyle>
@@ -26,7 +27,7 @@
 
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
-                    <asp:BoundField DataField="year" HeaderText="上映年份" SortExpression="year"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                    <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
 <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
 <ItemStyle CssClass="griditem"></ItemStyle>
@@ -36,30 +37,30 @@
 
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
-                    <asp:BoundField DataField="star" HeaderText="星级" SortExpression="star"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                    <asp:BoundField DataField="star" HeaderText="星级"  SortExpression="star"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
 <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
-                    <asp:BoundField DataField="genre" HeaderText="电影类型" SortExpression="genre"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-<HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-<ItemStyle CssClass="griditem"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="allsales" HeaderText="总票房" SortExpression="allsales"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-
+                    <asp:BoundField DataField="genre" HeaderText="类型"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
 <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
 
-                    <asp:CommandField EditText="编辑" ShowEditButton="True" CancelText="取消" UpdateText="更新" >
-                    <ItemStyle CssClass="gridEdit" />
+                    <asp:BoundField DataField="allsales" HeaderText="票房"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+<HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+<ItemStyle CssClass="griditem"></ItemStyle>
+                    </asp:BoundField>
+
+                    <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加" >
+                    <ItemStyle/>
                     </asp:CommandField>
-                    <asp:CommandField ShowDeleteButton="True" DeleteText="删除" >
+                    <asp:CommandField ShowDeleteButton="True" DeleteText="删除" ItemStyle-CssClass="griditem">
 
 
-                    <ItemStyle CssClass="gridEdit" />
+                    <ItemStyle/>
                     </asp:CommandField>
 
 
@@ -67,21 +68,21 @@
                     <ItemStyle CssClass="gridEdit" />
                     </asp:HyperLinkField>
                 </Columns>
-                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                <SortedDescendingHeaderStyle BackColor="#820000" />
+                <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" HorizontalAlign="Center" VerticalAlign="Middle" />
+                <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+                <RowStyle BackColor="White" ForeColor="#330099" />
+                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+                <SortedAscendingCellStyle BackColor="#FEFCEB" />
+                <SortedAscendingHeaderStyle BackColor="#AF0101" />
+                <SortedDescendingCellStyle BackColor="#F6F0C0" />
+                <SortedDescendingHeaderStyle BackColor="#7E0000" />
             </asp:GridView>
 
             <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
                 SelectCommand="SELECT movie.* FROM movie"
                 DeleteCommand="DELETE FROM movie WHERE (id = @id)"
-                UpdateCommand="Update movie set name=@name, allsales=@allsales, description=@description, genre=@genre, country=@country, star=@star, year=@year WHERE (id=@id)"
+                UpdateCommand="Update movie set name=@name, allsales=@allsales, description=@description, genre=@genre, country=@country, star=@star, year=@year, icon=@icon, banner=@banner WHERE (id=@id)"
                 ></asp:SqlDataSource>
 
         </form>

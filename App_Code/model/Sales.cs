@@ -52,11 +52,6 @@ public class Sales : IComparable
         return 0;
     }
 
-    private static Sales Compare(Sales sales1, object a, Sales sales2, object b)
-    {
-        throw new NotImplementedException();
-    }
-
     public Sales(DataRow row)
     {
         //

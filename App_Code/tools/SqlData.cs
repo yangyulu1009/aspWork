@@ -49,6 +49,7 @@ public class SqlData
         {
             SqlDataAdapter da = new SqlDataAdapter(str, con);
             DataSet ds = new DataSet();
+            MyLog.v("datasetExecute: " + str);
             da.Fill(ds, tableName);
             return ds.Tables[tableName];
         }
@@ -58,7 +59,6 @@ public class SqlData
         }
     }
 
-    
     public SqlDataReader ExecuteRead(string str)
     {
         try
@@ -70,13 +70,13 @@ public class SqlData
 
         finally
         {
-            con.Close();
+         //   con.Close();
         }
     }
 
-    public static int getMaxId(string tablename)
+    public int getMaxId(string tablename)
     {
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select max(id) from " + tablename);
+        SqlDataReader reader = ExecuteRead("select max(id) from " + tablename);
         reader.Read();
         int id = int.Parse(reader[0].ToString());
         reader.Close();
@@ -99,4 +99,11 @@ public class SqlData
         //    con.Close();
         }
     }*/
+
+    public void update(String tableName, String id, String colName, String value)
+    {
+        String str = String.Format("update {0:s} set {1:s}='{2:s}' where id={3:s}", tableName, colName, value, id);
+        MyLog.v(str);
+        ExecuteSQL(str);
+    }
 }

@@ -9,8 +9,11 @@ public partial class Default2 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session.Abandon();
-        Session["UserName"] = "Guest";
-        Response.Redirect("Reload.aspx");
+        if (Request.QueryString["action"] == null)
+        {
+            return;
+        }
+        String action = Request.QueryString["action"].ToString();
+        MyLog.v("action = " + action);
     }
 }
