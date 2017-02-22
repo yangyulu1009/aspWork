@@ -122,11 +122,12 @@ public class DateUtils
             d = iDay;
         }
 
-        iWeek = y + y / 4 + c / 4 - 2 * c + 26 * (m + 1) / 10 + d - 1; 
+        iWeek = y + y / 4 + c / 4 - 2 * c + 26 * (m + 1) / 10 + d - 1;
+        iWeek = iWeek - 1;
         iWeek = iWeek >= 0 ? (iWeek % 7) : (iWeek % 7 + 7);
         if (iWeek == 0)
         {
-            iWeek = 7;
+            iWeek = 0;
         }
 
 
