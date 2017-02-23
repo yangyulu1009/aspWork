@@ -6,7 +6,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form id="form1" runat="server">
-            <h1 style="float:left;padding:5px;">电影</h1>
+
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
+
+        </asp:ScriptManager>
+
+        <asp:UpdatePanel runat="server" ID="UpdatePanel1">
+
+            <ContentTemplate>
+                <h1 style="float:left;padding:5px;">电影</h1>
             <asp:Button runat="server" ID="btnAdd" onClick="btnAdd_Click" text="添加电影" CssClass="addbtn"/>
      
         
@@ -82,8 +90,13 @@
             <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
                 SelectCommand="SELECT movie.* FROM movie"
                 DeleteCommand="DELETE FROM movie WHERE (id = @id)"
-                UpdateCommand="Update movie set name=@name, allsales=@allsales, description=@description, genre=@genre, country=@country, star=@star, year=@year, icon=@icon, banner=@banner WHERE (id=@id)"
+                UpdateCommand="Update movie set name=@name, allsales=@allsales, description=@description, genre=@genre, country=@country, star=@star, year=@year WHERE (id=@id)"
                 ></asp:SqlDataSource>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+            
 
         </form>
 

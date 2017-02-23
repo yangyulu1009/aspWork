@@ -13,6 +13,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         MyLog.v("MasterPage Page_Load: " + IsPostBack);
 
+        if (IsPostBack)
+        {
+            return;
+        }
 
         processAction();
         Page.DataBind();

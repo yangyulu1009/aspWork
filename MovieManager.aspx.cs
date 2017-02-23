@@ -18,7 +18,8 @@ public partial class MovieManager : System.Web.UI.Page
         int id = SqlData.getInstance().getMaxId("movie") + 1;
         String sqlstr = String.Format("INSERT INTO movie(id) VALUES ('{0:d}')", id);
         SqlData.getInstance().ExecuteSQL(sqlstr);
-        Response.Redirect(Request.Url.ToString());
+        GridView1.DataBind();
+     //   Response.Redirect(Request.Url.ToString());
     }
 
     protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
