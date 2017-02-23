@@ -5,108 +5,208 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-
+using System.Collections.Specialized;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
-    private string session_username = "";
-    private DataTable ds;
-    private Users user_info;
-
     protected void Page_Load(object sender, EventArgs e)
     {
-        MyLog.v("page_load");
+        MyLog.v("MasterPage Page_Load: " + IsPostBack);
 
-        if (checkSessionUser())
+
+        processAction();
+        Page.DataBind();
+    }
+
+    public String getLoginButtonText()
+    {
+        String text = isLogined() ? "User Center" : "LOGIN";
+        MyLog.v("getLoginButtonText " + text);
+        return text;
+    }
+
+    public String getLoginButtonUrl()
+    {
+        String url = isLogined() ? "?action=userCenter" : "#";
+        MyLog.v("getLoginButtonUrl " + url);
+        return url;
+    }
+
+    public String getLoginButtonDataTarget()
+    {
+        String text = isLogined() ? "" : "#myModal4";
+        MyLog.v("getLoginButtonDataTarget " + text);
+        return text;
+    }
+
+    public String getLoginButtonTarget()
+    {
+        String text = isLogined() ? "_blank" : "";
+        MyLog.v("getLoginButtonTarget " + text);
+        return text;
+    }
+
+    public String getUserNameText()
+    {
+        String name = getLoginedUserName();
+        String text = name != null ? name + "，Welcome~" : "you are tourist~";
+        MyLog.v("getUserNameText " + text);
+        return text;
+    }
+
+    public String getRegisterButtonText()
+    {
+        String text = isLogined() ? "LOGOUT" : "REGISTER";
+        MyLog.v("getRegisterButtonText " + text);
+        return text;
+    }
+
+    public String getRegisterButtonUrl()
+    {
+        String text = isLogined() ? "?action=logout" : "#";
+        MyLog.v("getRegisterButtonUrl " + text);
+        return text;
+    }
+
+    public String getRegisterButtonTarget()
+    {
+        String text = isLogined() ? "" : "#myModal5";
+        MyLog.v("getRegisterButtonTarget " + text);
+        return text;
+    }
+
+    private bool processAction()
+    {
+        if (Request.QueryString["action"] != null)
         {
-            
-            LoginButton.Text = "user_center";
-            LoginButton.Target = "_blank";
-            Username.InnerText = session_username + "，Welcome~";
-            
-            //LoginButton.NavigateUrl = "user_center.aspx?UserName=" + session_username;
+            String actionName = Request.QueryString["action"].ToString();
+            MyLog.v("process action " + actionName);
 
-            RegisterButton.Text = "logout";
-            RegisterButton.Target = "_blank";
-            RegisterButton.NavigateUrl = "Default2.aspx";
-
+            if (actionName.Equals("register"))
+            {
+                if (Request.Form["name"] != null && Request.Form["email"] != null && Request.Form["password"] != null)
+                {
+                    String name = Request.Form["name"].ToString();
+                    String email = Request.Form["email"].ToString();
+                    String password = Request.Form["password"].ToString();
+                    register(name, email, password);
+                    return true;
+                }
+                return false;
+            }
+            else if (actionName.Equals("login"))
+            {
+                String email = "", password = "";
+                if (Request.Form["email"] != null && Request.Form["password"] != null)
+                {
+                    email = Request.Form["email"].ToString();
+                    password = Request.Form["password"].ToString();
+                }
+                
+                if (email.Length > 0 && password.Length > 0)
+                {
+                    MyLog.v(String.Format("{0:s}: email = {1:s}, password = {2:s}", actionName, email, password));
+                    login(email, password);
+                    return true;
+                }
+                return false;
+            } else if (actionName.Equals("logout"))
+            {
+                setUserSession(null);
+                return true;
+            } else if (actionName.Equals("userCenter"))
+            {
+                Response.Redirect("UserCenter.aspx?id=" + getLoginedUserId());
+                return true;
+            }
         }
-        else
+
+        return false;
+    }
+
+    private String getLoginedUserId()
+    {
+        if (Session[Constants.SESSION_USERID] == null)
         {
-            Username.InnerText = "you are tourist~";
-            LoginButton.Text = "login";
-            RegisterButton.Text = "register";
+            return null;
+        }
+        return Session[Constants.SESSION_USERID].ToString();
+    }
+
+    private void setUserSession(String id)
+    {
+        Session[Constants.SESSION_USERID] = id;
+        if (id == null || id.Length == 0)
+        {
+            Session[Constants.SESSION_USERNAME] = null;
+        } else
+        {
+            Session[Constants.SESSION_USERNAME] = Users.get(id).name;
         }
     }
 
-    protected bool checkSessionUser()
+    private bool isLogined()
     {
-
-        MyLog.v("checkSessionUser");
-        if (Session["UserName"] == null || Session["UserName"].ToString().Length == 0)
+        return getLoginedUserName() != null;
+    }
+   
+    protected String getLoginedUserName()
+    {
+        if (Session[Constants.SESSION_USERNAME] == null)
         {
-            Session["UserName"] = "Guest";
-            session_username = "Guest";
-            return false;
+            return null;
         }
 
-        session_username = Session["UserName"].ToString();
-        MyLog.v(Session["UserName"].ToString());
-
-
-        ds = SqlData.getInstance().datasetExecute("select * from users where name='" + session_username + "'", "users");
-
-        if (ds.DataSet.Tables["users"] == null || ds.DataSet.Tables["users"].Rows.Count == 0)
-        {
-            Session["UserName"] = "Guest";
-            session_username = "Guest";
-            return false;
-        }
-
-        user_info = new Users(ds.Rows[0]);
-        return true;
+        String userName = Session[Constants.SESSION_USERNAME].ToString();
+        MyLog.v("Session user: " + userName);
+        return userName;
     }
 
-    /*
-    protected void Button1_Click(object sender, EventArgs e)
+    /**
+     * name和email都不能重复，登录可用name，也可以用email
+     */
+    protected void register(String name, String email, String password)
     {
-        string userName = EmailBox.Value.Trim();
-        string sqlstr = "select * from user_info where name='" + userName + "'";
-        DataTable ds = SqlData.getInstance().datasetExecute(sqlstr, "users");
-        int id = SqlData.getMaxId("users");
-       
-        if (ds.DataSet.Tables["users"] != null
-            && ds.DataSet.Tables["users"].Rows.Count != 0)
+        MyLog.v(String.Format("register: name = {0:s}, email = {1:s}, password = {2:s}", name, email, password));
+
+        if (Users.existEmail(email))
         {
-            //ScriptManager.RegisterStartupScript(this.Form, this.GetType(), "", "alert('用户名已存在，请重新输入')", true);
-            Response.Write("<script>alert('用户名已存在，请重新输入!')</script>");
-            Server.Transfer("Register.aspx");
-            //Response.Redirect("Register.aspx");
+            Response.Write("<script>alert('邮件已存在！')</script>");
+            return;
         }
 
+        if (Users.existName(name))
+        {
+            Response.Write("<script>alert('用户名已存在！')</script>");
+            return;
+        }
 
-        string passWord = PasswordBox1.Value.Trim();
-        if (passWord.Length == 0)
+        if (password.Length == 0)
         {
             Response.Write("<script>alert('密码不能为空，请重新输入!')</script>");
-            Server.Transfer("Register.aspx");
+            return;
         }
 
-        string IssueDate = DateTime.Now.ToLocalTime().ToString();
+        String id = Users.register(name, password, email);
 
-        id = id + 1;
-        sqlstr = "INSERT INTO users VALUES ('" + id + "', '" + userName + "', '" + passWord + "', '" + IssueDate + "',  '1')";
+        setUserSession(id);
 
-        SqlData.getInstance().ExecuteSQL(sqlstr);
-        
-
-        Session["UserName"] = userName;
-
-        Response.Redirect("Index.aspx");
+        Response.Redirect(Request.Url.ToString());
     }
-    */
+
+    protected void login(String email, String password)
+    {
+        MyLog.v(String.Format("login: email = {0:s}, password = {1:s}", email, password));
+
+        String id = Users.login(email, password);
+        setUserSession(id);
+
+        Response.Redirect(Request.Url.ToString());
+    }
+
     protected void BtnLogin_Click(object sender, EventArgs e)
     {
+        /*
             string eMail = EmailBox1.Value.Trim();
             string password = PasswordBox1.Value.Trim();
             MyLog.v("eMai :" + eMail + " password : " + password);
@@ -143,7 +243,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     MyLog.v("login success"+ Session["UserName"]);
                     Response.Redirect("Reload.aspx");
                 }
-            }
+            }*/
         }
    
 }
