@@ -5,9 +5,9 @@
         .addbtn {
             float: right;
             width: 100px;
-            height: 28px;
+            height: 40px;
             position: relative;
-            top: 9px;
+            top: 5px;
             right: 2px;
         }
 
@@ -108,7 +108,7 @@
         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
                 <h1 style="padding: 10px; margin-top: 50px">相关图片</h1>
-                <table runat="server" style="width: 100%;border-collapse:separate;border-spacing:50px">
+                <table ID="TableImage" runat="server" style="width: 100%;border-collapse:separate;border-spacing:50px">
                     <tr style="text-align:center;">
                         <td style="width: 300px; text-align: center">
                             <img runat="server" id="ImageIcon" style="background-color: #eeeeee; width:250px" src="<%# getIconUrl() %>" /></td>
@@ -128,6 +128,48 @@
                         <td style="width: 200px">
                             <asp:Button runat="server" ID="ButtonUpdateBanner" Text="更新图标" Width="100px" Height="50px" OnClick ="updateBannerClick" /></td>
                     </tr>
+
+                    <tr style="text-align:center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="Image0" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(0) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBox0" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(0) %>"/></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="Button0" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl0" /></td>
+                    </tr>
+
+                    <tr style="text-align:center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="Image1" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(1) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBox1" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(1) %>"/></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="Button1" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl1" /></td>
+                    </tr>
+
+                    <tr style="text-align:center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="Image2" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(2) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBox2" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(2) %>"/></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="Button2" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl2" /></td>
+                    </tr>
+
+                    <tr style="text-align:center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="Image3" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(3) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBox3" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(3) %>"/></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="Button3" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl3" /></td>
+                    </tr>
+
+
                 </table>
             </ContentTemplate>
 

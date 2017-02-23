@@ -72,5 +72,46 @@ public partial class EditMovie : System.Web.UI.Page
         return getMovie().banner;
     }
 
+    private Image getOperaImage(int index)
+    {
+        List<Image> images = Image.get(getMovieId());
+        return images.ElementAt(index);
+    }
 
+    public String getOperaImageUrl(int index)
+    {
+        return getOperaImage(index).url;
+    }
+
+    public void updateOperaImageUrl0(object sender, EventArgs e)
+    {
+        String url = TextBox0.Text;
+        MyLog.v("text = " + url);
+        SqlData.getInstance().update("image", getOperaImage(0).id, "url", url);
+        Image0.DataBind();
+    }
+
+    public void updateOperaImageUrl1(object sender, EventArgs e)
+    {
+        String url = TextBox1.Text;
+        MyLog.v("text = " + url);
+        SqlData.getInstance().update("image", getOperaImage(1).id, "url", url);
+        Image1.DataBind();
+    }
+
+    public void updateOperaImageUrl2(object sender, EventArgs e)
+    {
+        String url = TextBox2.Text;
+        MyLog.v("text = " + url);
+        SqlData.getInstance().update("image", getOperaImage(2).id, "url", url);
+        Image2.DataBind();
+    }
+
+    public void updateOperaImageUrl3(object sender, EventArgs e)
+    {
+        String url = TextBox3.Text;
+        MyLog.v("text = " + url);
+        SqlData.getInstance().update("image", getOperaImage(3).id, "url", url);
+        Image3.DataBind();
+    }
 }
