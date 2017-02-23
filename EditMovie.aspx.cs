@@ -78,6 +78,22 @@ public partial class EditMovie : System.Web.UI.Page
         return images.ElementAt(index);
     }
 
+    private Video getVideo(int index)
+    {
+        List<Video> videos = Video.get(getMovieId());
+        return videos.ElementAt(index);
+    }
+
+    public String getVideoImageUrl(int index)
+    {
+        return getVideo(index).image;
+    }
+
+    public String getVideoUrl(int index)
+    {
+        return getVideo(index).url;
+    }
+
     public String getOperaImageUrl(int index)
     {
         return getOperaImage(index).url;
@@ -113,5 +129,41 @@ public partial class EditMovie : System.Web.UI.Page
         MyLog.v("text = " + url);
         SqlData.getInstance().update("image", getOperaImage(3).id, "url", url);
         Image3.DataBind();
+    }
+
+    public void updateVideo0(object sender, EventArgs e)
+    {
+        String url = TextBoxVideoImage0.Text;
+        String video = TextBoxVideoUrl0.Text;
+        MyLog.v("text = " + url);
+        getVideo(0).update(url, video);
+        VideoImage0.DataBind();
+    }
+
+    public void updateVideo1(object sender, EventArgs e)
+    {
+        String url = TextBoxVideoImage1.Text;
+        String video = TextBoxVideoUrl1.Text;
+        MyLog.v("text = " + url);
+        getVideo(1).update(url, video);
+        VideoImage1.DataBind();
+    }
+
+    public void updateVideo2(object sender, EventArgs e)
+    {
+        String url = TextBoxVideoImage2.Text;
+        String video = TextBoxVideoUrl2.Text;
+        MyLog.v("text = " + url);
+        getVideo(2).update(url, video);
+        VideoImage2.DataBind();
+    }
+
+    public void updateVideo3(object sender, EventArgs e)
+    {
+        String url = TextBoxVideoImage3.Text;
+        String video = TextBoxVideoUrl3.Text;
+        MyLog.v("text = " + url);
+        getVideo(3).update(url, video);
+        VideoImage3.DataBind();
     }
 }

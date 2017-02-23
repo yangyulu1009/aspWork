@@ -29,6 +29,8 @@ public class SqlData
 
     public bool ExecuteSQL(string str)
     {
+        MyLog.v(str);
+
         cmd = new SqlCommand(str, con);
 
         try

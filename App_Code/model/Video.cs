@@ -38,4 +38,10 @@ public class Video
         image = row["image_url"].ToString();
         url = row["video_url"].ToString();
     }
+
+    public void update(String image, String url)
+    {
+        String str = String.Format("update video set image_url='{0:s}', video_url='{1:s}' where id={2:s}", image, url, id);
+        SqlData.getInstance().ExecuteSQL(str);
+    }
 }

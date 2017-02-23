@@ -39,7 +39,7 @@
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
 
-        <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
+        <asp:UpdatePanel runat="server" ID="UpdatePanelNews" UpdateMode="Conditional">
 
             <ContentTemplate>
                 <h1 style="float: left; padding: 5px;">相关新闻</h1>
@@ -104,82 +104,145 @@
 
         </asp:UpdatePanel>
 
-        
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+
+        <asp:UpdatePanel ID="UpdatePanelImage" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
                 <h1 style="padding: 10px; margin-top: 50px">相关图片</h1>
-                <table ID="TableImage" runat="server" style="width: 100%;border-collapse:separate;border-spacing:50px">
-                    <tr style="text-align:center;">
+                <table id="TableImage" runat="server" style="width: 100%; border-collapse: separate; border-spacing: 50px">
+                    <tr style="text-align: center;">
                         <td style="width: 300px; text-align: center">
-                            <img runat="server" id="ImageIcon" style="background-color: #eeeeee; width:250px" src="<%# getIconUrl() %>" /></td>
+                            <img runat="server" id="ImageIcon" style="background-color: #eeeeee; width: 250px" src="<%# getIconUrl() %>" /></td>
                         <td>
-                            <asp:TextBox ID="TextBoxIcon" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getIconUrl() %>"/></td>
+                            <asp:TextBox ID="TextBoxIcon" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getIconUrl() %>" /></td>
 
                         <td style="width: 200px">
-                            <asp:Button runat="server" ID="ButtonUpdateIcon" Text="更新图标" Width="100px" Height="50px" OnClick ="updateIconClick" /></td>
+                            <asp:Button runat="server" ID="ButtonUpdateIcon" Text="更新" Width="100px" Height="50px" OnClick="updateIconClick" /></td>
                     </tr>
 
-                    <tr style="text-align:center;">
+                    <tr style="text-align: center;">
                         <td style="width: 300px; text-align: center">
-                            <img runat="server" id="ImageBanner" style="background-color: #eeeeee;width:250px;" src ="<%# getBannerUrl() %>" /></td>
+                            <img runat="server" id="ImageBanner" style="background-color: #eeeeee; width: 250px;" src="<%# getBannerUrl() %>" /></td>
                         <td>
-                            <asp:TextBox ID="TextBoxBanner" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getBannerUrl() %>"/></td>
+                            <asp:TextBox ID="TextBoxBanner" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getBannerUrl() %>" /></td>
 
                         <td style="width: 200px">
-                            <asp:Button runat="server" ID="ButtonUpdateBanner" Text="更新图标" Width="100px" Height="50px" OnClick ="updateBannerClick" /></td>
+                            <asp:Button runat="server" ID="ButtonUpdateBanner" Text="更新" Width="100px" Height="50px" OnClick="updateBannerClick" /></td>
                     </tr>
 
-                    <tr style="text-align:center;">
+                    <tr style="text-align: center;">
                         <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image0" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(0) %>" /></td>
+                            <img runat="server" id="Image0" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(0) %>" /></td>
                         <td>
-                            <asp:TextBox ID="TextBox0" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(0) %>"/></td>
+                            <asp:TextBox ID="TextBox0" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(0) %>" /></td>
 
                         <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button0" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl0" /></td>
+                            <asp:Button runat="server" ID="Button0" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl0" /></td>
                     </tr>
 
-                    <tr style="text-align:center;">
+                    <tr style="text-align: center;">
                         <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image1" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(1) %>" /></td>
+                            <img runat="server" id="Image1" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(1) %>" /></td>
                         <td>
-                            <asp:TextBox ID="TextBox1" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(1) %>"/></td>
+                            <asp:TextBox ID="TextBox1" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(1) %>" /></td>
 
                         <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button1" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl1" /></td>
+                            <asp:Button runat="server" ID="Button1" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl1" /></td>
                     </tr>
 
-                    <tr style="text-align:center;">
+                    <tr style="text-align: center;">
                         <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image2" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(2) %>" /></td>
+                            <img runat="server" id="Image2" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(2) %>" /></td>
                         <td>
-                            <asp:TextBox ID="TextBox2" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(2) %>"/></td>
+                            <asp:TextBox ID="TextBox2" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(2) %>" /></td>
 
                         <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button2" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl2" /></td>
+                            <asp:Button runat="server" ID="Button2" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl2" /></td>
                     </tr>
 
-                    <tr style="text-align:center;">
+                    <tr style="text-align: center;">
                         <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image3" style="background-color: #eeeeee;width:250px;" src ="<%# getOperaImageUrl(3) %>" /></td>
+                            <img runat="server" id="Image3" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(3) %>" /></td>
                         <td>
-                            <asp:TextBox ID="TextBox3" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(3) %>"/></td>
+                            <asp:TextBox ID="TextBox3" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(3) %>" /></td>
 
                         <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button3" Text="更新图标" Width="100px" Height="50px" OnClick ="updateOperaImageUrl3" /></td>
+                            <asp:Button runat="server" ID="Button3" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl3" /></td>
                     </tr>
 
 
                 </table>
             </ContentTemplate>
 
-            <Triggers>
-               
+        </asp:UpdatePanel>
 
-            </Triggers>
+
+
+
+
+
+        <asp:UpdatePanel ID="UpdatePanelVideo" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <h1 style="padding: 10px; margin-top: 50px">相关视频</h1>
+                <table id="TableVideo" runat="server" style="width: 100%; border-collapse: separate; border-spacing: 50px">
+
+                    <tr style="text-align: center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="VideoImage0" style="background-color: #eeeeee; width: 250px;" src="<%# getVideoImageUrl(0) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoImage0" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getVideoImageUrl(0) %>" /></td>
+
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoUrl0" runat="server" Style="width: 100px;" AutoPostBack="true" Text="<%# getVideoUrl(0) %>" /></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="ButtonVideo0" Text="更新" Width="100px" Height="50px" OnClick="updateVideo0" /></td>
+                    </tr>
+
+                    <tr style="text-align: center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="VideoImage1" style="background-color: #eeeeee; width: 250px;" src="<%# getVideoImageUrl(1) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoImage1" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getVideoImageUrl(1) %>" /></td>
+
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoUrl1" runat="server" Style="width: 100px;" AutoPostBack="true" Text="<%# getVideoUrl(1) %>" /></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="ButtonVideo1" Text="更新" Width="100px" Height="50px" OnClick="updateVideo1" /></td>
+                    </tr>
+
+                    <tr style="text-align: center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="VideoImage2" style="background-color: #eeeeee; width: 250px;" src="<%# getVideoImageUrl(2) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoImage2" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getVideoImageUrl(2) %>" /></td>
+
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoUrl2" runat="server" Style="width: 100px;" AutoPostBack="true" Text="<%# getVideoUrl(2) %>" /></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="ButtonVideo2" Text="更新" Width="100px" Height="50px" OnClick="updateVideo2" /></td>
+                    </tr>
+
+                    <tr style="text-align: center;">
+                        <td style="width: 300px; text-align: center">
+                            <img runat="server" id="VideoImage3" style="background-color: #eeeeee; width: 250px;" src="<%# getVideoImageUrl(3) %>" /></td>
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoImage3" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getVideoImageUrl(3) %>" /></td>
+
+                        <td>
+                            <asp:TextBox ID="TextBoxVideoUrl3" runat="server" Style="width: 100px;" AutoPostBack="true" Text="<%# getVideoUrl(3) %>" /></td>
+
+                        <td style="width: 200px">
+                            <asp:Button runat="server" ID="ButtonVideo3" Text="更新" Width="100px" Height="50px" OnClick="updateVideo3" /></td>
+                    </tr>
+
+
+                </table>
+            </ContentTemplate>
 
         </asp:UpdatePanel>
-        
+
 
 
 
