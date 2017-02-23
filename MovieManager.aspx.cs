@@ -21,30 +21,4 @@ public partial class MovieManager : System.Web.UI.Page
         GridView1.DataBind();
      //   Response.Redirect(Request.Url.ToString());
     }
-
-    protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-    {
-        
-        
-    }
-
-    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        
-    }
-
-    protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-    {
-        
-    }
-
-    protected void GridView1_DataBound(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        
-    }
 }

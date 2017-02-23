@@ -18,7 +18,7 @@
             <asp:Button runat="server" ID="btnAdd" onClick="btnAdd_Click" text="添加电影" CssClass="addbtn"/>
      
         
-            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowCommand="GridView1_RowCommand" OnRowEditing="GridView1_RowEditing" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" OnDataBound="GridView1_DataBound" OnRowDataBound="GridView1_RowDataBound">
+            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="ID"  SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem">
 <HeaderStyle HorizontalAlign="Center" CssClass="gridheader"></HeaderStyle>

@@ -25,28 +25,28 @@ public partial class MasterPage : System.Web.UI.MasterPage
     public String getLoginButtonText()
     {
         String text = isLogined() ? "User Center" : "LOGIN";
-        MyLog.v("getLoginButtonText " + text);
+       // MyLog.v("getLoginButtonText " + text);
         return text;
     }
 
     public String getLoginButtonUrl()
     {
         String url = isLogined() ? "?action=userCenter" : "#";
-        MyLog.v("getLoginButtonUrl " + url);
+       // MyLog.v("getLoginButtonUrl " + url);
         return url;
     }
 
     public String getLoginButtonDataTarget()
     {
         String text = isLogined() ? "" : "#myModal4";
-        MyLog.v("getLoginButtonDataTarget " + text);
+       // MyLog.v("getLoginButtonDataTarget " + text);
         return text;
     }
 
     public String getLoginButtonTarget()
     {
         String text = isLogined() ? "_blank" : "";
-        MyLog.v("getLoginButtonTarget " + text);
+     //   MyLog.v("getLoginButtonTarget " + text);
         return text;
     }
 
@@ -54,28 +54,28 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         String name = getLoginedUserName();
         String text = name != null ? name + "，Welcome~" : "you are tourist~";
-        MyLog.v("getUserNameText " + text);
+     //   MyLog.v("getUserNameText " + text);
         return text;
     }
 
     public String getRegisterButtonText()
     {
         String text = isLogined() ? "LOGOUT" : "REGISTER";
-        MyLog.v("getRegisterButtonText " + text);
+   //     MyLog.v("getRegisterButtonText " + text);
         return text;
     }
 
     public String getRegisterButtonUrl()
     {
         String text = isLogined() ? "?action=logout" : "#";
-        MyLog.v("getRegisterButtonUrl " + text);
+    //    MyLog.v("getRegisterButtonUrl " + text);
         return text;
     }
 
     public String getRegisterButtonTarget()
     {
         String text = isLogined() ? "" : "#myModal5";
-        MyLog.v("getRegisterButtonTarget " + text);
+  //      MyLog.v("getRegisterButtonTarget " + text);
         return text;
     }
 

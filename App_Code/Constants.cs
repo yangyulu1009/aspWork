@@ -12,4 +12,6 @@ public class Constants
 
     public static String SESSION_USERNAME = "userName";
     public static String SESSION_USERID = "userId";
+
+    public static String MOVIE = "movie";
 }
