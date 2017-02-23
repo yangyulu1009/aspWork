@@ -75,7 +75,7 @@ public class SqlData
     }
 
 
-    public static int getMaxId(string tablename)
+    public int getMaxId(string tablename)
     {
         SqlDataReader reader = SqlData.getInstance().ExecuteRead("select max(id) from " + tablename);
         reader.Read();
