@@ -5,18 +5,26 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
+using System.Web.UI.HtmlControls;
 
 public partial class Search_Result : System.Web.UI.Page
 {
     public List<Movie> mMovieList;
     public int mMovieCount = 0;
-    private String query;
+    private String query = null;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        query = Request.QueryString["query"].ToString();
+        if (Request.QueryString["query"] != null) {
+            query = Request.QueryString["query"].ToString();
+        }
+        
         mMovieList = new List<Movie>();
-        seachMovie(query);
+        if (query != null) {
+            seachMovie(query);
+        }
+       
         Page.DataBind();
     }
 
@@ -37,7 +45,7 @@ public partial class Search_Result : System.Web.UI.Page
             Movie movie = new Movie(table.Rows[index]);
             movie.images = Image.get(movie.id);
             mMovieList.Add(movie);
-            mMovieCount = mMovieList.Count();
+            mMovieCount = mMovieList.Count;
         }
     }
 
@@ -71,6 +79,8 @@ public partial class Search_Result : System.Web.UI.Page
                 }
             }
         }
+
+        mMovieCount = mMovieList.Count();
     }
 
     private List<People> searchActor(string query)
@@ -107,5 +117,61 @@ public partial class Search_Result : System.Web.UI.Page
         }
         return mRoles;
 
+    }
+
+    public String getSearchResultHtmls()
+    {
+        StringBuilder sb = new StringBuilder();
+        MyLog.v("mMovieCount : " + mMovieCount + "    " + mMovieList.Count);
+        for (int i = 0; i < mMovieCount; i++)
+        {
+            sb.Append(getSearchResultHtml(mMovieList.ElementAt(i), i));
+        }
+        return sb.ToString();
+    }
+
+    private String getSearchResultHtml(Movie movie, int i)
+    {
+        StringBuilder sb = new StringBuilder();
+        
+        String mDirecotrs = "";
+        String mActors = "";
+
+        String sqlstr1 = "select * from people where id in (select people_id from role where role in ('director') and movie_id =" + movie.id + ")";
+        DataTable table1 = SqlData.getInstance().datasetExecute(sqlstr1, "people");
+
+        for (int index = 0; index < table1.Rows.Count; index++)
+        {
+            People director = new People(table1.Rows[index]);
+
+            mDirecotrs = mDirecotrs + " " + director.name; 
+        }
+
+        String sqlstr2 = "select * from people where id in (select people_id from role where role in ('actor') and movie_id =" + movie.id + ")";
+        DataTable table2 = SqlData.getInstance().datasetExecute(sqlstr2, "people");
+
+        for (int index = 0; index < table2.Rows.Count; index++)
+        {
+            People actor = new People(table2.Rows[index]);
+
+            mActors = mActors + " " + actor.name;
+        }
+
+
+        sb.AppendFormat("<tr>");
+        sb.AppendFormat("    <td>{0:d}</td>", i);
+        sb.AppendFormat("       <td class=\"w3 - list - img\">");
+        sb.AppendFormat("       <a href=\"single.html?id={0:s}\">", movie.id);
+        sb.AppendFormat("       <img src=\"{0:s}\" alt=\"\" />", movie.icon);
+        sb.AppendFormat("       <span>{0:s}</span></a>", movie.name);
+        sb.AppendFormat("      </td>");
+        sb.AppendFormat("       <td>{0:s}</td>", movie.year);
+        sb.AppendFormat("       <td>{0:s}</td>", mDirecotrs);
+        sb.AppendFormat("       <td>{0:s}</td>", movie.country);
+        sb.AppendFormat("       <td>{0:s}</td>", mActors);
+        sb.AppendFormat("       <td>{0:s}</td>", movie.star);
+        sb.AppendFormat("</tr>");
+
+        return sb.ToString();
     }
 }
