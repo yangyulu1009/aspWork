@@ -46,7 +46,7 @@
                 <asp:Button runat="server" ID="addNews" OnClick="btnAdd_Click" Text="添加新闻" CssClass="addbtn" />
 
 
-                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" style="font-size:30px"  AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
@@ -104,6 +104,7 @@
 
         </asp:UpdatePanel>
 
+        
 
         <asp:UpdatePanel ID="UpdatePanelImage" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
@@ -244,6 +245,28 @@
         </asp:UpdatePanel>
 
 
+
+
+
+
+        <asp:UpdatePanel ID="UpdatePanelKeywords" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <div style="margin-top:40px">
+                    <table runat="server" style="width: 100%; border-collapse: separate; border-spacing: 30px; text-align:center">
+                        <tr>
+                            <td style="width:200px;text-align:left"><p style="font-size:38px">关键词：</p></td>
+                            <td style="font-size:30px"><asp:TextBox ID="TextBoxKeywords" runat="server" Width="100%" Text="<%# getKeywords() %>" /></td>
+                            <td style="width:200px;text-align:center"><asp:Button runat="server" Text="更新" Width="100px" OnClick="btnKeywords_Click" /></td>
+                        </tr>
+
+                    </table>
+                    
+                </div>
+                <div class="clearfix"></div>
+            </ContentTemplate>
+
+
+        </asp:UpdatePanel>
 
 
     </form>

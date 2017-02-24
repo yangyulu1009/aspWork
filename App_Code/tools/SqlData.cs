@@ -80,8 +80,20 @@ public class SqlData
     public int getMaxId(string tablename)
     {
         SqlDataReader reader = SqlData.getInstance().ExecuteRead("select max(id) from " + tablename);
-        reader.Read();
-        int id = int.Parse(reader[0].ToString());
+
+        int id = 0;
+        if (reader.Read())
+        {
+            String str = reader[0].ToString();
+            try
+            {
+                id = int.Parse(reader[0].ToString());
+            } catch (Exception e)
+            {
+            }
+           
+        }
+        
         reader.Close();
         return id;
     }

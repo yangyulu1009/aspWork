@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -165,5 +166,20 @@ public partial class EditMovie : System.Web.UI.Page
         MyLog.v("text = " + url);
         getVideo(3).update(url, video);
         VideoImage3.DataBind();
+    }
+
+    public String getKeywords()
+    {
+        List<String> keys = Keywords.get2(getMovieId());
+        return StringUtils.join(keys, " ");
+    }
+
+    protected void btnKeywords_Click(object sender, EventArgs e)
+    {
+        String text = TextBoxKeywords.Text;
+        String[] words = text.Split(new char[] { ' ', ',', ';', '\t' });
+        List<String> words1 = new List<String>(words);
+        Keywords.replaceAll(getMovieId(), words1);
+        TextBoxKeywords.DataBind();
     }
 }

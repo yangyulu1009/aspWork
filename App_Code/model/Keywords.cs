@@ -26,6 +26,44 @@ public class Keywords
         return keys;
     }
 
+    public static List<String> get2(String id)
+    {
+        List<String> keys = new List<String>();
+        DataTable table = SqlData.getInstance().datasetExecute("select * from keywords where movie_id=" + id, "keywords");
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            Keywords word = new Keywords(table.Rows[i]);
+            keys.Add(word.name);
+        }
+        return keys;
+    }
+
+    public static void removeAll(String id)
+    {
+        SqlData.getInstance().ExecuteSQL("delete from keywords where movie_id=" + id);
+    }
+
+    public static void insert(String movieId, String name)
+    {
+        int id = SqlData.getInstance().getMaxId("keywords") + 1;
+        String sql = String.Format("insert into keywords (id,name,movie_id) values('{0:d}','{1:s}','{2:s}')", id, name, movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
+    public static void addAll(String id, List<String> words)
+    {
+        for (int i = 0; i < words.Count; i++)
+        {
+            insert(id, words.ElementAt(i));
+        }
+    }
+
+    public static void replaceAll(String movieId, List<String> words)
+    {
+        removeAll(movieId);
+        addAll(movieId, words);
+    }
+
     public Keywords(DataRow row)
     {
         //
