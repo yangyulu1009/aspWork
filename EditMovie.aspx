@@ -29,6 +29,11 @@
             text-align: center;
             width: 5%;
         }
+
+        table tr td {
+            background-color:#ffffff;
+        }
+
     </style>
 </asp:Content>
 
@@ -46,7 +51,7 @@
                 <asp:Button runat="server" ID="addNews" OnClick="btnAdd_Click" Text="添加新闻" CssClass="addbtn" />
 
 
-                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" Style="font-size: 30px" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
@@ -256,7 +261,7 @@
                 <asp:Button runat="server" ID="Button4" OnClick="btnAddSaleClick" Text="添加票房" CssClass="addbtn" />
 
 
-                <asp:GridView ID="GridViewSales" runat="server" DataSourceID="SqlDataSourceSales" Width="100%" Style="font-size: 30px" AutoGenerateColumns="False" CellPadding="4" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" DataKeyNames="id" OnRowEditing="GridViewSales_RowEditing" OnRowUpdating="GridViewSales_RowUpdating">
+                <asp:GridView ID="GridViewSales" runat="server" DataSourceID="SqlDataSourceSales" Width="100%" AutoGenerateColumns="False" CellPadding="4" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" DataKeyNames="id" OnRowEditing="GridViewSales_RowEditing" OnRowUpdating="GridViewSales_RowUpdating">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
                         <asp:TemplateField HeaderText="电影名称">

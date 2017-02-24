@@ -3,7 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderHeader" Runat="Server">
    <style>
 
-       
+       td.w3-list-img a {
+           display:block;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            margin: .5em 0 0 0;
+            letter-spacing: 1px;
+       }
 
    </style>
 </asp:Content>

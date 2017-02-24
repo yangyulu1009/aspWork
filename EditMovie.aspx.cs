@@ -189,6 +189,12 @@ public partial class EditMovie : System.Web.UI.Page
     {
         GridViewRow row = GridViewSales.Rows[e.NewEditIndex];
         DropDownList drop = (DropDownList) row.Cells[1].FindControl("dropDownListMovie");
+        DropDownList drop2 = (DropDownList)row.Cells[2].FindControl("dropDownListMovie");
+        drop.SelectedIndex = 0;
+        drop2.SelectedIndex = 0;
+
+
+        /*
         List<Movie> movies = Movie.get();
         int index = -1;
         for (int i = 0; i < movies.Count; i++)
@@ -199,7 +205,7 @@ public partial class EditMovie : System.Web.UI.Page
                 index = i;
             }
         }
-        drop.SelectedIndex = index;
+        drop.SelectedIndex = index;*/
     }
 
 
