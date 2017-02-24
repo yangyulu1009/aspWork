@@ -16,15 +16,20 @@ public partial class Search_Result : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["query"] != null) {
+        if (Request.QueryString["query"] != null)
+        {
             query = Request.QueryString["query"].ToString();
+        } else
+        {
+            query = "s";
         }
-        
+
         mMovieList = new List<Movie>();
-        if (query != null) {
+        if (query != null)
+        {
             seachMovie(query);
         }
-       
+
         Page.DataBind();
     }
 
@@ -74,7 +79,8 @@ public partial class Search_Result : System.Web.UI.Page
                 Movie movie = Movie.get(mRole.ElementAt(i).id);
                 movie.images = Image.get(movie.id);
 
-                if (!mMovieList.Contains(movie)) {
+                if (!mMovieList.Contains(movie))
+                {
                     mMovieList.Add(movie);
                 }
             }
@@ -133,7 +139,7 @@ public partial class Search_Result : System.Web.UI.Page
     private String getSearchResultHtml(Movie movie, int i)
     {
         StringBuilder sb = new StringBuilder();
-        
+
         String mDirecotrs = "";
         String mActors = "";
 
@@ -144,7 +150,7 @@ public partial class Search_Result : System.Web.UI.Page
         {
             People director = new People(table1.Rows[index]);
 
-            mDirecotrs = mDirecotrs + " " + director.name; 
+            mDirecotrs = mDirecotrs + " " + director.name;
         }
 
         String sqlstr2 = "select * from people where id in (select people_id from role where role in ('actor') and movie_id =" + movie.id + ")";
@@ -162,7 +168,7 @@ public partial class Search_Result : System.Web.UI.Page
         sb.AppendFormat("    <td>{0:d}</td>", i);
         sb.AppendFormat("       <td class=\"w3 - list - img\">");
         sb.AppendFormat("       <a href=\"single.html?id={0:s}\">", movie.id);
-        sb.AppendFormat("       <img src=\"{0:s}\" alt=\"\" />", movie.icon);
+        sb.AppendFormat("       <img src=\"{0:s}\" width=\"16%\" />", movie.icon);
         sb.AppendFormat("       <span>{0:s}</span></a>", movie.name);
         sb.AppendFormat("      </td>");
         sb.AppendFormat("       <td>{0:s}</td>", movie.year);

@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Search_Result.aspx.cs" Inherits="Search_Result" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderHeader" Runat="Server">
-   
+   <style>
+
+       
+
+   </style>
 </asp:Content>
 
 
