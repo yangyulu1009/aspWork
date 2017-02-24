@@ -19,9 +19,6 @@ public partial class Search_Result : System.Web.UI.Page
         if (Request.QueryString["query"] != null)
         {
             query = Request.QueryString["query"].ToString();
-        } else
-        {
-            query = "s";
         }
 
         mMovieList = new List<Movie>();

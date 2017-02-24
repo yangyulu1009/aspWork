@@ -193,7 +193,6 @@ public partial class EditMovie : System.Web.UI.Page
         drop.SelectedIndex = 0;
         drop2.SelectedIndex = 0;
 
-
         /*
         List<Movie> movies = Movie.get();
         int index = -1;
