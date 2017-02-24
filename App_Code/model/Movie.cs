@@ -40,6 +40,18 @@ public class Movie
         return new Movie(row);
     }
 
+    public static List<Movie> get()
+    {
+        DataTable table = SqlData.getInstance().datasetExecute("select * from movie", "movie");
+        List<Movie> movies = new List<Movie>();
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            DataRow row = table.Rows[i];
+            movies.Add(new Movie(row));
+        }
+        return movies;
+    }
+
     public Movie(DataRow row)
     {
         //

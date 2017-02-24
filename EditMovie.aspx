@@ -46,7 +46,7 @@
                 <asp:Button runat="server" ID="addNews" OnClick="btnAdd_Click" Text="添加新闻" CssClass="addbtn" />
 
 
-                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" style="font-size:30px"  AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" Style="font-size: 30px" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
@@ -104,7 +104,7 @@
 
         </asp:UpdatePanel>
 
-        
+
 
         <asp:UpdatePanel ID="UpdatePanelImage" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
@@ -249,22 +249,74 @@
 
 
 
-        <asp:UpdatePanel ID="UpdatePanelKeywords" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <div style="margin-top:40px">
-                    <table runat="server" style="width: 100%; border-collapse: separate; border-spacing: 30px; text-align:center">
-                        <tr>
-                            <td style="width:200px;text-align:left"><p style="font-size:38px">关键词：</p></td>
-                            <td style="font-size:30px"><asp:TextBox ID="TextBoxKeywords" runat="server" Width="100%" Text="<%# getKeywords() %>" /></td>
-                            <td style="width:200px;text-align:center"><asp:Button runat="server" Text="更新" Width="100px" OnClick="btnKeywords_Click" /></td>
-                        </tr>
+        <asp:UpdatePanel runat="server" ID="UpdatePanelSales" UpdateMode="Conditional">
 
-                    </table>
+            <ContentTemplate>
+                <h1 style="float: left; padding: 5px;">电影票房</h1>
+                <asp:Button runat="server" ID="Button4" OnClick="btnAddSaleClick" Text="添加票房" CssClass="addbtn" />
+
+
+                <asp:GridView ID="GridViewSales" runat="server" DataSourceID="SqlDataSourceSales" Width="100%" Style="font-size: 30px" AutoGenerateColumns="False" CellPadding="4" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" DataKeyNames="id" OnRowEditing="GridViewSales_RowEditing" OnRowUpdating="GridViewSales_RowUpdating">
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                        <asp:TemplateField HeaderText="电影名称">
+                            <ItemTemplate>
+                                <%# getMovieName(Container.DataItem) %>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="dropDownListMovie" runat="server">
+
+                                </asp:DropDownList>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="date" HeaderText="日期" SortExpression="date" />
+                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales" />
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" />
+                    </Columns>
+                    <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+                    <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+                    <RowStyle BackColor="White" ForeColor="#330099" />
+                    <SelectedRowStyle BackColor="#FFCC66" ForeColor="#663399" Font-Bold="True" />
+                    <SortedAscendingCellStyle BackColor="#FEFCEB" />
+                    <SortedAscendingHeaderStyle BackColor="#AF0101" />
+                    <SortedDescendingCellStyle BackColor="#F6F0C0" />
+                    <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                </asp:GridView>
+                
+
+
+
+                <asp:SqlDataSource ID="SqlDataSourceSales" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
+                    SelectCommand="SELECT * FROM [sales]" 
+                    DeleteCommand="DELETE FROM [sales] WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [sales] ([id], [movie_id], [date], [sales]) VALUES (@id, @movie_id, @date, @sales)" 
+                    UpdateCommand="UPDATE [sales] SET [date] = @date, [sales] = @sales WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="date" Type="String" />
+                        <asp:Parameter Name="sales" Type="String" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="date" Type="String" />
+                        <asp:Parameter Name="sales" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
                     
-                </div>
-                <div class="clearfix"></div>
+
+
+
             </ContentTemplate>
 
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="addNews" />
+            </Triggers>
 
         </asp:UpdatePanel>
 

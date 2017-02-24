@@ -174,12 +174,38 @@ public partial class EditMovie : System.Web.UI.Page
         return StringUtils.join(keys, " ");
     }
 
-    protected void btnKeywords_Click(object sender, EventArgs e)
+    protected void btnAddSaleClick(object sender, EventArgs e)
     {
-        String text = TextBoxKeywords.Text;
-        String[] words = text.Split(new char[] { ' ', ',', ';', '\t' });
-        List<String> words1 = new List<String>(words);
-        Keywords.replaceAll(getMovieId(), words1);
-        TextBoxKeywords.DataBind();
+
+    }
+
+    public String getMovieName(object item)
+    {
+        String movieId = DataBinder.Eval(item, "movie_id").ToString();
+        return Movie.get(movieId).name;
+    }
+
+    protected void GridViewSales_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        GridViewRow row = GridViewSales.Rows[e.NewEditIndex];
+        DropDownList drop = (DropDownList) row.Cells[1].FindControl("dropDownListMovie");
+        List<Movie> movies = Movie.get();
+        int index = -1;
+        for (int i = 0; i < movies.Count; i++)
+        {
+            drop.Items.Add(movies.ElementAt(i).name);
+            if (movies.ElementAt(i).id.Equals(getMovieId()))
+            {
+                index = i;
+            }
+        }
+        drop.SelectedIndex = index;
+    }
+
+
+
+    protected void GridViewSales_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+
     }
 }
