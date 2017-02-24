@@ -18,7 +18,7 @@
             <asp:Button runat="server" ID="btnAdd" onClick="btnAdd_Click" text="添加电影" CssClass="addbtn"/>
      
         
-            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
+            <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" OnRowUpdating="GridView1_RowUpdating">
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="ID"  SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem">
 <HeaderStyle HorizontalAlign="Center" CssClass="gridheader"></HeaderStyle>
@@ -62,7 +62,19 @@
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
 
-                    
+                  
+
+                    <asp:TemplateField HeaderText="关键词" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <ItemTemplate>
+                            <%# getKeywords(Container.DataItem) %>
+                        </ItemTemplate>
+
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" ID="TextBoxKeys" text="<%# getKeywords(Container.DataItem) %>" />
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+
+                  
 
                     <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加" >
                     <ItemStyle/>
@@ -77,14 +89,7 @@
                     <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="EditMovie.aspx?id={0}" Text="编辑其它" Target="_blank">
                     <ItemStyle CssClass="gridEdit" />
                     </asp:HyperLinkField>
-                    <asp:TemplateField ConvertEmptyStringToNull="False">
-                        <EditItemTemplate>
-                            <asp:DynamicControl ID="DynamicControl1" runat="server" DataField="" Mode="Edit" />
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:DynamicControl ID="DynamicControl1" runat="server" DataField="" Mode="ReadOnly"/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    
                 </Columns>
                 <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" HorizontalAlign="Center" VerticalAlign="Middle" />

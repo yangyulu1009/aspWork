@@ -58,6 +58,12 @@ public class Keywords
         }
     }
 
+    public static void replace(String movieId, String keys)
+    {
+        String[] keywords = keys.Split(new char[] { ' ', ',', ':', ';' });
+        replaceAll(movieId, new List<String>(keywords));
+    }
+
     public static void replaceAll(String movieId, List<String> words)
     {
         removeAll(movieId);
