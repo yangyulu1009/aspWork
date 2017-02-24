@@ -123,9 +123,23 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Response.Redirect("UserCenter.aspx?id=" + getLoginedUserId());
                 return true;
             }
+            else if (actionName.Equals("search"))
+            {
+                String query = Request.Form["Search"].ToString();
+                MyLog.v("query: " + query);
+                search(query);
+                return true;
+            }
         }
 
         return false;
+    }
+
+    protected void search(String query)
+    {
+        MyLog.v(query);
+        Response.Redirect("Search_Result.aspx?Query=" + query);
+
     }
 
     private String getLoginedUserId()

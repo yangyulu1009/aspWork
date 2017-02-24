@@ -21,4 +21,10 @@ public partial class MovieManager : System.Web.UI.Page
         GridView1.DataBind();
      //   Response.Redirect(Request.Url.ToString());
     }
+
+    public String getKeywords(String id)
+    {
+        List<String> words = Keywords.get2(id);
+        return StringUtils.join(words);
+    }
 }

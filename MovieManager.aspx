@@ -62,6 +62,8 @@
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
 
+                    
+
                     <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加" >
                     <ItemStyle/>
                     </asp:CommandField>
@@ -75,6 +77,14 @@
                     <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="EditMovie.aspx?id={0}" Text="编辑其它" Target="_blank">
                     <ItemStyle CssClass="gridEdit" />
                     </asp:HyperLinkField>
+                    <asp:TemplateField ConvertEmptyStringToNull="False">
+                        <EditItemTemplate>
+                            <asp:DynamicControl ID="DynamicControl1" runat="server" DataField="" Mode="Edit" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:DynamicControl ID="DynamicControl1" runat="server" DataField="" Mode="ReadOnly"/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                 <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -91,7 +101,9 @@
                 SelectCommand="SELECT movie.* FROM movie"
                 DeleteCommand="DELETE FROM movie WHERE (id = @id)"
                 UpdateCommand="Update movie set name=@name, allsales=@allsales, description=@description, genre=@genre, country=@country, star=@star, year=@year WHERE (id=@id)"
-                ></asp:SqlDataSource>
+                >
+
+            </asp:SqlDataSource>
 
             </ContentTemplate>
         </asp:UpdatePanel>
