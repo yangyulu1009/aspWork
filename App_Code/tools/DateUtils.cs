@@ -49,8 +49,8 @@ public class DateUtils
 
     public static MyDate parseDate(String text)
     {
-        String[] texts = text.Split(new String[] { "/", "-", "." }, StringSplitOptions.RemoveEmptyEntries);
-        if (texts.Length != 3)
+        String[] texts = text.Split(new String[] { "/", "-", ".", " " }, StringSplitOptions.RemoveEmptyEntries);
+        if (texts.Length < 3)
         {
             return null;
         }
@@ -99,6 +99,10 @@ public class DateUtils
 
     public static String getWeekDay(MyDate date)
     {
+        if (date == null)
+        {
+            return "";
+        }
         return getWeekDay(date.year, date.month, date.day);
     }
 

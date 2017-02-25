@@ -59,20 +59,24 @@
                         </asp:BoundField>
 
 
-                        <asp:BoundField DataField="reldate"  HeaderText="发布时间" ReadOnly="True" SortExpression="reldate" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" DataFormatString="{0:yyyy-MM-dd}">
-
-
-                        <HeaderStyle CssClass="gridheader" />
-                        <ItemStyle CssClass="griditem" />
-
-
-                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="发布时间" SortExpression="reldate">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
+                        </asp:TemplateField>
 
 
                         <asp:BoundField DataField="content" HeaderText="新闻内容" SortExpression="content" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                         <HeaderStyle CssClass="gridheader" />
                         <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
+
+
                         <asp:TemplateField HeaderText="新闻链接" SortExpression="url">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("url") %>'></asp:TextBox>
@@ -83,7 +87,9 @@
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:TemplateField>
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新">
+
+
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                         </asp:CommandField>
                     </Columns>
                     <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
@@ -99,7 +105,7 @@
                 <asp:SqlDataSource ID="SqlDataSourceNews" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
                     SelectCommand="SELECT news.* FROM [news]"
                     DeleteCommand="DELETE FROM [news] WHERE [id] = @id"
-                    UpdateCommand="UPDATE [news] SET [content] = @content, [url] = @url WHERE [id] = @id" 
+                    UpdateCommand="UPDATE [news] SET [content] = @content, [url] = @url, [reldate] = @reldate WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [news] ([id], [content], [url], [reldate], [movie_id]) VALUES (@id, @content, @url, @reldate, @movie_id)">
 
                     <DeleteParameters>
@@ -152,13 +158,35 @@
                         <HeaderStyle CssClass="gridheader" />
                         <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="reldate" HeaderText="日期"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ReadOnly="True" DataFormatString="{0:yyyy-MM-dd}">
-                        </asp:BoundField>
+
+
+                        <asp:TemplateField HeaderText="日期">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBoxSale" runat="server" Text='<%#  Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="LabelSale" runat="server" Text='<%#  Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
+                        </asp:TemplateField>
+
+
+                        <asp:TemplateField HeaderText="星期" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <ItemTemplate>
+                                <%# getWeek(Container.DataItem) %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
                         <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                         <HeaderStyle CssClass="gridheader" />
                         <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" />
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                        </asp:CommandField>
                     </Columns>
                     <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
@@ -178,7 +206,7 @@
                     SelectCommand="SELECT * FROM [sales]" 
                     DeleteCommand="DELETE FROM [sales] WHERE [id] = @id" 
                     InsertCommand="INSERT INTO [sales] ([id], [movie_id], [reldate], [sales]) VALUES (@id, @movie_id, @reldate, @sales)" 
-                    UpdateCommand="UPDATE [sales] SET [sales] = @sales WHERE [id] = @id">
+                    UpdateCommand="UPDATE [sales] SET [sales] = @sales, [reldate] = @reldate WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
                     </DeleteParameters>

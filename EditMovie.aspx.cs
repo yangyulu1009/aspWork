@@ -184,11 +184,15 @@ public partial class EditMovie : System.Web.UI.Page
         return StringUtils.join(keys, " ");
     }
 
-    
-
     public String getMovieName(object item)
     {
         String movieId = DataBinder.Eval(item, "movie_id").ToString();
         return Movie.get(movieId).name;
+    }
+
+    public String getWeek(object item)
+    {
+        String reldate = DataBinder.Eval(item, "reldate").ToString();
+        return DateUtils.getWeekDay(reldate);
     }
 }
