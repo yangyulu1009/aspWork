@@ -34,6 +34,7 @@ public partial class MovieManager : System.Web.UI.Page
         GridViewRow row = GridView1.Rows[e.RowIndex];
         updateKeywords(row);
         updateDirector(row);
+        updateActor(row);
         GridView1.DataBind();
     }
 
@@ -54,19 +55,25 @@ public partial class MovieManager : System.Web.UI.Page
         Role.replaceAll(id, "director", new List<String>(names));
     }
 
+    private void updateActor(GridViewRow row)
+    {
+        String id = (row.Cells[0]).Text;
+        String text = ((TextBox)row.Cells[3].FindControl("TextBoxActor")).Text;
+        MyLog.v("updateActor " + text);
+        String[] names = text.Split(Constants.SEPS);
+        Role.replaceAll(id, "actor", new List<String>(names));
+    }
+
     public String getDirector(object item)
     {
         String id = DataBinder.Eval(item, "id").ToString();
-        List<Role> roles = Role.get(id);
-        List<String> names = new List<String>();
-        foreach (Role role in roles)
-        {
-            if (role.role.Equals(Role.DIRECTOR))
-            {
-                names.Add(role.people.name);
-            }
-        }
-        return StringUtils.join(names);
+        return Role.get(id, Role.DIRECTOR);
+    }
+
+    public String getActor(object item)
+    {
+        String id = DataBinder.Eval(item, "id").ToString();
+        return Role.get(id, Role.ACTOR);
     }
 
     private void showGridViewRow(GridViewRow row)

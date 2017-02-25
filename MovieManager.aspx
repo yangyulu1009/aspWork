@@ -43,6 +43,22 @@
                         <ItemStyle CssClass="griditem" />
                     </asp:TemplateField>
 
+
+
+                    <asp:TemplateField HeaderText="主演" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <ItemTemplate>
+                            <%# getActor(Container.DataItem) %>
+                        </ItemTemplate>
+
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" ID="TextBoxActor" text="<%# getActor(Container.DataItem) %>" />
+                        </EditItemTemplate>
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                    </asp:TemplateField>
+
+
+
                     <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
 <HeaderStyle CssClass="gridheader"></HeaderStyle>
 

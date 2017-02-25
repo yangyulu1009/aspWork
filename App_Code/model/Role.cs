@@ -34,6 +34,20 @@ public class Role
         return roles;
     }
 
+    public static String get(String id, String roleName)
+    {
+        List<Role> roles = Role.get(id);
+        List<String> names = new List<String>();
+        foreach (Role role in roles)
+        {
+            if (role.role.Equals(roleName))
+            {
+                names.Add(role.people.name);
+            }
+        }
+        return StringUtils.join(names);
+    }
+
     public Role(DataRow row)
     {
         //
