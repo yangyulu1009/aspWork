@@ -34,6 +34,16 @@
             background-color:#ffffff;
         }
 
+        .buttonDesc {
+            width:100px;
+            height:40px;
+            margin-top:10px;
+        }
+
+        .tbDesc {
+            font-size:20px;
+        }
+
     </style>
 </asp:Content>
 
@@ -44,11 +54,30 @@
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
 
+        <asp:UpdatePanel runat="server" ID="UpdatePanelDesc" UpdateMode="Conditional">
+            <ContentTemplate>
+                <h1 style="padding: 5px;">电影简介</h1>
+                <div style="text-align:center">
+                    <p><asp:TextBox ID="TextBoxDesc" runat="server" Text="<%# getMovieDesc() %>" Height="100px" TextMode="MultiLine" Width="100%" CssClass="tbDesc" /></p>
+                    <div style="text-align: right">
+                        <asp:Button ID="ButtonDesc" runat="server" OnClick="ButtonDesc_Click" CssClass="buttonDesc" Text="更新"/>
+                    </div>
+                    
+                </div>
+                
+            </ContentTemplate>
+
+        </asp:UpdatePanel>
+
         <asp:UpdatePanel runat="server" ID="UpdatePanelNews" UpdateMode="Conditional">
 
             <ContentTemplate>
-                <h1 style="float: left; padding: 5px;">相关新闻</h1>
-                <asp:Button runat="server" ID="addNews" OnClick="btnAddNews_Click" Text="添加新闻" CssClass="addbtn" />
+
+                <div style="margin-top:50px">
+                    <h1 style="float: left; padding: 5px;">相关新闻</h1>
+                    <asp:Button runat="server" ID="addNews" OnClick="btnAddNews_Click" Text="添加新闻" CssClass="addbtn" />
+                </div>
+                
 
 
                 <asp:GridView ID="GridViewNews" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
@@ -236,8 +265,62 @@
         </asp:UpdatePanel>
 
 
+        
 
+        <asp:UpdatePanel ID="UpdatePanelResponse" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <div style="margin-top:50px">
+                    <h1 style="float: left; padding: 5px; ">电影评论</h1>
+                </div>
 
+                <asp:GridView runat="server" ID="GridViewResponse" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceResponse">
+
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"/>
+                        <asp:TemplateField HeaderText="用户" SortExpression="user_id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# getUserName(Container.DataItem) %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="reply_time" HeaderText="评论时间" ReadOnly="True" SortExpression="reply_time" />
+                        <asp:BoundField DataField="comment" HeaderText="评论" ReadOnly="True" SortExpression="comment" />
+                        <asp:CommandField DeleteText="删除" ShowDeleteButton="True" />
+                    </Columns>
+
+                </asp:GridView>
+
+                <asp:SqlDataSource ID="SqlDataSourceResponse" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
+                    DeleteCommand="DELETE FROM [responses] WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [responses] ([id], [movie_id], [user_id], [reply_time], [comment]) VALUES (@id, @movie_id, @user_id, @reply_time, @comment)" 
+                    SelectCommand="SELECT * FROM [responses] WHERE ([movie_id] = @movie_id)" 
+                    UpdateCommand="UPDATE [responses] SET [movie_id] = @movie_id, [user_id] = @user_id, [reply_time] = @reply_time, [comment] = @comment WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="user_id" Type="Int32" />
+                        <asp:Parameter Name="reply_time" Type="String" />
+                        <asp:Parameter Name="comment" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:QueryStringParameter DefaultValue="1" Name="movie_id" QueryStringField="id" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="user_id" Type="Int32" />
+                        <asp:Parameter Name="reply_time" Type="String" />
+                        <asp:Parameter Name="comment" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+
+            </ContentTemplate>
+
+        </asp:UpdatePanel>
+
+       
 
 
 

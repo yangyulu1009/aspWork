@@ -195,4 +195,20 @@ public partial class EditMovie : System.Web.UI.Page
         String reldate = DataBinder.Eval(item, "reldate").ToString();
         return DateUtils.getWeekDay(reldate);
     }
+
+    public String getMovieDesc()
+    {
+        return getMovie().description;
+    }
+
+    protected void ButtonDesc_Click(object sender, EventArgs e)
+    {
+        Movie.updateDesc(getMovieId(), TextBoxDesc.Text);
+    }
+
+    public String getUserName(object item)
+    {
+        String userId = DataBinder.Eval(item, "user_id").ToString();
+        return Users.get(userId).name;
+    }
 }

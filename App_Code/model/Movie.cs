@@ -52,6 +52,12 @@ public class Movie
         return movies;
     }
 
+    public static void updateDesc(String movieId, String desc)
+    {
+        String sql = String.Format("update movie set description='{0:s}' where id='{1:s}'", desc, movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
     public Movie(DataRow row)
     {
         //

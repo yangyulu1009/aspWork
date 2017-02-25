@@ -53,74 +53,92 @@ public partial class Search_Result : System.Web.UI.Page
 
     protected void searchMovieByActor(String query)
     {
-        List<People> mAcotrs = searchActor(query);
-        List<Role> mRole = new List<Role>();
-        if (mAcotrs != null & mAcotrs.Count != 0)
-        {
-            for (int i = 0; i < mAcotrs.Count; i++)
-            {
-                List<Role> role = searchFromRole(mAcotrs.ElementAt(i).id);
-                for (int j = 0; j < role.Count; j++)
-                {
-                    if (!mRole.Contains(role.ElementAt(j)))
-                    {
-                        mRole.Add(role.ElementAt(j));
-                    }
-                }
-            }
-        }
-        if (mRole != null & mRole.Count != 0)
-        {
-            for (int i = 0; i < mRole.Count; i++)
-            {
-                Movie movie = Movie.get(mRole.ElementAt(i).id);
-                movie.images = Image.get(movie.id);
-
-                if (!mMovieList.Contains(movie))
-                {
-                    mMovieList.Add(movie);
-                }
-            }
-        }
-
-        mMovieCount = mMovieList.Count();
-    }
-
-    private List<People> searchActor(string query)
-    {
-        List<People> mActors = new List<People>();
-
-        String sqlstr = "select * from people where name like '%" + query + "%'";
-
-        DataTable table = SqlData.getInstance().datasetExecute(sqlstr, "people");
+        
+        String sqlstr = "select * from movie where id in (select movie_id from role where people_id in (select id from people where name like '%" + query + "%'))";
+        MyLog.v(sqlstr);
+        DataTable table = SqlData.getInstance().datasetExecute(sqlstr, "movie");
 
         for (int index = 0; index < table.Rows.Count; index++)
         {
-            People actor = new People(table.Rows[index]);
-            mActors.Add(actor);
-
+            Movie movie = new Movie(table.Rows[index]);
+            movie.images = Image.get(movie.id);
+            if (mMovieList != null && !mMovieList.Contains(movie)) {
+                mMovieList.Add(movie);
+                mMovieCount = mMovieList.Count;
+            }
+            
         }
-        return mActors;
     }
+    //protected void searchMovieByActor(String query)
+    //{
+    //    List<People> mAcotrs = searchActor(query);
+    //    List<Role> mRole = new List<Role>();
+    //    if (mAcotrs != null & mAcotrs.Count != 0)
+    //    {
+    //        for (int i = 0; i < mAcotrs.Count; i++)
+    //        {
+    //            List<Role> role = searchFromRole(mAcotrs.ElementAt(i).id);
+    //            for (int j = 0; j < role.Count; j++)
+    //            {
+    //                if (!mRole.Contains(role.ElementAt(j)))
+    //                {
+    //                    mRole.Add(role.ElementAt(j));
+    //                }
+    //            }
+    //        }
+    //    }
+    //    if (mRole != null & mRole.Count != 0)
+    //    {
+    //        for (int i = 0; i < mRole.Count; i++)
+    //        {
+    //            Movie movie = Movie.get(mRole.ElementAt(i).id);
+    //            movie.images = Image.get(movie.id);
+
+    //            if (!mMovieList.Contains(movie))
+    //            {
+    //                mMovieList.Add(movie);
+    //            }
+    //        }
+    //    }
+
+    //    mMovieCount = mMovieList.Count();
+    //}
+
+    //private List<People> searchActor(string query)
+    //{
+    //    List<People> mActors = new List<People>();
+
+    //    String sqlstr = "select * from people where name like '%" + query + "%'";
+
+    //    DataTable table = SqlData.getInstance().datasetExecute(sqlstr, "people");
+
+    //    for (int index = 0; index < table.Rows.Count; index++)
+    //    {
+    //        People actor = new People(table.Rows[index]);
+    //        mActors.Add(actor);
+
+    //    }
+    //    return mActors;
+    //}
 
 
-    private List<Role> searchFromRole(String id)
-    {
-        List<Role> mRoles = new List<Role>();
+    //private List<Role> searchFromRole(String id)
+    //{
+    //    List<Role> mRoles = new List<Role>();
 
-        String sqlstr = "select * from role where people_id =" + id;
+    //    String sqlstr = "select * from role where people_id =" + id;
 
-        DataTable table = SqlData.getInstance().datasetExecute(sqlstr, "role");
+    //    DataTable table = SqlData.getInstance().datasetExecute(sqlstr, "role");
 
-        for (int index = 0; index < table.Rows.Count; index++)
-        {
-            Role role = new Role(table.Rows[index]);
-            mRoles.Add(role);
+    //    for (int index = 0; index < table.Rows.Count; index++)
+    //    {
+    //        Role role = new Role(table.Rows[index]);
+    //        mRoles.Add(role);
 
-        }
-        return mRoles;
+    //    }
+    //    return mRoles;
 
-    }
+    //}
 
     public String getSearchResultHtmls()
     {
