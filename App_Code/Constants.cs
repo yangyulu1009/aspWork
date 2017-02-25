@@ -15,6 +15,8 @@ public class Constants
 
     public static String MOVIE = "movie";
 
+    public static char[] SEPS = new char[] { ' ', ',', ';', ':', '\t'};
+
     /*
      * 1. 给剧情简介去了，加一列导演和演员，可支持多个，给剧情简介加到edit里，放在最上面
      * 2. 图片弄小点，news的时间不能编辑，news内容过长截断

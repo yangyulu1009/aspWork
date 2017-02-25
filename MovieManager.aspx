@@ -115,7 +115,7 @@
             <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
                 SelectCommand="SELECT movie.* FROM movie"
                 DeleteCommand="DELETE FROM movie WHERE (id = @id)"
-                UpdateCommand="Update movie set name=@name, allsales=@allsales, description=@description, genre=@genre, country=@country, star=@star, year=@year WHERE (id=@id)"
+                UpdateCommand="Update movie set name=@name, allsales=@allsales, genre=@genre, country=@country, star=@star, year=@year WHERE (id=@id)"
                 >
 
             </asp:SqlDataSource>

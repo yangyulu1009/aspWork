@@ -31,4 +31,31 @@ public class People
         name = row["name"].ToString();
         url = row["url"].ToString();
     }
+
+    private static People getByName(String name)
+    {
+        String sql = String.Format("select * from people where name='{0:s}'", name);
+        DataTable table = SqlData.getInstance().datasetExecute(sql, "people");
+        return table.Rows.Count > 0 ? new People(table.Rows[0]) : null;
+    }
+
+    public static String add(String name, String url)
+    {
+        int id = SqlData.getInstance().getMaxId("people") + 1;
+        String sql = String.Format("insert into people (id,name,url) values('{0:d}','{1:s}','{2:s}')", id, name, url);
+        SqlData.getInstance().ExecuteSQL(sql);
+        return id.ToString();
+    }
+
+    public static String add(String name)
+    {
+        People people = getByName(name);
+        if (people != null)
+        {
+            return people.id;
+        } else
+        {
+            return add(name, " ");
+        }
+    }
 }

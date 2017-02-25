@@ -45,4 +45,32 @@ public class Role
         people = People.get(peopleId);
         role = row["role"].ToString();
     }
+
+    private static void removeAll(String movieId, String role)
+    {
+        String sql = String.Format("delete from role where movie_id='{0:s}' and role='{1:s}'", movieId, role);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
+    private static void addAll(String movieId, String role, List<String> names)
+    {
+        foreach (String name in names)
+        {
+            insert(movieId, role, name);
+        }
+    }
+
+    public static void replaceAll(String movieId, String role, List<String> names)
+    {
+        removeAll(movieId, role);
+        addAll(movieId, role, names);
+    }
+
+    private static void insert(String movieId, String role, String name)
+    {
+        String peopleId = People.add(name);
+        int id = SqlData.getInstance().getMaxId("role") + 1;
+        String sql = String.Format("insert into role (id,movie_id,people_id,role) values('{0:d}','{1:s}','{2:s}','{3:s}')", id, movieId, peopleId, role);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
 }
