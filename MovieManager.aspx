@@ -30,11 +30,19 @@
 
 <ItemStyle CssClass="griditem"></ItemStyle>
                     </asp:BoundField>
-                    <asp:BoundField DataField="description" HeaderText="剧情简介" SortExpression="description"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-<HeaderStyle CssClass="gridheader"></HeaderStyle>
 
-<ItemStyle CssClass="griditem"></ItemStyle>
-                    </asp:BoundField>
+                    <asp:TemplateField HeaderText="导演" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <ItemTemplate>
+                            <%# getDirector(Container.DataItem) %>
+                        </ItemTemplate>
+
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" ID="TextBoxDirector" text="<%# getDirector(Container.DataItem) %>" />
+                        </EditItemTemplate>
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                    </asp:TemplateField>
+
                     <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
 <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
@@ -72,6 +80,8 @@
                         <EditItemTemplate>
                             <asp:TextBox runat="server" ID="TextBoxKeys" text="<%# getKeywords(Container.DataItem) %>" />
                         </EditItemTemplate>
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
                     </asp:TemplateField>
 
                   

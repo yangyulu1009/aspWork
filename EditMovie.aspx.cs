@@ -27,13 +27,23 @@ public partial class EditMovie : System.Web.UI.Page
         Page.DataBind();
     }
 
-    protected void btnAdd_Click(object sender, EventArgs e)
+    protected void btnAddNews_Click(object sender, EventArgs e)
     {
         int id = SqlData.getInstance().getMaxId("news") + 1;
-        String sqlstr = String.Format("INSERT INTO news(id, movie_id) VALUES ('{0:d}', '{1:s}')", id, getMovieId());
+        String sqlstr = String.Format("INSERT INTO news(id, movie_id, reldate) VALUES ('{0:d}', '{1:s}', '{2:s}')", 
+            id, getMovieId(), DateTime.Now.Date.ToShortDateString());
         MyLog.v(sqlstr);
         SqlData.getInstance().ExecuteSQL(sqlstr);
-        GridView1.DataBind();
+        GridViewNews.DataBind();
+    }
+
+    protected void btnAddSaleClick(object sender, EventArgs e)
+    {
+        int id = SqlData.getInstance().getMaxId("sales") + 1;
+        String sqlstr = String.Format("INSERT INTO sales(id, movie_id, reldate) VALUES ('{0:d}', '{1:s}', '{2:s}')", id, getMovieId(), DateTime.Now.Date.ToShortDateString());
+        MyLog.v(sqlstr);
+        SqlData.getInstance().ExecuteSQL(sqlstr);
+        GridViewSales.DataBind();
     }
 
     protected void updateIconClick(object sender, EventArgs e)
@@ -174,43 +184,11 @@ public partial class EditMovie : System.Web.UI.Page
         return StringUtils.join(keys, " ");
     }
 
-    protected void btnAddSaleClick(object sender, EventArgs e)
-    {
-
-    }
+    
 
     public String getMovieName(object item)
     {
         String movieId = DataBinder.Eval(item, "movie_id").ToString();
         return Movie.get(movieId).name;
-    }
-
-    protected void GridViewSales_RowEditing(object sender, GridViewEditEventArgs e)
-    {
-        GridViewRow row = GridViewSales.Rows[e.NewEditIndex];
-        DropDownList drop = (DropDownList) row.Cells[1].FindControl("dropDownListMovie");
-        DropDownList drop2 = (DropDownList)row.Cells[2].FindControl("dropDownListMovie");
-        drop.SelectedIndex = 0;
-        drop2.SelectedIndex = 0;
-
-        /*
-        List<Movie> movies = Movie.get();
-        int index = -1;
-        for (int i = 0; i < movies.Count; i++)
-        {
-            drop.Items.Add(movies.ElementAt(i).name);
-            if (movies.ElementAt(i).id.Equals(getMovieId()))
-            {
-                index = i;
-            }
-        }
-        drop.SelectedIndex = index;*/
-    }
-
-
-
-    protected void GridViewSales_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    {
-
     }
 }

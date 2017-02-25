@@ -48,35 +48,42 @@
 
             <ContentTemplate>
                 <h1 style="float: left; padding: 5px;">相关新闻</h1>
-                <asp:Button runat="server" ID="addNews" OnClick="btnAdd_Click" Text="添加新闻" CssClass="addbtn" />
+                <asp:Button runat="server" ID="addNews" OnClick="btnAddNews_Click" Text="添加新闻" CssClass="addbtn" />
 
 
-                <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
+                <asp:GridView ID="GridViewNews" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
+
+
+                        <asp:BoundField DataField="reldate"  HeaderText="发布时间" ReadOnly="True" SortExpression="reldate" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" DataFormatString="{0:yyyy-MM-dd}">
+
+
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+
+
+                        </asp:BoundField>
+
+
                         <asp:BoundField DataField="content" HeaderText="新闻内容" SortExpression="content" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="url" HeaderText="新闻链接" SortExpression="url" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
-                        </asp:BoundField>
-                        <asp:BoundField DataField="release_date" HeaderText="发布日期" SortExpression="release_date" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
-                        </asp:BoundField>
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" UpdateText="更新">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
+                        <asp:TemplateField HeaderText="新闻链接" SortExpression="url">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("url") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:HyperLink ID="Link1" runat="server" Text='<%# Bind("url") %>' NavigateUrl='<%# Bind("url") %>' Target="_blank"></asp:HyperLink>
+                            </ItemTemplate>
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
+                        </asp:TemplateField>
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新">
                         </asp:CommandField>
                     </Columns>
                     <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
@@ -90,13 +97,28 @@
                     <SortedDescendingHeaderStyle BackColor="#7E0000" />
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSourceNews" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
-                    SelectCommand="SELECT [id], [content], [url], [release_date] FROM [news] WHERE ([movie_id] = @id) ORDER by [id] ASC"
-                    DeleteCommand="DELETE FROM news WHERE (id = @id)"
-                    UpdateCommand="Update news set content=@content, url=@url, release_date=@release_date WHERE (id=@id)">
+                    SelectCommand="SELECT news.* FROM [news]"
+                    DeleteCommand="DELETE FROM [news] WHERE [id] = @id"
+                    UpdateCommand="UPDATE [news] SET [content] = @content, [url] = @url WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [news] ([id], [content], [url], [reldate], [movie_id]) VALUES (@id, @content, @url, @reldate, @movie_id)">
 
-                    <SelectParameters>
-                        <asp:QueryStringParameter Name="id" QueryStringField="id" Type="Int32" DefaultValue="1" />
-                    </SelectParameters>
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="content" Type="String" />
+                        <asp:Parameter Name="url" Type="String" />
+                        <asp:Parameter DbType="Date" Name="reldate" />
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="content" Type="String" />
+                        <asp:Parameter Name="url" Type="String" />
+                        <asp:Parameter DbType="Date" Name="reldate" />
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
                 </asp:SqlDataSource>
 
 
@@ -108,6 +130,87 @@
             </Triggers>
 
         </asp:UpdatePanel>
+
+
+
+       
+
+
+        <asp:UpdatePanel runat="server" ID="UpdatePanelSales" UpdateMode="Conditional">
+
+            <ContentTemplate>
+                <div style="margin-top:50px">
+                    <h1 style="float: left; padding: 5px; ">电影票房</h1>
+                    <asp:Button runat="server" ID="Button4" OnClick="btnAddSaleClick" Text="添加票房" CssClass="addbtn" />
+                </div>
+                
+                
+
+                <asp:GridView ID="GridViewSales" runat="server" DataSourceID="SqlDataSourceSales" Width="100%" AutoGenerateColumns="False" CellPadding="4" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" DataKeyNames="id">
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="reldate" HeaderText="日期"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ReadOnly="True" DataFormatString="{0:yyyy-MM-dd}">
+                        </asp:BoundField>
+                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                        </asp:BoundField>
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" />
+                    </Columns>
+                    <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+                    <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+                    <RowStyle BackColor="White" ForeColor="#330099" />
+                    <SelectedRowStyle BackColor="#FFCC66" ForeColor="#663399" Font-Bold="True" />
+                    <SortedAscendingCellStyle BackColor="#FEFCEB" />
+                    <SortedAscendingHeaderStyle BackColor="#AF0101" />
+                    <SortedDescendingCellStyle BackColor="#F6F0C0" />
+                    <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                </asp:GridView>
+                
+
+
+
+                <asp:SqlDataSource ID="SqlDataSourceSales" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
+                    SelectCommand="SELECT * FROM [sales]" 
+                    DeleteCommand="DELETE FROM [sales] WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [sales] ([id], [movie_id], [reldate], [sales]) VALUES (@id, @movie_id, @reldate, @sales)" 
+                    UpdateCommand="UPDATE [sales] SET [sales] = @sales WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="reldate" DbType="Date" />
+                        <asp:Parameter Name="sales" Type="String" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="reldate" DbType="date" />
+                        <asp:Parameter Name="sales" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+                    
+
+
+
+            </ContentTemplate>
+
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="addNews" />
+            </Triggers>
+
+        </asp:UpdatePanel>
+
+
+
+
+
 
 
 
@@ -254,77 +357,7 @@
 
 
 
-        <asp:UpdatePanel runat="server" ID="UpdatePanelSales" UpdateMode="Conditional">
-
-            <ContentTemplate>
-                <h1 style="float: left; padding: 5px;">电影票房</h1>
-                <asp:Button runat="server" ID="Button4" OnClick="btnAddSaleClick" Text="添加票房" CssClass="addbtn" />
-
-
-                <asp:GridView ID="GridViewSales" runat="server" DataSourceID="SqlDataSourceSales" Width="100%" AutoGenerateColumns="False" CellPadding="4" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" DataKeyNames="id" OnRowEditing="GridViewSales_RowEditing" OnRowUpdating="GridViewSales_RowUpdating">
-                    <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                        <asp:TemplateField HeaderText="电影名称">
-                            <ItemTemplate>
-                                <%# getMovieName(Container.DataItem) %>
-                            </ItemTemplate>
-                            <EditItemTemplate>
-                                <asp:DropDownList ID="dropDownListMovie" runat="server">
-
-                                </asp:DropDownList>
-                            </EditItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="date" HeaderText="日期" SortExpression="date" />
-                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales" />
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" />
-                    </Columns>
-                    <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-                    <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
-                    <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
-                    <RowStyle BackColor="White" ForeColor="#330099" />
-                    <SelectedRowStyle BackColor="#FFCC66" ForeColor="#663399" Font-Bold="True" />
-                    <SortedAscendingCellStyle BackColor="#FEFCEB" />
-                    <SortedAscendingHeaderStyle BackColor="#AF0101" />
-                    <SortedDescendingCellStyle BackColor="#F6F0C0" />
-                    <SortedDescendingHeaderStyle BackColor="#7E0000" />
-                </asp:GridView>
-                
-
-
-
-                <asp:SqlDataSource ID="SqlDataSourceSales" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
-                    SelectCommand="SELECT * FROM [sales]" 
-                    DeleteCommand="DELETE FROM [sales] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [sales] ([id], [movie_id], [date], [sales]) VALUES (@id, @movie_id, @date, @sales)" 
-                    UpdateCommand="UPDATE [sales] SET [date] = @date, [sales] = @sales WHERE [id] = @id">
-                    <DeleteParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </DeleteParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                        <asp:Parameter Name="movie_id" Type="Int32" />
-                        <asp:Parameter Name="date" Type="String" />
-                        <asp:Parameter Name="sales" Type="String" />
-                    </InsertParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="movie_id" Type="Int32" />
-                        <asp:Parameter Name="date" Type="String" />
-                        <asp:Parameter Name="sales" Type="String" />
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </UpdateParameters>
-                </asp:SqlDataSource>
-                    
-
-
-
-            </ContentTemplate>
-
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="addNews" />
-            </Triggers>
-
-        </asp:UpdatePanel>
-
+        
 
     </form>
 

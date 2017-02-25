@@ -96,7 +96,7 @@ public partial class Single : System.Web.UI.Page
             News news = mMovie.news.ElementAt(i);
             sb.AppendFormat("<li>");
             sb.AppendFormat("    <a href=\"{0:s}\">{1:s}</a>", news.url, news.content);
-            sb.AppendFormat("    <p>{0:s}</p>", news.release_time);
+            sb.AppendFormat("    <p>{0:s}</p>", news.reldate);
             sb.AppendFormat("</li>");
         }
         sb.AppendFormat("</ul>");

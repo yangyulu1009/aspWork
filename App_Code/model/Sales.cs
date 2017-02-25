@@ -15,8 +15,7 @@ public class Sales : IComparable
     public String movie;
     public String date;
     public String sale;
-    private static readonly object b;
-    private static readonly object a;
+    
 
     public static List<Sales> get(String id)
     {
@@ -59,7 +58,7 @@ public class Sales : IComparable
         //
         id = row["id"].ToString();
         movie = row["movie_id"].ToString();
-        date = row["date"].ToString();
+        date = row["reldate"].ToString();
         sale = row["sales"].ToString();
     }
 }

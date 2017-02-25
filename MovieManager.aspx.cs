@@ -32,12 +32,39 @@ public partial class MovieManager : System.Web.UI.Page
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         GridViewRow row = GridView1.Rows[e.RowIndex];
-        //showGridViewRow(row);
+        updateKeywords(row);
+        GridView1.DataBind();
+    }
+
+    private void updateKeywords(GridViewRow row)
+    {
         String id = (row.Cells[0]).Text;
         String key = ((TextBox)row.Cells[8].FindControl("TextBoxKeys")).Text;
         MyLog.v("updating keywords: " + key);
         Keywords.replace(id, key);
-        GridView1.DataBind();
+    }
+
+    private void updateDirector(GridViewRow row)
+    {
+        String id = (row.Cells[0]).Text;
+        String text = ((TextBox)row.Cells[2].FindControl("TextBoxDirector")).Text;
+        MyLog.v("updateDirector " + text);
+        
+    }
+
+    public String getDirector(object item)
+    {
+        String id = DataBinder.Eval(item, "id").ToString();
+        List<Role> roles = Role.get(id);
+        List<String> names = new List<String>();
+        foreach (Role role in roles)
+        {
+            if (role.role.Equals(Role.ACTOR))
+            {
+                names.Add(role.people.name);
+            }
+        }
+        return StringUtils.join(names);
     }
 
     private void showGridViewRow(GridViewRow row)
