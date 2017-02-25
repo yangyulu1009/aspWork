@@ -58,6 +58,18 @@ public class Movie
         SqlData.getInstance().ExecuteSQL(sql);
     }
 
+    public static void updateIcon(String movieId, String icon)
+    {
+        String sql = String.Format("update movie set icon='{0:s}' where id='{1:s}'", icon, movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
+    public static void updateBanner(String movieId, String banner)
+    {
+        String sql = String.Format("update movie set banner='{0:s}' where id='{1:s}'", banner, movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
     public Movie(DataRow row)
     {
         //
@@ -145,6 +157,12 @@ public class Movie
         return StringUtils.join(keys);
     }
 
-   
+    public static void insert()
+    {
+        int id = SqlData.getInstance().getMaxId("movie") + 1;
+        String sqlstr = String.Format("INSERT INTO movie(id) VALUES ('{0:d}')", id);
+        SqlData.getInstance().ExecuteSQL(sqlstr);
+        Image.init(id);
+    }
 
 }

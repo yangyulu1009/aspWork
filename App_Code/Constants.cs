@@ -15,6 +15,8 @@ public class Constants
 
     public static String MOVIE = "movie";
 
+    public static String IMAGE_UPLOAD_ROOT = "images/upload/";
+
     public static char[] SEPS = new char[] { ' ', ',', ';', ':', '\t'};
 
     /*

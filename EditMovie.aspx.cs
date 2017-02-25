@@ -46,22 +46,6 @@ public partial class EditMovie : System.Web.UI.Page
         GridViewSales.DataBind();
     }
 
-    protected void updateIconClick(object sender, EventArgs e)
-    {
-        String url = TextBoxIcon.Text;
-        MyLog.v("text = " + url);
-        SqlData.getInstance().update("movie", getMovieId(), "icon", url);
-        ImageIcon.DataBind();
-    }
-
-    protected void updateBannerClick(object sender, EventArgs e)
-    {
-        String url = TextBoxBanner.Text;
-        MyLog.v("text = " + url);
-        SqlData.getInstance().update("movie", getMovieId(), "banner", url);
-        ImageBanner.DataBind();
-    }
-
     private Movie getMovie()
     {
         Movie movie = (Movie)Application[Constants.MOVIE];
@@ -108,38 +92,6 @@ public partial class EditMovie : System.Web.UI.Page
     public String getOperaImageUrl(int index)
     {
         return getOperaImage(index).url;
-    }
-
-    public void updateOperaImageUrl0(object sender, EventArgs e)
-    {
-        String url = TextBox0.Text;
-        MyLog.v("text = " + url);
-        SqlData.getInstance().update("image", getOperaImage(0).id, "url", url);
-        Image0.DataBind();
-    }
-
-    public void updateOperaImageUrl1(object sender, EventArgs e)
-    {
-        String url = TextBox1.Text;
-        MyLog.v("text = " + url);
-        SqlData.getInstance().update("image", getOperaImage(1).id, "url", url);
-        Image1.DataBind();
-    }
-
-    public void updateOperaImageUrl2(object sender, EventArgs e)
-    {
-        String url = TextBox2.Text;
-        MyLog.v("text = " + url);
-        SqlData.getInstance().update("image", getOperaImage(2).id, "url", url);
-        Image2.DataBind();
-    }
-
-    public void updateOperaImageUrl3(object sender, EventArgs e)
-    {
-        String url = TextBox3.Text;
-        MyLog.v("text = " + url);
-        SqlData.getInstance().update("image", getOperaImage(3).id, "url", url);
-        Image3.DataBind();
     }
 
     public void updateVideo0(object sender, EventArgs e)
@@ -204,11 +156,73 @@ public partial class EditMovie : System.Web.UI.Page
     protected void ButtonDesc_Click(object sender, EventArgs e)
     {
         Movie.updateDesc(getMovieId(), TextBoxDesc.Text);
+        movieDesc.DataBind();
+        TextBoxDesc.Text = "";
     }
 
     public String getUserName(object item)
     {
         String userId = DataBinder.Eval(item, "user_id").ToString();
         return Users.get(userId).name;
+    }
+
+    private String onUploadClick(FileUpload upload1, ImageButton imgBtn)
+    {
+        if (upload1.HasFile)
+        {
+            String fileName = NameUtils.get(upload1.FileName);
+
+            string savePath = Server.MapPath(Constants.IMAGE_UPLOAD_ROOT);
+
+            if (!System.IO.Directory.Exists(savePath))
+            {
+                System.IO.Directory.CreateDirectory(savePath);
+            }
+
+            savePath = savePath + fileName;
+            MyLog.v(savePath);
+            upload1.SaveAs(savePath);
+
+            String url = Constants.IMAGE_UPLOAD_ROOT + fileName;
+            imgBtn.ImageUrl = url;
+            return url;
+        }
+        return "";
+    }
+
+    protected void UploadButton1_Click(object sender, EventArgs e)
+    {
+        String url = onUploadClick(FileUpload1, ImageButton1);
+        Movie.updateIcon(getMovieId(), url);
+    }
+
+    protected void UploadButton2_Click(object sender, EventArgs e)
+    {
+        String url = onUploadClick(FileUpload2, ImageButton2);
+        Movie.updateBanner(getMovieId(), url);
+    }
+
+    protected void UploadButton3_Click(object sender, EventArgs e)
+    {
+        String url = onUploadClick(FileUpload3, ImageButton3);
+        Image.update(getMovieId(), 0, url);
+    }
+
+    protected void UploadButton4_Click(object sender, EventArgs e)
+    {
+        String url = onUploadClick(FileUpload4, ImageButton4);
+        Image.update(getMovieId(), 1, url);
+    }
+
+    protected void UploadButton5_Click(object sender, EventArgs e)
+    {
+        String url = onUploadClick(FileUpload5, ImageButton5);
+        Image.update(getMovieId(), 2, url);
+    }
+
+    protected void UploadButton6_Click(object sender, EventArgs e)
+    {
+        String url = onUploadClick(FileUpload6, ImageButton6);
+        Image.update(getMovieId(), 3, url);
     }
 }

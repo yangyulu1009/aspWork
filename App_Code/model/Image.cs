@@ -38,4 +38,31 @@ public class Image
         movie = row["movie_id"].ToString();
         url = row["url"].ToString();
     }
+
+    public static void insert(String movieId, String url)
+    {
+        int id = SqlData.getInstance().getMaxId("image") + 1;
+        String sqlstr = String.Format("INSERT INTO image(id,movie_id,url) VALUES ('{0:d}', '{1:s}', '{2:s}')", id, movieId, url);
+        SqlData.getInstance().ExecuteSQL(sqlstr);
+    }
+
+    public static void init(int movieId)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            insert(movieId.ToString(), " ");
+        }
+    }
+
+    private static void update(String imageId, String url)
+    {
+        String sql = String.Format("update image set url='{0:s}' where id='{1:s}'", url, imageId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
+    public static void update(String movieId, int index, String url)
+    {
+        List<Image> images = get(movieId);
+        update(images.ElementAt(index).id, url);
+    }
 }

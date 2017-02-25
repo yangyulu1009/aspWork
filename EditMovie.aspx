@@ -54,11 +54,69 @@
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
 
+        <asp:UpdatePanel ID="UpdatePanelImage2" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <h1 style="padding: 5px;">图片管理</h1>
+                <table runat="server" style="width:100%;border-collapse: separate;border-spacing:10px; background-color:#eeeeee">
+                    <tr style="height:300px">
+                        <td style="width:15%">
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="<%# getIconUrl() %>" Width="100%"/>
+                            <asp:FileUpload ID="FileUpload1" runat="server"/>
+                            <asp:Button ID="UploadButton1" runat="server" Text="上传" OnClick="UploadButton1_Click" />
+                        </td>
+                        <td style="width:15%">
+                            <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="<%# getBannerUrl() %>"  Width="100%"/>
+                            <asp:FileUpload ID="FileUpload2" runat="server"/>
+                            <asp:Button ID="UploadButton2" runat="server" Text="上传" OnClick="UploadButton2_Click" />
+                        </td>
+                        <td style="width:15%">
+                            <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="<%# getOperaImageUrl(0) %>" Width="100%"/>
+                            <asp:FileUpload ID="FileUpload3" runat="server"/>
+                            <asp:Button ID="UploadButton3" runat="server" Text="上传" OnClick="UploadButton3_Click"/>
+                        </td>
+                        <td style="width:15%">
+                            <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="<%# getOperaImageUrl(1) %>" Width="100%"/>
+                            <asp:FileUpload ID="FileUpload4" runat="server"/>
+                            <asp:Button ID="UploadButton4" runat="server" Text="上传" OnClick="UploadButton4_Click" />
+                        </td>
+                        <td style="width:15%">
+                            <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="<%# getOperaImageUrl(2) %>" Width="100%"/>
+                            <asp:FileUpload ID="FileUpload5" runat="server"/>
+                            <asp:Button ID="UploadButton5" runat="server" Text="上传" OnClick="UploadButton5_Click" />
+                        </td>
+                        <td style="width:15%">
+                            <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="<%# getOperaImageUrl(3) %>" Width="100%"/>
+                            <asp:FileUpload ID="FileUpload6" runat="server"/>
+                            <asp:Button ID="UploadButton6" runat="server" Text="上传" OnClick="UploadButton6_Click" />
+                        </td>
+                    </tr>
+
+                </table>
+            </ContentTemplate>
+
+            <Triggers>
+                <asp:PostBackTrigger ControlID="UploadButton1" />
+                <asp:PostBackTrigger ControlID="UploadButton2" />
+                <asp:PostBackTrigger ControlID="UploadButton3" />
+                <asp:PostBackTrigger ControlID="UploadButton4" />
+                <asp:PostBackTrigger ControlID="UploadButton5" />
+                <asp:PostBackTrigger ControlID="UploadButton6" />
+            </Triggers>
+
+        </asp:UpdatePanel>
+
+
+
+
         <asp:UpdatePanel runat="server" ID="UpdatePanelDesc" UpdateMode="Conditional">
             <ContentTemplate>
-                <h1 style="padding: 5px;">电影简介</h1>
+                <div style="margin-top:50px">
+                    <h1 style="padding: 5px;">电影简介</h1>
+                    <p runat="server" id="movieDesc" style="font-size:20px"><%# getMovieDesc() %></p>
+                   </div>
+                
                 <div style="text-align:center">
-                    <p><asp:TextBox ID="TextBoxDesc" runat="server" Text="<%# getMovieDesc() %>" Height="100px" TextMode="MultiLine" Width="100%" CssClass="tbDesc" /></p>
+                    <p><asp:TextBox ID="TextBoxDesc" runat="server" Text="" Height="100px" TextMode="MultiLine" Width="100%" CssClass="tbDesc" /></p>
                     <div style="text-align: right">
                         <asp:Button ID="ButtonDesc" runat="server" OnClick="ButtonDesc_Click" CssClass="buttonDesc" Text="更新"/>
                     </div>
@@ -68,6 +126,8 @@
             </ContentTemplate>
 
         </asp:UpdatePanel>
+
+        
 
         <asp:UpdatePanel runat="server" ID="UpdatePanelNews" UpdateMode="Conditional">
 
@@ -321,80 +381,6 @@
         </asp:UpdatePanel>
 
        
-
-
-
-
-        <asp:UpdatePanel ID="UpdatePanelImage" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <h1 style="padding: 10px; margin-top: 50px">相关图片</h1>
-                <table id="TableImage" runat="server" style="width: 100%; border-collapse: separate; border-spacing: 50px">
-                    <tr style="text-align: center;">
-                        <td style="width: 300px; text-align: center">
-                            <img runat="server" id="ImageIcon" style="background-color: #eeeeee; width: 250px" src="<%# getIconUrl() %>" /></td>
-                        <td>
-                            <asp:TextBox ID="TextBoxIcon" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getIconUrl() %>" /></td>
-
-                        <td style="width: 200px">
-                            <asp:Button runat="server" ID="ButtonUpdateIcon" Text="更新" Width="100px" Height="50px" OnClick="updateIconClick" /></td>
-                    </tr>
-
-                    <tr style="text-align: center;">
-                        <td style="width: 300px; text-align: center">
-                            <img runat="server" id="ImageBanner" style="background-color: #eeeeee; width: 250px;" src="<%# getBannerUrl() %>" /></td>
-                        <td>
-                            <asp:TextBox ID="TextBoxBanner" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getBannerUrl() %>" /></td>
-
-                        <td style="width: 200px">
-                            <asp:Button runat="server" ID="ButtonUpdateBanner" Text="更新" Width="100px" Height="50px" OnClick="updateBannerClick" /></td>
-                    </tr>
-
-                    <tr style="text-align: center;">
-                        <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image0" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(0) %>" /></td>
-                        <td>
-                            <asp:TextBox ID="TextBox0" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(0) %>" /></td>
-
-                        <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button0" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl0" /></td>
-                    </tr>
-
-                    <tr style="text-align: center;">
-                        <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image1" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(1) %>" /></td>
-                        <td>
-                            <asp:TextBox ID="TextBox1" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(1) %>" /></td>
-
-                        <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button1" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl1" /></td>
-                    </tr>
-
-                    <tr style="text-align: center;">
-                        <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image2" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(2) %>" /></td>
-                        <td>
-                            <asp:TextBox ID="TextBox2" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(2) %>" /></td>
-
-                        <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button2" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl2" /></td>
-                    </tr>
-
-                    <tr style="text-align: center;">
-                        <td style="width: 300px; text-align: center">
-                            <img runat="server" id="Image3" style="background-color: #eeeeee; width: 250px;" src="<%# getOperaImageUrl(3) %>" /></td>
-                        <td>
-                            <asp:TextBox ID="TextBox3" runat="server" Style="width: 100%;" AutoPostBack="true" Text="<%# getOperaImageUrl(3) %>" /></td>
-
-                        <td style="width: 200px">
-                            <asp:Button runat="server" ID="Button3" Text="更新" Width="100px" Height="50px" OnClick="updateOperaImageUrl3" /></td>
-                    </tr>
-
-
-                </table>
-            </ContentTemplate>
-
-        </asp:UpdatePanel>
-
 
 
 

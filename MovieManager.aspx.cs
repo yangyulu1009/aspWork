@@ -15,11 +15,8 @@ public partial class MovieManager : System.Web.UI.Page
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        int id = SqlData.getInstance().getMaxId("movie") + 1;
-        String sqlstr = String.Format("INSERT INTO movie(id) VALUES ('{0:d}')", id);
-        SqlData.getInstance().ExecuteSQL(sqlstr);
+        Movie.insert();
         GridView1.DataBind();
-     //   Response.Redirect(Request.Url.ToString());
     }
 
     public String getKeywords(object dataItem)
