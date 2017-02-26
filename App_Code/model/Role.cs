@@ -70,7 +70,10 @@ public class Role
     {
         foreach (String name in names)
         {
-            insert(movieId, role, name);
+            if (name.Trim().Length > 0)
+            {
+                insert(movieId, role, name.Trim());
+            }
         }
     }
 

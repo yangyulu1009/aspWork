@@ -41,6 +41,11 @@ public class People
 
     public static String add(String name, String url)
     {
+        name = name.Trim();
+        if (name.Length <= 0)
+        {
+            return null;
+        }
         int id = SqlData.getInstance().getMaxId("people") + 1;
         String sql = String.Format("insert into people (id,name,url) values('{0:d}','{1:s}','{2:s}')", id, name, url);
         SqlData.getInstance().ExecuteSQL(sql);

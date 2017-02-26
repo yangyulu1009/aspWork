@@ -45,7 +45,8 @@ public class Keywords
 
     public static void insert(String movieId, String name)
     {
-        if (name != null && name.Length > 0)
+        name = name.Trim();
+        if (name.Length > 0)
         {
             int id = SqlData.getInstance().getMaxId("keywords") + 1;
             String sql = String.Format("insert into keywords (id,name,movie_id) values('{0:d}','{1:s}','{2:s}')", id, name, movieId);
