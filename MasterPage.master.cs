@@ -72,7 +72,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         return text;
     }
 
-    public String getRegisterButtonTarget()
+    public String getRegisterButtonDataTarget()
     {
         String text = isLogined() ? "" : "#myModal5";
   //      MyLog.v("getRegisterButtonTarget " + text);

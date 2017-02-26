@@ -23,7 +23,29 @@ public partial class Single : System.Web.UI.Page
         mMovie = Movie.get(id);
         mMovie.loadExtraData();
         setStar();
+
+      //  processAction();
+
         Page.DataBind();
+    }
+
+    private void processAction()
+    {
+        String action = Request.QueryString["action"];
+        MyLog.v("action = " + action);
+        if (action == null || action.Length == 0)
+        {
+            return;
+        }
+        if ("sndResp".Equals(action))
+        {
+            if (Request.Form["response"] != null)
+            {
+                String response = Request.Form["response"].ToString();
+                MyLog.v("response: " + response);
+            }
+            
+        }
     }
 
     private void setStar()
@@ -64,7 +86,7 @@ public partial class Single : System.Web.UI.Page
         return sb.ToString();
     }
 
-    private String getResponseHtml(Response response)
+    private String getResponseHtml(Responses response)
     {
         StringBuilder sb = new StringBuilder();
 
@@ -125,5 +147,44 @@ public partial class Single : System.Web.UI.Page
     {
         Sales sale = mMovie.sales.ElementAt(0);
         return DateUtils.getDate(sale.date);
+    }
+
+    public String getSendResponseHtml()
+    {
+        StringBuilder sb = new StringBuilder();
+        if (isLogined())
+        {
+            ButtonSendRsp.Visible = true;
+        } else
+        {
+            ButtonSendRsp.Visible = false;
+            sb.AppendFormat("<a class=\"send-rsp-btn\" data-toggle=\"modal\" data-target=\"#myModal4\">SEND</a>");
+        }
+        return sb.ToString();
+    }
+
+
+    private bool isLogined()
+    {
+        return getLoginedUserName() != null;
+    }
+
+    protected String getLoginedUserName()
+    {
+        if (Session[Constants.SESSION_USERNAME] == null)
+        {
+            return null;
+        }
+
+        String userName = Session[Constants.SESSION_USERNAME].ToString();
+        MyLog.v("Session user: " + userName);
+        return userName;
+    }
+
+    protected void ButtonSendRsp_Click(object sender, EventArgs e)
+    {
+        MyLog.v("clicked " + TextBoxResp.Text);
+        Responses.insert(mMovie.id, Session[Constants.SESSION_USERID].ToString(), TextBoxResp.Text);
+        responseDiv.DataBind();
     }
 }

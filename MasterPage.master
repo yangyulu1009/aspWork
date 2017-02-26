@@ -159,7 +159,7 @@
                     <div class="col-md-6 wthree_agile_login">
                         <ul>
                             <li><a href="<%# getLoginButtonUrl() %>" class="login"  data-toggle="modal" data-target="<%# getLoginButtonDataTarget() %>"><%# getLoginButtonText() %></a></li>
-							<li><a href="<%# getRegisterButtonUrl() %>" class="login reg"  data-toggle="modal" data-target="<%# getRegisterButtonTarget() %>"><%# getRegisterButtonText() %></a></li>
+							<li><a href="<%# getRegisterButtonUrl() %>" class="login reg"  data-toggle="modal" data-target="<%# getRegisterButtonDataTarget() %>"><%# getRegisterButtonText() %></a></li>
                         </ul>
                     </div>
                     <div class="col-md-6 wthree_share_agile"></div>

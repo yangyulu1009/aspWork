@@ -24,7 +24,7 @@ public class Movie
     public List<Keywords> keywords;
     public List<Image> images;
     public List<Video> videos;
-    public List<Response> responses;
+    public List<Responses> responses;
     public List<News> news;
     public List<Sales> sales;
     public List<Role> roles;
@@ -52,7 +52,7 @@ public class Movie
     {
         Image.removeAll(id);
         Video.removeAll(id);
-        Response.removeAll(id);
+        Responses.removeAll(id);
         Keywords.removeAll(id);
         News.removeAll(id);
         Sales.removeAll(id);
@@ -125,7 +125,7 @@ public class Movie
         roles = Role.get(id);
         sales = Sales.get(id);
         videos = Video.get(id);
-        responses = Response.get(id);
+        responses = Responses.get(id);
     }
 
     private List<Image> getImages()
