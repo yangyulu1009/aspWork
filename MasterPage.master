@@ -250,7 +250,10 @@
             <div id="content" style="margin-top:50px;margin-bottom:50px;">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
-            <div class="w3agile_footer_copy">
+
+            
+
+            <div class="w3agile_footer_copy" style="margin-top:100px">
                 <p>Copyright &copy; 2017. Movie Expert All rights reserved.</p>
             </div>
             <a href="#home" id="toTop" class="scroll" style="display: block; left: 1101px;">

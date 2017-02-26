@@ -117,105 +117,7 @@
 
 
 
-        <asp:UpdatePanel runat="server" ID="UpdatePanelImage" UpdateMode="Conditional">
-            <ContentTemplate>
-
-                <h1 style="padding: 5px; margin-top: 50px">相关图片</h1>
-                <asp:GridView ID="GridViewImage" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceImage" OnRowUpdating="GridViewImage_RowUpdating">
-
-
-                    <Columns>
-                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <HeaderStyle CssClass="gridheader" />
-                            <ItemStyle CssClass="griditem" />
-                        </asp:BoundField>
-                        <asp:ImageField DataImageUrlField="url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="200px">
-                            <HeaderStyle CssClass="gridheader" />
-                            <ItemStyle CssClass="griditem" />
-                        </asp:ImageField>
-                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
-                    </Columns>
-
-
-
-                </asp:GridView>
-
-
-                <asp:SqlDataSource ID="SqlDataSourceImage" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
-                    DeleteCommand="DELETE FROM [image] WHERE [id] = @id" InsertCommand="INSERT INTO [image] ([id], [url]) VALUES (@id, @url)"
-                    SelectCommand="SELECT [id], [url] FROM [image] WHERE ([movie_id] = @movie_id)"
-                    UpdateCommand="UPDATE [image] SET [url] = @url WHERE [id] = @id">
-                    <DeleteParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </DeleteParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                        <asp:Parameter Name="url" Type="String" />
-                    </InsertParameters>
-                    <SelectParameters>
-                        <asp:QueryStringParameter DefaultValue="1" Name="movie_id" QueryStringField="id" Type="Int32" />
-                    </SelectParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="url" Type="String" />
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </UpdateParameters>
-                </asp:SqlDataSource>
-
-
-            </ContentTemplate>
-
-
-        </asp:UpdatePanel>
-
-
-
-        <asp:UpdatePanel runat="server" ID="UpdatePanelVideos" UpdateMode="Conditional">
-            <ContentTemplate>
-
-                <h1 style="padding: 5px; margin-top: 50px">相关视频</h1>
-                <asp:GridView ID="GridViewVideos" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceVideo" OnRowUpdating="GridViewVideos_RowUpdating">
-
-
-                    <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"></asp:BoundField>
-                        <asp:ImageField DataImageUrlField="image_url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="200px">
-                        </asp:ImageField>
-                        <asp:BoundField DataField="video_url" HeaderText="播放地址" SortExpression="video_url" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
-                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
-                    </Columns>
-
-
-
-                </asp:GridView>
-
-
-                <asp:SqlDataSource ID="SqlDataSourceVideo" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
-                    DeleteCommand="DELETE FROM [video] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [video] ([id], [image_url], [video_url]) VALUES (@id, @image_url, @video_url)" 
-                    SelectCommand="SELECT [id], [image_url], [video_url] FROM [video] WHERE ([movie_id] = @movie_id)" 
-                    UpdateCommand="UPDATE [video] SET [image_url] = @image_url, [video_url] = @video_url WHERE [id] = @id">
-                    <DeleteParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </DeleteParameters>
-                    <InsertParameters>
-                        <asp:Parameter Name="id" Type="Int32" />
-                        <asp:Parameter Name="image_url" Type="String" />
-                        <asp:Parameter Name="video_url" Type="String" />
-                    </InsertParameters>
-                    <SelectParameters>
-                        <asp:QueryStringParameter DefaultValue="1" Name="movie_id" QueryStringField="id" Type="Int32" />
-                    </SelectParameters>
-                    <UpdateParameters>
-                        <asp:Parameter Name="image_url" Type="String" />
-                        <asp:Parameter Name="video_url" Type="String" />
-                        <asp:Parameter Name="id" Type="Int32" />
-                    </UpdateParameters>
-                </asp:SqlDataSource>
-
-            </ContentTemplate>
-
-
-        </asp:UpdatePanel>
+        
 
 
         <asp:UpdatePanel runat="server" ID="UpdatePanelNews" UpdateMode="Conditional">
@@ -416,6 +318,114 @@
         </asp:UpdatePanel>
 
       <div class="clearfix" />
+
+
+
+
+
+
+        <asp:UpdatePanel runat="server" ID="UpdatePanelImage" UpdateMode="Conditional">
+            <ContentTemplate>
+
+                <h1 style="padding: 5px; margin-top: 50px">相关图片</h1>
+                <asp:GridView ID="GridViewImage" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceImage" OnRowUpdating="GridViewImage_RowUpdating">
+
+
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
+                        </asp:BoundField>
+                        <asp:ImageField DataImageUrlField="url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="200px">
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
+                        </asp:ImageField>
+                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                    </Columns>
+
+
+
+                </asp:GridView>
+
+
+                <asp:SqlDataSource ID="SqlDataSourceImage" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
+                    DeleteCommand="DELETE FROM [image] WHERE [id] = @id" InsertCommand="INSERT INTO [image] ([id], [url]) VALUES (@id, @url)"
+                    SelectCommand="SELECT [id], [url] FROM [image] WHERE ([movie_id] = @movie_id)"
+                    UpdateCommand="UPDATE [image] SET [url] = @url WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="url" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:QueryStringParameter DefaultValue="1" Name="movie_id" QueryStringField="id" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="url" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+
+
+            </ContentTemplate>
+
+
+        </asp:UpdatePanel>
+
+
+
+        <asp:UpdatePanel runat="server" ID="UpdatePanelVideos" UpdateMode="Conditional">
+            <ContentTemplate>
+
+                <h1 style="padding: 5px; margin-top: 50px">相关视频</h1>
+                <asp:GridView ID="GridViewVideos" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceVideo" OnRowUpdating="GridViewVideos_RowUpdating">
+
+
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"></asp:BoundField>
+                        <asp:ImageField DataImageUrlField="image_url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="200px">
+                        </asp:ImageField>
+                        <asp:BoundField DataField="video_url" HeaderText="播放地址" SortExpression="video_url" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                    </Columns>
+
+
+
+                </asp:GridView>
+
+
+                <asp:SqlDataSource ID="SqlDataSourceVideo" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
+                    DeleteCommand="DELETE FROM [video] WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [video] ([id], [image_url], [video_url]) VALUES (@id, @image_url, @video_url)" 
+                    SelectCommand="SELECT [id], [image_url], [video_url] FROM [video] WHERE ([movie_id] = @movie_id)" 
+                    UpdateCommand="UPDATE [video] SET [image_url] = @image_url, [video_url] = @video_url WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="image_url" Type="String" />
+                        <asp:Parameter Name="video_url" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:QueryStringParameter DefaultValue="1" Name="movie_id" QueryStringField="id" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="image_url" Type="String" />
+                        <asp:Parameter Name="video_url" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+
+            </ContentTemplate>
+
+
+        </asp:UpdatePanel>
+
+
+
            
 
         <asp:UpdatePanel ID="UpdatePanelResponse" runat="server" UpdateMode="Conditional">
@@ -472,7 +482,7 @@
 
         </asp:UpdatePanel>
 
-       <div class="clearfix" />
+    
 
     </form>
 
