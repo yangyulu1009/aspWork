@@ -20,6 +20,26 @@ public class Constants
     public static char[] SEPS = new char[] { ' ', ',', ';', ':'};
 
     public static char[] SEPS_WITHNO_SPACE = new char[] { ',', ';', ':' };
+
+
+    public static String[] IMAGE_DESC =
+    {
+        "首页电影图标",
+        "电影剧照1",
+        "电影剧照2",
+        "电影剧照3",
+        "电影剧照4"
+    };
+
+    public static String[] VIDEO_DESC =
+    {
+        "电影正片",
+        "相关视频1",
+        "相关视频2",
+        "相关视频3",
+        "相关视频4"
+    };
+
     /*
      *
      * 

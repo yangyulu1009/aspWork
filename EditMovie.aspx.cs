@@ -123,6 +123,16 @@ public partial class EditMovie : System.Web.UI.Page
         return Users.get(userId).name;
     }
 
+    public String getImageDesc(int index)
+    {
+        return Constants.IMAGE_DESC[index];
+    }
+
+    public String getVideoDesc(int index)
+    {
+        return Constants.VIDEO_DESC[index];
+    }
+
 
     protected void GridViewImage_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {

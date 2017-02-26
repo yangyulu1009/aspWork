@@ -132,7 +132,7 @@
 
                 <asp:GridView ID="GridViewNews" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
@@ -235,7 +235,7 @@
 
                 <asp:GridView ID="GridViewSales" runat="server" DataSourceID="SqlDataSourceSales" Width="100%" AutoGenerateColumns="False" CellPadding="4" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" DataKeyNames="id">
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
@@ -332,15 +332,23 @@
 
 
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:ImageField DataImageUrlField="url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="200px">
+                        <asp:ImageField DataImageUrlField="url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="100px">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:ImageField>
-                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                        <asp:TemplateField HeaderText="图片描述" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
+                            <ItemTemplate>
+                                <%# getImageDesc(Container.DataItemIndex) %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                        </asp:CommandField>
                     </Columns>
 
 
@@ -384,10 +392,15 @@
 
 
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"></asp:BoundField>
-                        <asp:ImageField DataImageUrlField="image_url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="200px">
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%"></asp:BoundField>
+                        <asp:ImageField DataImageUrlField="image_url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="100px">
                         </asp:ImageField>
                         <asp:BoundField DataField="video_url" HeaderText="播放地址" SortExpression="video_url" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                        <asp:TemplateField HeaderText="视频描述" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
+                            <ItemTemplate>
+                                <%# getVideoDesc(Container.DataItemIndex) %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
                     </Columns>
 
@@ -438,7 +451,7 @@
                 <asp:GridView runat="server" ID="GridViewResponse" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceResponse">
 
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%"/>
                         <asp:TemplateField HeaderText="用户" SortExpression="user_id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <ItemTemplate>
                                 <asp:Label ID="LabelResponse" runat="server" Text='<%# getUserName(Container.DataItem) %>'></asp:Label>
