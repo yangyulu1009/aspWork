@@ -80,7 +80,7 @@
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:TemplateField>
-                        <asp:CommandField CancelText="取消" DeleteText="" EditText="编辑" ShowEditButton="True" UpdateText="更新" ItemStyle-Width="10%" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                        <asp:CommandField CancelText="取消" DeleteText="" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%"/>
                     </Columns>
 
 
@@ -138,7 +138,7 @@
                         </asp:BoundField>
 
 
-                        <asp:TemplateField HeaderText="发布时间" SortExpression="reldate">
+                        <asp:TemplateField HeaderText="发布时间" SortExpression="reldate" ItemStyle-Width="10%">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxNewsDate" runat="server" Text='<%# Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -168,7 +168,7 @@
                         </asp:TemplateField>
 
 
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"></asp:CommandField>
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%"></asp:CommandField>
                     </Columns>
                     <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
@@ -241,7 +241,7 @@
                         </asp:BoundField>
 
 
-                        <asp:TemplateField HeaderText="日期">
+                        <asp:TemplateField HeaderText="日期"  ItemStyle-Width="10%">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxSale" runat="server" Text='<%#  Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -260,11 +260,11 @@
                         </asp:TemplateField>
 
 
-                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"  ItemStyle-Width="20%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:CommandField>
@@ -345,7 +345,7 @@
                                 <%# getImageDesc(Container.DataItemIndex) %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
+                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"  ItemStyle-Width="20%">
                         <HeaderStyle CssClass="gridheader" />
                         <ItemStyle CssClass="griditem" />
                         </asp:CommandField>
@@ -401,7 +401,7 @@
                                 <%# getVideoDesc(Container.DataItemIndex) %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"  ItemStyle-Width="20%"/>
                     </Columns>
 
 
@@ -459,7 +459,7 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="reply_time" HeaderText="评论时间" ReadOnly="True" SortExpression="reply_time" />
                         <asp:BoundField DataField="comment" HeaderText="评论" ReadOnly="True" SortExpression="comment" />
-                        <asp:CommandField DeleteText="删除" ShowDeleteButton="True" />
+                        <asp:CommandField DeleteText="删除" ShowDeleteButton="True" ItemStyle-Width="20%"/>
                     </Columns>
 
                 </asp:GridView>
