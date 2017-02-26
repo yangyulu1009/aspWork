@@ -10,47 +10,43 @@ using System.Web.UI.WebControls;
 
 public partial class Single : System.Web.UI.Page
 {
-    public Movie mMovie;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (IsPostBack)
+        {
+            return;
+        }
         String id = Request.QueryString["id"];
         if (id == null || id.Length == 0)
         {
             id = "1";
         }
 
-        mMovie = Movie.get(id);
-        mMovie.loadExtraData();
-        setStar();
+        Movie movie = Movie.get(id);
+        Application[Constants.MOVIE] = movie;
 
-      //  processAction();
+        setStar();
 
         Page.DataBind();
     }
 
-    private void processAction()
+    public Movie getMovie()
     {
-        String action = Request.QueryString["action"];
-        MyLog.v("action = " + action);
-        if (action == null || action.Length == 0)
-        {
-            return;
-        }
-        if ("sndResp".Equals(action))
-        {
-            if (Request.Form["response"] != null)
-            {
-                String response = Request.Form["response"].ToString();
-                MyLog.v("response: " + response);
-            }
-            
-        }
+        Movie movie = (Movie)Application[Constants.MOVIE];
+        return Movie.get(movie.id);
     }
+
+    public String getMovieId()
+    {
+        return getMovie().id;
+    }
+
+
 
     private void setStar()
     {
-        int star = (int)(float.Parse(mMovie.star) * 2);
+        int star = (int)(float.Parse(getMovie().star) * 2);
         setStarClass(star1, star);
         setStarClass(star2, star -= 2);
         setStarClass(star3, star -= 2);
@@ -79,9 +75,10 @@ public partial class Single : System.Web.UI.Page
     public String getResponseHtmls()
     {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < mMovie.responses.Count; i++)
+        List<Responses> responses = Responses.get(getMovieId());
+        for (int i = 0; i < responses.Count; i++)
         {
-            sb.Append(getResponseHtml(mMovie.responses.ElementAt(i)));
+            sb.Append(getResponseHtml(responses.ElementAt(i)));
         }
         return sb.ToString();
     }
@@ -112,10 +109,13 @@ public partial class Single : System.Web.UI.Page
     {
         StringBuilder sb = new StringBuilder();
 
+        Movie movie = getMovie();
+
         sb.AppendFormat("<ul class=\"side-bar-agile\">");
-        for (int i = 0; i < mMovie.news.Count; i++)
+        List<News> newz = News.get(getMovieId());
+        for (int i = 0; i < newz.Count; i++)
         {
-            News news = mMovie.news.ElementAt(i);
+            News news = newz.ElementAt(i);
             sb.AppendFormat("<li>");
             sb.AppendFormat("    <a href=\"{0:s}\">{1:s}</a>", news.url, news.content);
             sb.AppendFormat("    <p>{0:s}</p>", DateUtils.getDate(news.reldate));
@@ -129,10 +129,11 @@ public partial class Single : System.Web.UI.Page
     public String getSalesHtml()
     {
         StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < mMovie.sales.Count; i++)
+        Movie movie = getMovie();
+        List<Sales> salez = Sales.get(getMovieId());
+        for (int i = 0; i < salez.Count; i++)
         {
-            Sales sales = mMovie.sales.ElementAt(i);
+            Sales sales = salez.ElementAt(i);
             sb.AppendFormat("<tr>");
             sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getDate(sales.date));
             sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getWeekDay(sales.date));
@@ -145,7 +146,8 @@ public partial class Single : System.Web.UI.Page
 
     public String getTillDate()
     {
-        Sales sale = mMovie.sales.ElementAt(0);
+        List<Sales> salez = Sales.get(getMovieId());
+        Sales sale = salez.ElementAt(0);
         return DateUtils.getDate(sale.date);
     }
 
@@ -184,7 +186,7 @@ public partial class Single : System.Web.UI.Page
     protected void ButtonSendRsp_Click(object sender, EventArgs e)
     {
         MyLog.v("clicked " + TextBoxResp.Text);
-        Responses.insert(mMovie.id, Session[Constants.SESSION_USERID].ToString(), TextBoxResp.Text);
+        Responses.insert(getMovieId(), Session[Constants.SESSION_USERID].ToString(), TextBoxResp.Text);
         responseDiv.DataBind();
     }
 }

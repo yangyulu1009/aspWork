@@ -28,12 +28,12 @@ public class Keywords
 
     public static List<String> get2(String id)
     {
+        List<Keywords> items = get(id);
         List<String> keys = new List<String>();
-        DataTable table = SqlData.getInstance().datasetExecute("select * from keywords where movie_id=" + id, "keywords");
-        for (int i = 0; i < table.Rows.Count; i++)
+        
+        for (int i = 0; i < keys.Count; i++)
         {
-            Keywords word = new Keywords(table.Rows[i]);
-            keys.Add(word.name);
+            keys.Add(items.ElementAt(i).name);
         }
         return keys;
     }

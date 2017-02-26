@@ -19,7 +19,6 @@ public partial class Index : System.Web.UI.Page
         for (int index = 0; index < table.Rows.Count; index++)
         {
             Movie movie = new Movie(table.Rows[index]);
-            movie.images = Image.get(movie.id);
             mMovie[index] = movie;
         }
     }

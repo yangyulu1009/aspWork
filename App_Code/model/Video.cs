@@ -66,4 +66,14 @@ public class Video
             insert(movieId.ToString(), "", "");
         }
     }
+
+    public static String getVideoUrl(String movieId, int index)
+    {
+        return get(movieId).ElementAt(index).url;
+    }
+
+    public static String getImageUrl(String movieId, int index)
+    {
+        return get(movieId).ElementAt(index).image;
+    }
 }

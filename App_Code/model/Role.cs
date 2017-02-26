@@ -48,6 +48,21 @@ public class Role
         return StringUtils.join(names, ";");
     }
 
+    public static String getDirector(String id)
+    {
+        return get(id, Role.DIRECTOR);
+    }
+
+    public static String getActor(String id)
+    {
+        return get(id, Role.ACTOR);
+    }
+
+    public static String getWriter(String id)
+    {
+        return get(id, Role.WRITER);
+    }
+
     public Role(DataRow row)
     {
         //

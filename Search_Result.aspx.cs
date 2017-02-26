@@ -50,7 +50,6 @@ public partial class Search_Result : System.Web.UI.Page
         for (int index = 0; index < table.Rows.Count; index++)
         {
             Movie movie = new Movie(table.Rows[index]);
-            movie.images = Image.get(movie.id);
             mMovieList.Add(movie);
             mMovieCount = mMovieList.Count;
         }
@@ -66,7 +65,6 @@ public partial class Search_Result : System.Web.UI.Page
         for (int index = 0; index < table.Rows.Count; index++)
         {
             Movie movie = new Movie(table.Rows[index]);
-            movie.images = Image.get(movie.id);
             if (mMovieList != null && !mMovieList.Contains(movie)) {
                 mMovieList.Add(movie);
                 mMovieCount = mMovieList.Count;
