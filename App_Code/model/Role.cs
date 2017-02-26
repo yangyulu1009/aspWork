@@ -45,7 +45,7 @@ public class Role
                 names.Add(role.people.name);
             }
         }
-        return StringUtils.join(names);
+        return StringUtils.join(names, ";");
     }
 
     public Role(DataRow row)

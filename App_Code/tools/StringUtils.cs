@@ -27,9 +27,18 @@ public class StringUtils
         {
             return text;
         }
-        foreach (String s in strs)
+        for (int i = 0; i < strs.Count; i++)
         {
-            text = text.Trim() + sep + s;
+            String s = strs.ElementAt(i);
+
+            if (text.Length == 0)
+            {
+                text = s;
+            } else
+            {
+                text = text.Trim() + sep + s;
+            }
+            
         }
         return text.Trim();
     }
