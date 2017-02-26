@@ -63,7 +63,7 @@ public class Genre
 
     public static void replace(String movieId, String text)
     {
-        String[] genres = text.Split(new char[] { ' ', ',', ':', ';' });
+        String[] genres = text.Split(Constants.SEPS);
         replaceAll(movieId, new List<String>(genres));
     }
 

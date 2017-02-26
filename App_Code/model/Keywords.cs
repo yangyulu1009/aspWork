@@ -65,7 +65,7 @@ public class Keywords
 
     public static void replace(String movieId, String keys)
     {
-        String[] keywords = keys.Split(new char[] { ' ', ',', ':', ';' });
+        String[] keywords = keys.Split(Constants.SEPS);
         replaceAll(movieId, new List<String>(keywords));
     }
 

@@ -64,7 +64,7 @@ public partial class MovieManager : System.Web.UI.Page
         String id = (row.Cells[0]).Text;
         String text = ((TextBox)row.Cells[2].FindControl("TextBoxDirector")).Text;
         MyLog.v("updateDirector " + text);
-        String[] names = text.Split(Constants.SEPS);
+        String[] names = text.Split(Constants.SEPS_WITHNO_SPACE);
         Role.replaceAll(id, "director", new List<String>(names));
     }
 
@@ -73,7 +73,7 @@ public partial class MovieManager : System.Web.UI.Page
         String id = (row.Cells[0]).Text;
         String text = ((TextBox)row.Cells[3].FindControl("TextBoxActor")).Text;
         MyLog.v("updateActor " + text);
-        String[] names = text.Split(Constants.SEPS);
+        String[] names = text.Split(Constants.SEPS_WITHNO_SPACE);
         Role.replaceAll(id, "actor", new List<String>(names));
     }
 
