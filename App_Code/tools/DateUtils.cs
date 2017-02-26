@@ -92,6 +92,12 @@ public class DateUtils
         return result;
     }
 
+    public static String getDate(String text)
+    {
+        MyDate date = parse(text).date;
+        return String.Format("{0:d}-{1:d}-{2:d}", date.year, date.month, date.day);
+    }
+
     public static String getWeekDay(String date)
     {
         return getWeekDay(DateUtils.parseDate(date));

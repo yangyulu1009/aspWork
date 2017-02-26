@@ -96,7 +96,7 @@ public partial class Single : System.Web.UI.Page
             News news = mMovie.news.ElementAt(i);
             sb.AppendFormat("<li>");
             sb.AppendFormat("    <a href=\"{0:s}\">{1:s}</a>", news.url, news.content);
-            sb.AppendFormat("    <p>{0:s}</p>", news.reldate);
+            sb.AppendFormat("    <p>{0:s}</p>", DateUtils.getDate(news.reldate));
             sb.AppendFormat("</li>");
         }
         sb.AppendFormat("</ul>");
@@ -112,7 +112,7 @@ public partial class Single : System.Web.UI.Page
         {
             Sales sales = mMovie.sales.ElementAt(i);
             sb.AppendFormat("<tr>");
-            sb.AppendFormat("    <td>{0:s}</td>", sales.date);
+            sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getDate(sales.date));
             sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getWeekDay(sales.date));
             sb.AppendFormat("    <td>${0:s}</td>", sales.sale);
             sb.AppendFormat("</tr>");
@@ -124,6 +124,6 @@ public partial class Single : System.Web.UI.Page
     public String getTillDate()
     {
         Sales sale = mMovie.sales.ElementAt(0);
-        return sale.date.ToString();
+        return DateUtils.getDate(sale.date);
     }
 }
