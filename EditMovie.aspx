@@ -31,19 +31,18 @@
         }
 
         table tr td {
-            background-color:#ffffff;
+            background-color: #ffffff;
         }
 
         .buttonDesc {
-            width:100px;
-            height:40px;
-            margin-top:10px;
+            width: 100px;
+            height: 40px;
+            margin-top: 10px;
         }
 
         .tbDesc {
-            font-size:20px;
+            font-size: 20px;
         }
-
     </style>
 </asp:Content>
 
@@ -54,97 +53,125 @@
         <asp:ScriptManager runat="server" ID="ScriptManager1">
         </asp:ScriptManager>
 
-        <asp:UpdatePanel ID="UpdatePanelImage2" runat="server" UpdateMode="Conditional">
+        <asp:UpdatePanel ID="UpdatePanelDesc" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <h1 style="padding: 5px;">图片管理</h1>
-                <table runat="server" style="width:100%;border-collapse: separate;border-spacing:10px; background-color:#eeeeee">
-                    <tr style="height:300px">
-                        <td style="width:15%">
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="<%# getIconUrl() %>" Width="100%"/>
-                            <asp:FileUpload ID="FileUpload1" runat="server"/>
-                            <asp:Button ID="UploadButton1" runat="server" Text="上传" OnClick="UploadButton1_Click" />
-                        </td>
-                        <td style="width:15%">
-                            <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="<%# getBannerUrl() %>"  Width="100%"/>
-                            <asp:FileUpload ID="FileUpload2" runat="server"/>
-                            <asp:Button ID="UploadButton2" runat="server" Text="上传" OnClick="UploadButton2_Click" />
-                        </td>
-                        <td style="width:15%">
-                            <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="<%# getOperaImageUrl(0) %>" Width="100%"/>
-                            <asp:FileUpload ID="FileUpload3" runat="server"/>
-                            <asp:Button ID="UploadButton3" runat="server" Text="上传" OnClick="UploadButton3_Click"/>
-                        </td>
-                        <td style="width:15%">
-                            <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="<%# getOperaImageUrl(1) %>" Width="100%"/>
-                            <asp:FileUpload ID="FileUpload4" runat="server"/>
-                            <asp:Button ID="UploadButton4" runat="server" Text="上传" OnClick="UploadButton4_Click" />
-                        </td>
-                        <td style="width:15%">
-                            <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="<%# getOperaImageUrl(2) %>" Width="100%"/>
-                            <asp:FileUpload ID="FileUpload5" runat="server"/>
-                            <asp:Button ID="UploadButton5" runat="server" Text="上传" OnClick="UploadButton5_Click" />
-                        </td>
-                        <td style="width:15%">
-                            <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="<%# getOperaImageUrl(3) %>" Width="100%"/>
-                            <asp:FileUpload ID="FileUpload6" runat="server"/>
-                            <asp:Button ID="UploadButton6" runat="server" Text="上传" OnClick="UploadButton6_Click" />
-                        </td>
-                    </tr>
+                <h1 style="padding: 5px;">电影简介</h1>
+                <asp:GridView ID="GridViewDesc" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceDesc">
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                        </asp:BoundField>
+                        <asp:BoundField ConvertEmptyStringToNull="False" DataField="name" HeaderText="电影名称" ItemStyle-Width="15%" ReadOnly="True" SortExpression="name" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="电影简介" SortExpression="description" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("description") %>' TextMode="MultiLine" Width="100%"></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("description") %>' Width="100%"></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
+                        </asp:TemplateField>
+                        <asp:CommandField CancelText="取消" DeleteText="" EditText="编辑" ShowEditButton="True" UpdateText="更新" ItemStyle-Width="10%" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"/>
+                    </Columns>
 
-                </table>
+
+                </asp:GridView>
+
+
+                <asp:SqlDataSource ID="SqlDataSourceDesc" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
+                    DeleteCommand="DELETE FROM [movie] WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [movie] ([id], [name], [description]) VALUES (@id, @name, @description)" 
+                    SelectCommand="SELECT [id], [name], [description] FROM [movie] WHERE ([id] = @id)" 
+                    UpdateCommand="UPDATE [movie] SET [description] = @description WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="name" Type="String" />
+                        <asp:Parameter Name="description" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:QueryStringParameter DefaultValue="1" Name="id" QueryStringField="id" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="name" Type="String" />
+                        <asp:Parameter Name="description" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+
+
             </ContentTemplate>
 
-            <Triggers>
-                <asp:PostBackTrigger ControlID="UploadButton1" />
-                <asp:PostBackTrigger ControlID="UploadButton2" />
-                <asp:PostBackTrigger ControlID="UploadButton3" />
-                <asp:PostBackTrigger ControlID="UploadButton4" />
-                <asp:PostBackTrigger ControlID="UploadButton5" />
-                <asp:PostBackTrigger ControlID="UploadButton6" />
-            </Triggers>
+        </asp:UpdatePanel>
+
+
+
+
+
+        <asp:UpdatePanel ID="UpdatePanelImage" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:GridView ID="GridViewImage" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceImage">
+
+
+
+                    <Columns>
+                        <asp:ImageField DataImageUrlField="url">
+                        </asp:ImageField>
+                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" />
+                    </Columns>
+
+
+
+                </asp:GridView>
+
+                <asp:SqlDataSource ID="SqlDataSourceImage" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" DeleteCommand="DELETE FROM [image] WHERE [id] = @id" InsertCommand="INSERT INTO [image] ([id], [url]) VALUES (@id, @url)" SelectCommand="SELECT [id], [url] FROM [image] WHERE ([movie_id] = @movie_id)" UpdateCommand="UPDATE [image] SET [url] = @url WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="url" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:QueryStringParameter DefaultValue="1" Name="movie_id" QueryStringField="id" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="url" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+
+            </ContentTemplate>
+
 
         </asp:UpdatePanel>
 
 
 
-
-        <asp:UpdatePanel runat="server" ID="UpdatePanelDesc" UpdateMode="Conditional">
-            <ContentTemplate>
-                <div style="margin-top:50px">
-                    <h1 style="padding: 5px;">电影简介</h1>
-                    <p runat="server" id="movieDesc" style="font-size:20px"><%# getMovieDesc() %></p>
-                   </div>
-                
-                <div style="text-align:center">
-                    <p><asp:TextBox ID="TextBoxDesc" runat="server" Text="" Height="100px" TextMode="MultiLine" Width="100%" CssClass="tbDesc" /></p>
-                    <div style="text-align: right">
-                        <asp:Button ID="ButtonDesc" runat="server" OnClick="ButtonDesc_Click" CssClass="buttonDesc" Text="更新"/>
-                    </div>
-                    
-                </div>
-                
-            </ContentTemplate>
-
-        </asp:UpdatePanel>
-
-        
 
         <asp:UpdatePanel runat="server" ID="UpdatePanelNews" UpdateMode="Conditional">
 
             <ContentTemplate>
 
-                <div style="margin-top:50px">
+                <div style="margin-top: 50px">
                     <h1 style="float: left; padding: 5px;">相关新闻</h1>
                     <asp:Button runat="server" ID="addNews" OnClick="btnAddNews_Click" Text="添加新闻" CssClass="addbtn" />
                 </div>
-                
+
 
 
                 <asp:GridView ID="GridViewNews" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                        <HeaderStyle CssClass="gridheader" />
-                        <ItemStyle CssClass="griditem" />
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
 
 
@@ -161,8 +188,8 @@
 
 
                         <asp:BoundField DataField="content" HeaderText="新闻内容" SortExpression="content" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                        <HeaderStyle CssClass="gridheader" />
-                        <ItemStyle CssClass="griditem" />
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
 
 
@@ -178,8 +205,7 @@
                         </asp:TemplateField>
 
 
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                        </asp:CommandField>
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"></asp:CommandField>
                     </Columns>
                     <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
@@ -194,7 +220,7 @@
                 <asp:SqlDataSource ID="SqlDataSourceNews" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
                     SelectCommand="SELECT news.* FROM [news]"
                     DeleteCommand="DELETE FROM [news] WHERE [id] = @id"
-                    UpdateCommand="UPDATE [news] SET [content] = @content, [url] = @url, [reldate] = @reldate WHERE [id] = @id" 
+                    UpdateCommand="UPDATE [news] SET [content] = @content, [url] = @url, [reldate] = @reldate WHERE [id] = @id"
                     InsertCommand="INSERT INTO [news] ([id], [content], [url], [reldate], [movie_id]) VALUES (@id, @content, @url, @reldate, @movie_id)">
 
                     <DeleteParameters>
@@ -228,24 +254,24 @@
 
 
 
-       
+
 
 
         <asp:UpdatePanel runat="server" ID="UpdatePanelSales" UpdateMode="Conditional">
 
             <ContentTemplate>
-                <div style="margin-top:50px">
-                    <h1 style="float: left; padding: 5px; ">电影票房</h1>
+                <div style="margin-top: 50px">
+                    <h1 style="float: left; padding: 5px;">电影票房</h1>
                     <asp:Button runat="server" ID="Button4" OnClick="btnAddSaleClick" Text="添加票房" CssClass="addbtn" />
                 </div>
-                
-                
+
+
 
                 <asp:GridView ID="GridViewSales" runat="server" DataSourceID="SqlDataSourceSales" Width="100%" AutoGenerateColumns="False" CellPadding="4" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" DataKeyNames="id">
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                        <HeaderStyle CssClass="gridheader" />
-                        <ItemStyle CssClass="griditem" />
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
 
 
@@ -268,13 +294,13 @@
                         </asp:TemplateField>
 
 
-                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales"  HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                        <HeaderStyle CssClass="gridheader" />
-                        <ItemStyle CssClass="griditem" />
+                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
                         <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                        <HeaderStyle CssClass="gridheader" />
-                        <ItemStyle CssClass="griditem" />
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
                         </asp:CommandField>
                     </Columns>
                     <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
@@ -287,14 +313,14 @@
                     <SortedDescendingCellStyle BackColor="#F6F0C0" />
                     <SortedDescendingHeaderStyle BackColor="#7E0000" />
                 </asp:GridView>
-                
 
 
 
-                <asp:SqlDataSource ID="SqlDataSourceSales" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
-                    SelectCommand="SELECT * FROM [sales]" 
-                    DeleteCommand="DELETE FROM [sales] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [sales] ([id], [movie_id], [reldate], [sales]) VALUES (@id, @movie_id, @reldate, @sales)" 
+
+                <asp:SqlDataSource ID="SqlDataSourceSales" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
+                    SelectCommand="SELECT * FROM [sales]"
+                    DeleteCommand="DELETE FROM [sales] WHERE [id] = @id"
+                    InsertCommand="INSERT INTO [sales] ([id], [movie_id], [reldate], [sales]) VALUES (@id, @movie_id, @reldate, @sales)"
                     UpdateCommand="UPDATE [sales] SET [sales] = @sales, [reldate] = @reldate WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
@@ -312,7 +338,7 @@
                         <asp:Parameter Name="id" Type="Int32" />
                     </UpdateParameters>
                 </asp:SqlDataSource>
-                    
+
 
 
 
@@ -325,18 +351,18 @@
         </asp:UpdatePanel>
 
 
-        
+
 
         <asp:UpdatePanel ID="UpdatePanelResponse" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <div style="margin-top:50px">
-                    <h1 style="float: left; padding: 5px; ">电影评论</h1>
+                <div style="margin-top: 50px">
+                    <h1 style="float: left; padding: 5px;">电影评论</h1>
                 </div>
 
                 <asp:GridView runat="server" ID="GridViewResponse" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceResponse">
 
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem"/>
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
                         <asp:TemplateField HeaderText="用户" SortExpression="user_id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# getUserName(Container.DataItem) %>'></asp:Label>
@@ -349,10 +375,10 @@
 
                 </asp:GridView>
 
-                <asp:SqlDataSource ID="SqlDataSourceResponse" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" 
-                    DeleteCommand="DELETE FROM [responses] WHERE [id] = @id" 
-                    InsertCommand="INSERT INTO [responses] ([id], [movie_id], [user_id], [reply_time], [comment]) VALUES (@id, @movie_id, @user_id, @reply_time, @comment)" 
-                    SelectCommand="SELECT * FROM [responses] WHERE ([movie_id] = @movie_id)" 
+                <asp:SqlDataSource ID="SqlDataSourceResponse" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
+                    DeleteCommand="DELETE FROM [responses] WHERE [id] = @id"
+                    InsertCommand="INSERT INTO [responses] ([id], [movie_id], [user_id], [reply_time], [comment]) VALUES (@id, @movie_id, @user_id, @reply_time, @comment)"
+                    SelectCommand="SELECT * FROM [responses] WHERE ([movie_id] = @movie_id)"
                     UpdateCommand="UPDATE [responses] SET [movie_id] = @movie_id, [user_id] = @user_id, [reply_time] = @reply_time, [comment] = @comment WHERE [id] = @id">
                     <DeleteParameters>
                         <asp:Parameter Name="id" Type="Int32" />
@@ -380,7 +406,7 @@
 
         </asp:UpdatePanel>
 
-       
+
 
 
 
@@ -454,7 +480,7 @@
 
 
 
-        
+
 
     </form>
 

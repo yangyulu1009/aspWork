@@ -12,7 +12,7 @@ public class NameUtils
     public static String get(String fileName)
     {
         int index = fileName.LastIndexOf('.');
-        String name = fileName.Substring(0, index);
+        String name = fileName.Substring(0, index) + DateTime.Now.ToString();
         return Hash_MD5_16(name, true) + fileName.Substring(index);
     }
 

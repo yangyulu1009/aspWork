@@ -25,6 +25,8 @@ public class Movie
     public String icon;
     public String banner;
 
+    public String playUrl;
+
     public List<Keywords> keywords;
     public List<Image> images;
     public List<Video> videos;
@@ -86,6 +88,7 @@ public class Movie
         video = row["video"].ToString();
         icon = row["icon"].ToString();
         banner = row["banner"].ToString();
+        playUrl = row["playUrl"].ToString();
     }
 
     public String getIndexImage()
