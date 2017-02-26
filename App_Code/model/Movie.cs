@@ -195,4 +195,10 @@ public class Movie
         Video.init(id);
     }
 
+    public override bool Equals(object obj)
+    {
+        Movie that = (Movie) obj;
+        return id.Equals(that.id);
+    }
+
 }

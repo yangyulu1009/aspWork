@@ -16,6 +16,11 @@ public partial class Search_Result : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (IsPostBack)
+        {
+            return;
+        }
+
         if (Request.QueryString["query"] != null)
         {
             query = Request.QueryString["query"].ToString();

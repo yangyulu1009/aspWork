@@ -47,7 +47,7 @@
 
                 <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting">
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle HorizontalAlign="Center" CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
@@ -86,33 +86,33 @@
 
 
 
-                        <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="country" HeaderText="国家" SortExpression="country" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="country" HeaderText="国家" SortExpression="country" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="star" HeaderText="星级" SortExpression="star" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
-                        </asp:BoundField>
-
-
-
-
-                        <asp:BoundField DataField="allsales" HeaderText="票房" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="star" HeaderText="星级" SortExpression="star" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
 
 
-                        <asp:TemplateField HeaderText="类型" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+
+
+                        <asp:BoundField DataField="allsales" HeaderText="票房" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
+                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+                            <ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+
+
+                        <asp:TemplateField HeaderText="类型" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <ItemTemplate>
                                 <%# getGenres(Container.DataItem) %>
                             </ItemTemplate>
@@ -127,7 +127,7 @@
                         </asp:TemplateField>
 
 
-                        <asp:TemplateField HeaderText="关键词" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:TemplateField HeaderText="关键词" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
                             <ItemTemplate>
                                 <%# getKeywords(Container.DataItem) %>
                             </ItemTemplate>
@@ -141,12 +141,8 @@
 
 
 
-                        <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加">
-                            <ItemStyle />
-                        </asp:CommandField>
-                        <asp:CommandField ShowDeleteButton="True" DeleteText="删除" ItemStyle-CssClass="griditem">
-
-
+                        <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加" HeaderStyle-CssClass="gridheader" ItemStyle-Width="5%" DeleteText="删除" ShowDeleteButton="True">
+                            <HeaderStyle CssClass="gridheader" />
                             <ItemStyle />
                         </asp:CommandField>
 
