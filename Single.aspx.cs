@@ -83,6 +83,12 @@ public partial class Single : System.Web.UI.Page
         return sb.ToString();
     }
 
+    public String getResponseHtml(int index)
+    {
+        List<Responses> response = Responses.get(getMovieId());
+        return getResponseHtml(response.ElementAt(index));
+    }
+
     private String getResponseHtml(Responses response)
     {
         StringBuilder sb = new StringBuilder();
@@ -187,6 +193,7 @@ public partial class Single : System.Web.UI.Page
     {
         MyLog.v("clicked " + TextBoxResp.Text);
         Responses.insert(getMovieId(), Session[Constants.SESSION_USERID].ToString(), TextBoxResp.Text);
-        responseDiv.DataBind();
+        RepeaterResponses.DataBind();
+        TextBoxResp.Text = "";
     }
 }

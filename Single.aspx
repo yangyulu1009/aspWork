@@ -135,18 +135,31 @@
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
 
                             <ContentTemplate>
-                                <div id="responseDiv" runat="server">
-                                    <div class="response">
-                                        <h4>Responses</h4>
-                                        <%# getResponseHtmls() %>
-                                    </div>
+                                <asp:Repeater ID="RepeaterResponses" runat="server" DataSourceID="SqlDataSourceResponses">
+                                    <HeaderTemplate>
+                                        <h3 style="margin-top:20px">Responses</h3>
+                                        
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <%# getResponseHtml(Container.ItemIndex) %>
 
-                                    <div class="all-comments-info">
-                                        <h5>LEAVE A COMMENT</h5>
-                                        <asp:TextBox ID="TextBoxResp" runat="server" Columns="3" Width="100%" Rows="5" TextMode="MultiLine"></asp:TextBox>
-                                        <asp:Button ID="ButtonSendRsp" runat="server" Text="SEND" OnClick="ButtonSendRsp_Click" CssClass="send-rsp-btn" Visible="false" />
-                                        <%# getSendResponseHtml() %>
-                                    </div>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                                <%--  --%>
+                                <asp:SqlDataSource ID="SqlDataSourceResponses" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" SelectCommand="SELECT * FROM [responses] WHERE ([movie_id] = @movieId)">
+                                    <SelectParameters>
+                                        <asp:QueryStringParameter DefaultValue="1" Name="movieId" QueryStringField="id" Type="Int32" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+
+                                <div class="all-comments-info">
+                                    <h5>LEAVE A COMMENT</h5>
+                                    <asp:TextBox ID="TextBoxResp" runat="server" Columns="3" Width="100%" Rows="5" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:Button ID="ButtonSendRsp" runat="server" Text="SEND" OnClick="ButtonSendRsp_Click" CssClass="send-rsp-btn" Visible="false" />
+                                    <%# getSendResponseHtml() %>
                                 </div>
                             </ContentTemplate>
 
@@ -164,7 +177,7 @@
                         <div class="agile-info-recent">
                             <h4 class="side-t-w3l-agile">Box Office Sales</h4>
                             <div class="w3ls-recent-grids">
-                                <table border="1" style="width:100%">
+                                <table border="1" style="width: 100%">
                                     <tr>
                                         <th>Date</th>
                                         <th>Week</th>
