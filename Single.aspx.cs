@@ -96,7 +96,7 @@ public partial class Single : System.Web.UI.Page
         sb.AppendFormat("        <p>{0:s}</p>", response.comment);
         sb.AppendFormat("        <ul>");
         sb.AppendFormat("            <li>{0:s}</li>", response.reply_time);
-        sb.AppendFormat("            <li><a href=\"DeleteResponse?id={0:s}\">Delete</a></li>", response.id);
+        sb.AppendFormat("            <li><a href=\"?id={0:s}\">Delete</a></li>", response.id);
         sb.AppendFormat("        </ul>");
         sb.AppendFormat("    </div>");
         sb.AppendFormat("    <div class=\"clearfix\"></div>");

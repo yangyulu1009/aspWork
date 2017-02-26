@@ -164,7 +164,7 @@
                         <div class="agile-info-recent">
                             <h4 class="side-t-w3l-agile">Box Office Sales</h4>
                             <div class="w3ls-recent-grids">
-                                <table table width="100%" border="1">
+                                <table border="1" style="width:100%">
                                     <tr>
                                         <th>Date</th>
                                         <th>Week</th>

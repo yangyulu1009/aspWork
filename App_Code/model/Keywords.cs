@@ -31,7 +31,7 @@ public class Keywords
         List<Keywords> items = get(id);
         List<String> keys = new List<String>();
         
-        for (int i = 0; i < keys.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             keys.Add(items.ElementAt(i).name);
         }
