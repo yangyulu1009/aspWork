@@ -48,7 +48,7 @@ public class Image
 
     public static void init(int movieId)
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             insert(movieId.ToString(), " ");
         }
@@ -64,5 +64,11 @@ public class Image
     {
         List<Image> images = get(movieId);
         update(images.ElementAt(index).id, url);
+    }
+
+    public static void removeAll(String movieId)
+    {
+        String sql = String.Format("delete from image where movie_id='{0:s}'", movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
     }
 }

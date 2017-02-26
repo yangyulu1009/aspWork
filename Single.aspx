@@ -14,8 +14,8 @@
             <div class="col-md-8 latest-news-agile-left-content">
                 <div class="single video_agile_player">
                     <div class="video-grid-single-page-agileits">
-                        <div data-video="<%# mMovie.video %>" id="video">
-                            <img src="<%# mMovie.banner %>" alt="" class="img-responsive" />
+                        <div data-video="<%# mMovie.getBannerVideoUrl() %>" id="video">
+                            <img src="<%# mMovie.getBannerImageUrl() %>" alt="" class="img-responsive" />
                         </div>
                     </div>
                     <!-- <h4>Force 2 | Official Trailer | John Abraham, Sonakshi Sinha and Tahir Raj Bhasin</h4> -->

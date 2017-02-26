@@ -61,4 +61,10 @@ public class Sales : IComparable
         date = row["reldate"].ToString();
         sale = row["sales"].ToString();
     }
+
+    public static void removeAll(String movieId)
+    {
+        String sql = String.Format("delete from sales where movie_id='{0:s}'", movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
 }

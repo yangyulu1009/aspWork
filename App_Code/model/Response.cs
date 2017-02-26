@@ -42,4 +42,10 @@ public class Response
         reply_time = row["reply_time"].ToString();
         comment = row["comment"].ToString();
     }
+
+    public static void removeAll(String movieId)
+    {
+        String sql = String.Format("delete from responses where movie_id='{0:s}'", movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
 }

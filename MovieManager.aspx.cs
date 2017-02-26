@@ -26,13 +26,29 @@ public partial class MovieManager : System.Web.UI.Page
         return StringUtils.join(words);
     }
 
+    public String getGenres(object dataItem)
+    {
+        String id = DataBinder.Eval(dataItem, "id").ToString();
+        List<String> genres = Genre.get2(id);
+        return StringUtils.join(genres);
+    }
+
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         GridViewRow row = GridView1.Rows[e.RowIndex];
         updateKeywords(row);
+        updateGenres(row);
         updateDirector(row);
         updateActor(row);
         GridView1.DataBind();
+    }
+
+    private void updateGenres(GridViewRow row)
+    {
+        String id = (row.Cells[0]).Text;
+        String genre = ((TextBox)row.Cells[8].FindControl("TextBoxGenres")).Text;
+        MyLog.v("updating genres: " + genre);
+        Genre.replace(id, genre);
     }
 
     private void updateKeywords(GridViewRow row)
@@ -86,5 +102,12 @@ public partial class MovieManager : System.Web.UI.Page
 
         String key = ((TextBox)row.Cells[8].FindControl("TextBoxKeys")).Text;
         MyLog.v("key = " + key);
+    }
+
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        GridViewRow row = GridView1.Rows[e.RowIndex];
+        String id = (row.Cells[0]).Text;
+        Movie.removeAll(id);
     }
 }

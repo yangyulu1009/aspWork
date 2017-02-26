@@ -21,12 +21,6 @@ public class Movie
     public String description;
     public String genre;
 
-    public String video;
-    public String icon;
-    public String banner;
-
-    public String playUrl;
-
     public List<Keywords> keywords;
     public List<Image> images;
     public List<Video> videos;
@@ -52,6 +46,17 @@ public class Movie
             movies.Add(new Movie(row));
         }
         return movies;
+    }
+
+    public static void removeAll(String id)
+    {
+        Image.removeAll(id);
+        Video.removeAll(id);
+        Response.removeAll(id);
+        Keywords.removeAll(id);
+        News.removeAll(id);
+        Sales.removeAll(id);
+        Role.removeAll(id);
     }
 
     public static void updateDesc(String movieId, String desc)
@@ -85,20 +90,37 @@ public class Movie
         description = row["description"].ToString();
         genre = row["genre"].ToString();
         country = row["country"].ToString();
-        video = row["video"].ToString();
-        icon = row["icon"].ToString();
-        banner = row["banner"].ToString();
-        playUrl = row["playUrl"].ToString();
+    }
+
+    public String getImage(int index)
+    {
+        List<Image> images = Image.get(id);
+        return images.ElementAt(0).url;
     }
 
     public String getIndexImage()
     {
-        return icon;
+        return getImage(0);
+    }
+
+    public Video getVideo(int index)
+    {
+        List<Video> videos = Video.get(index.ToString());
+        return videos.ElementAt(index);
+    }
+
+    public String getBannerImageUrl()
+    {
+        return getVideo(0).image;
+    }
+
+    public String getBannerVideoUrl()
+    {
+        return getVideo(0).url;
     }
 
     public void loadExtraData()
     {
-        images = Image.get(id);
         keywords = Keywords.get(id);
         news = News.get(id);
         roles = Role.get(id);
@@ -166,6 +188,7 @@ public class Movie
         String sqlstr = String.Format("INSERT INTO movie(id) VALUES ('{0:d}')", id);
         SqlData.getInstance().ExecuteSQL(sqlstr);
         Image.init(id);
+        Video.init(id);
     }
 
 }

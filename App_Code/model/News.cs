@@ -40,4 +40,10 @@ public class News
         movie = row["movie_id"].ToString();
         reldate = row["reldate"].ToString();
     }
+
+    public static void removeAll(String movieId)
+    {
+        String sql = String.Format("delete from news where movie_id='{0:s}'", movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
 }

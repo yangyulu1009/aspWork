@@ -59,12 +59,12 @@ public partial class EditMovie : System.Web.UI.Page
 
     public String getIconUrl()
     {
-        return getMovie().icon;
+        return getMovie().getIndexImage();
     }
 
     public String getBannerUrl()
     {
-        return getMovie().banner;
+        return getMovie().getBannerImageUrl();
     }
 
     private Image getOperaImage(int index)
@@ -159,5 +159,15 @@ public partial class EditMovie : System.Web.UI.Page
         return Users.get(userId).name;
     }
 
-    
+
+
+    protected void GridViewImage_DataBinding(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void GridViewImage_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+
+    }
 }

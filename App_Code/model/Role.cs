@@ -87,4 +87,10 @@ public class Role
         String sql = String.Format("insert into role (id,movie_id,people_id,role) values('{0:d}','{1:s}','{2:s}','{3:s}')", id, movieId, peopleId, role);
         SqlData.getInstance().ExecuteSQL(sql);
     }
+
+    public static void removeAll(String movieId)
+    {
+        String sql = String.Format("delete from role where movie_id='{0:s}'", movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
 }

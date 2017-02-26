@@ -117,12 +117,22 @@
 
         <asp:UpdatePanel ID="UpdatePanelImage" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <asp:GridView ID="GridViewImage" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceImage">
+                <asp:GridView ID="GridViewImage" runat="server" AutoGenerateColumns="False" OnDataBinding="GridViewImage_DataBinding" OnRowDataBound="GridViewImage_RowDataBound">
 
 
 
                     <Columns>
-                        <asp:ImageField DataImageUrlField="url">
+                        <asp:ImageField HeaderText="图标">
+                        </asp:ImageField>
+                        <asp:ImageField HeaderText="海报">
+                        </asp:ImageField>
+                        <asp:ImageField HeaderText="剧照1">
+                        </asp:ImageField>
+                        <asp:ImageField HeaderText="剧照2">
+                        </asp:ImageField>
+                        <asp:ImageField HeaderText="剧照3">
+                        </asp:ImageField>
+                        <asp:ImageField HeaderText="剧照4">
                         </asp:ImageField>
                         <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" />
                     </Columns>

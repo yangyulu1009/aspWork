@@ -44,4 +44,26 @@ public class Video
         String str = String.Format("update video set image_url='{0:s}', video_url='{1:s}' where id={2:s}", image, url, id);
         SqlData.getInstance().ExecuteSQL(str);
     }
+
+    public static void removeAll(String movieId)
+    {
+        String sql = String.Format("delete from video where movie_id='{0:s}'", movieId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
+    
+    public static void insert(String movieId, String imageUrl, String videoUrl)
+    {
+        int id = SqlData.getInstance().getMaxId("video") + 1;
+        String sqlstr = String.Format("INSERT INTO video(id,movie_id,image_url,video_url) VALUES ('{0:d}', '{1:s}', '{2:s}', '{3:s}')", id, movieId, imageUrl, videoUrl);
+        SqlData.getInstance().ExecuteSQL(sqlstr);
+    }
+
+    public static void init(int movieId)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            insert(movieId.ToString(), " ", " ");
+        }
+    }
 }
