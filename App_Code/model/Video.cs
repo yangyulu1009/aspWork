@@ -63,7 +63,7 @@ public class Video
     {
         for (int i = 0; i < 5; i++)
         {
-            insert(movieId.ToString(), " ", " ");
+            insert(movieId.ToString(), "", "");
         }
     }
 }

@@ -88,14 +88,13 @@ public class Movie
         star = row["star"].ToString();
         allSales = row["allSales"].ToString();
         description = row["description"].ToString();
-        genre = row["genre"].ToString();
         country = row["country"].ToString();
     }
 
     public String getImage(int index)
     {
         List<Image> images = Image.get(id);
-        return images.ElementAt(0).url;
+        return images.ElementAt(index).url;
     }
 
     public String getIndexImage()
@@ -105,7 +104,7 @@ public class Movie
 
     public Video getVideo(int index)
     {
-        List<Video> videos = Video.get(index.ToString());
+        List<Video> videos = Video.get(id);
         return videos.ElementAt(index);
     }
 
@@ -129,9 +128,14 @@ public class Movie
         responses = Response.get(id);
     }
 
+    private List<Image> getImages()
+    {
+        return Image.get(id);
+    }
+
     public String getOperaImage(int index)
     {
-        return images.ElementAt(index).url;
+        return getImages().ElementAt(index + 1).url;
     }
 
     public String getVideoImage(int index)

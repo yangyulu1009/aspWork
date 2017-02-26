@@ -94,42 +94,6 @@ public partial class EditMovie : System.Web.UI.Page
         return getOperaImage(index).url;
     }
 
-    public void updateVideo0(object sender, EventArgs e)
-    {
-        String url = TextBoxVideoImage0.Text;
-        String video = TextBoxVideoUrl0.Text;
-        MyLog.v("text = " + url);
-        getVideo(0).update(url, video);
-        VideoImage0.DataBind();
-    }
-
-    public void updateVideo1(object sender, EventArgs e)
-    {
-        String url = TextBoxVideoImage1.Text;
-        String video = TextBoxVideoUrl1.Text;
-        MyLog.v("text = " + url);
-        getVideo(1).update(url, video);
-        VideoImage1.DataBind();
-    }
-
-    public void updateVideo2(object sender, EventArgs e)
-    {
-        String url = TextBoxVideoImage2.Text;
-        String video = TextBoxVideoUrl2.Text;
-        MyLog.v("text = " + url);
-        getVideo(2).update(url, video);
-        VideoImage2.DataBind();
-    }
-
-    public void updateVideo3(object sender, EventArgs e)
-    {
-        String url = TextBoxVideoImage3.Text;
-        String video = TextBoxVideoUrl3.Text;
-        MyLog.v("text = " + url);
-        getVideo(3).update(url, video);
-        VideoImage3.DataBind();
-    }
-
     public String getKeywords()
     {
         List<String> keys = Keywords.get2(getMovieId());
@@ -160,14 +124,13 @@ public partial class EditMovie : System.Web.UI.Page
     }
 
 
-
-    protected void GridViewImage_DataBinding(object sender, EventArgs e)
+    protected void GridViewImage_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-
+        GridViewImage.DataBind();
     }
 
-    protected void GridViewImage_RowDataBound(object sender, GridViewRowEventArgs e)
+    protected void GridViewVideos_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-
+        GridViewVideos.DataBind();
     }
 }

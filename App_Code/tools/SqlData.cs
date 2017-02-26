@@ -32,6 +32,7 @@ public class SqlData
         MyLog.v(str);
 
         cmd = new SqlCommand(str, con);
+        cmd.CommandTimeout = 600;
 
         try
         {
@@ -66,6 +67,7 @@ public class SqlData
         try
         {
             cmd = new SqlCommand(str, con);
+            cmd.CommandTimeout = 600;
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
         }

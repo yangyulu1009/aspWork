@@ -41,6 +41,7 @@ public class Image
 
     public static void insert(String movieId, String url)
     {
+        url = url.Trim();
         int id = SqlData.getInstance().getMaxId("image") + 1;
         String sqlstr = String.Format("INSERT INTO image(id,movie_id,url) VALUES ('{0:d}', '{1:s}', '{2:s}')", id, movieId, url);
         SqlData.getInstance().ExecuteSQL(sqlstr);
@@ -50,7 +51,7 @@ public class Image
     {
         for (int i = 0; i < 5; i++)
         {
-            insert(movieId.ToString(), " ");
+            insert(movieId.ToString(), "");
         }
     }
 
