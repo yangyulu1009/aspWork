@@ -37,6 +37,22 @@ public class Genre
         return genres;
     }
 
+    public static List<String> getAllGenre()
+    {
+        List<String> genres = new List<String>();
+        DataTable table = SqlData.getInstance().datasetExecute("select * from genre", "genre");
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            Genre word = new Genre(table.Rows[i]);
+            if (!genres.Contains(word.name))
+            {
+                genres.Add(word.name);
+            }
+           
+        }
+        return genres;
+    }
+
     public static void removeAll(String id)
     {
         SqlData.getInstance().ExecuteSQL("delete from genre where movie_id=" + id);
@@ -78,7 +94,7 @@ public class Genre
         //
         // TODO: Add constructor logic here
         //
-        id = row["id"].ToString();
+       id = row["id"].ToString();
         name = row["name"].ToString();
         movie = row["movie_id"].ToString();
     }

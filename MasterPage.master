@@ -73,27 +73,13 @@
                                                     <!-- 恢复 -->
                                                     <div class="col-sm-4">
                                                         <ul class="multi-column-dropdown">
-                                                            <li>
-                                                                <a href="action.html">Action</a></li>
-                                                            <li>
-                                                                <a href="genre.html">Biography</a></li>
-                                                            <li>
-                                                                <a href="genre.html">Crime</a></li>
-                                                            <li>
-                                                                <a href="genre.html">Family</a></li>
-                                                            <li>
-                                                                <a href="horror.html">Horror</a></li>
-                                                            <li>
-                                                                <a href="genre.html">Romance</a></li>
-                                                            <li>
-                                                                <a href="genre.html">Sports</a></li>
-                                                            <li>
-                                                                <a href="genre.html">War</a></li>
+                                                            <%# getMovieTypeHtmls() %>
+                                                           
                                                         </ul>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <ul class="multi-column-dropdown">
-                                                            <li>
+                                                            <%--<li>
                                                                 <a href="genre.html">Adventure</a></li>
                                                             <li>
                                                                 <a href="comedy.html">Comedy</a></li>
@@ -102,12 +88,12 @@
                                                             <li>
                                                                 <a href="genre.html">Fantasy</a></li>
                                                             <li>
-                                                                <a href="genre.html">Thriller</a></li>
+                                                                <a href="genre.html">Thriller</a></li>--%>
                                                         </ul>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <ul class="multi-column-dropdown">
-                                                            <li>
+                                                           <%-- <li>
                                                                 <a href="genre.html">Animation</a></li>
                                                             <li>
                                                                 <a href="genre.html">Costume</a></li>
@@ -118,7 +104,7 @@
                                                             <li>
                                                                 <a href="genre.html">Musical</a></li>
                                                             <li>
-                                                                <a href="genre.html">Psychological</a></li>
+                                                                <a href="genre.html">Psychological</a></li>--%>
                                                         </ul>
                                                     </div>
                                                     <div class="clearfix"></div>

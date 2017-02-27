@@ -6,9 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Collections.Specialized;
+using System.Web.UI.HtmlControls;
+using System.Text;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    public List<String> mGenreList;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         MyLog.v("MasterPage Page_Load: " + IsPostBack);
@@ -18,6 +22,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             return;
         }
 
+        mGenreList = new List<String>();
         processAction();
         Page.DataBind();
     }
@@ -220,6 +225,34 @@ public partial class MasterPage : System.Web.UI.MasterPage
         setUserSession(id);
 
         Response.Redirect(Request.Url.ToString());
+    }
+
+    public String getMovieTypeHtmls()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        mGenreList = Genre.getAllGenre();
+
+        if (mGenreList == null)
+        {
+            return sb.ToString();
+        }
+        
+        for (int i = 0; i < mGenreList.Count; i++)
+        {
+            sb.Append(getMovieTypeHtml(mGenreList.ElementAt(i)));
+        }
+        return sb.ToString();
+    }
+
+    private String getMovieTypeHtml(String genre)
+    {
+        StringBuilder sb = new StringBuilder();
+        
+
+        sb.AppendFormat("<li>");
+        sb.AppendFormat("<a href=\"Movietype.aspx?name={0:s}\">{1:s}</a></li>", genre, genre);
+        return sb.ToString();
     }
 
     protected void BtnLogin_Click(object sender, EventArgs e)

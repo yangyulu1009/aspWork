@@ -142,7 +142,7 @@ public partial class Search_Result : System.Web.UI.Page
     //    return mRoles;
 
     //}
-
+    
     public String getSearchResultHtmls()
     {
         StringBuilder sb = new StringBuilder();

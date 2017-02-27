@@ -63,33 +63,35 @@
 									<li>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown">
-										<!-- 修改了链接 -->	<li><a href="action.html">Action</a></li>
+										<!-- 修改了链接 -->	
+                                            <%# getMovieTypeHtmls() %>
+                                            <%--<li><a href="action.html">Action</a></li>
 											<li><a href="biography.html">Biography</a></li>
 											<li><a href="crime.html">Crime</a></li>
 											<li><a href="family.html">Family</a></li>
 											<li><a href="horror.html">Horror</a></li>
 											<li><a href="romance.html">Romance</a></li>
 											<li><a href="Sports.html">Sports</a></li>
-											<li><a href="war.html">War</a></li>
+											<li><a href="war.html">War</a></li>--%>
 										</ul>
 									</div>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown">
-											<li><a href="genre.html">Adventure</a></li>
+											<%--<li><a href="genre.html">Adventure</a></li>
 											<li><a href="comedy.html">Comedy</a></li>
 											<li><a href="genre.html">Documentary</a></li>
 											<li><a href="genre.html">Fantasy</a></li>
-											<li><a href="genre.html">Thriller</a></li>
+											<li><a href="genre.html">Thriller</a></li>--%>
 										</ul>
 									</div>
 									<div class="col-sm-4">
 										<ul class="multi-column-dropdown">
-											<li><a href="genre.html">Animation</a></li>
+											<%--<li><a href="genre.html">Animation</a></li>
 											<li><a href="genre.html">Costume</a></li>
 											<li><a href="genre.html">Drama</a></li>
 											<li><a href="genre.html">History</a></li>
 											<li><a href="genre.html">Musical</a></li>
-											<li><a href="genre.html">Psychological</a></li>
+											<li><a href="genre.html">Psychological</a></li>--%>
 										</ul>
 									</div>
 									<div class="clearfix"></div>
@@ -97,7 +99,9 @@
 								</ul>
 							</li><!-- 恢复注释 -->
                                     <li>
-                                        <a href="series.html">User</a></li>
+                                        <a runat="server" id="Username" onmouseover="False" onfocus="false"><%# getUserNameText() %></a>
+
+                                    </li>
                                    <!-- <li>
                                         <a href="contact.html">Contact</a></li> -->
                                 </ul>
@@ -115,7 +119,7 @@
                                 </ul>
                                 <!-- cd-header-buttons --></div>
                             <div id="cd-search" class="cd-search">
-                                <form action="#" method="post">
+                                <form action="?action=search" method="post">
                                     <input name="Search" type="search" placeholder="Search..."/></form>
                             </div>
                         </div>
@@ -135,10 +139,8 @@
             <div class="w3_agilits_inner_bottom">
                 <div class="col-md-6 wthree_agile_login">
                     <ul>
-                        <li>
-                            <a href="#" class="login" data-toggle="modal" data-target="#myModal4">Login</a></li>
-                        <li>
-                            <a href="#" class="login reg" data-toggle="modal" data-target="#myModal5">Register</a></li>
+                         <li><a href="<%# getLoginButtonUrl() %>" class="login"  data-toggle="modal" data-target="<%# getLoginButtonDataTarget() %>"><%# getLoginButtonText() %></a></li>
+							<li><a href="<%# getRegisterButtonUrl() %>" class="login reg"  data-toggle="modal" data-target="<%# getRegisterButtonDataTarget() %>"><%# getRegisterButtonText() %></a></li>
                     </ul>
                 </div>
             </div>
@@ -152,7 +154,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4>Login</h4>
                         <div class="login-form">
-                            <form action="#" method="post">
+                            <form action="?action=login" method="post">
                                 <input type="email" name="email" placeholder="E-mail" required=""/>
                                 <input type="password" name="password" placeholder="Password" required=""/>
                                 <div class="tp">
@@ -180,7 +182,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4>Register</h4>
                         <div class="login-form">
-                            <form action="#" method="post">
+                            <form action="?action=register" method="post">
                                 <input type="text" name="name" placeholder="Name" required=""/>
                                 <input type="email" name="email" placeholder="E-mail" required=""/>
                                 <input type="password" name="password" placeholder="Password" required=""/>

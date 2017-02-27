@@ -141,7 +141,7 @@
 
 
 
-                        <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加" HeaderStyle-CssClass="gridheader" ItemStyle-Width="5%" DeleteText="删除" ShowDeleteButton="True">
+                        <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加" HeaderStyle-CssClass="gridheader" ItemStyle-Width="10%" DeleteText="删除" ShowDeleteButton="True">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle />
                         </asp:CommandField>
