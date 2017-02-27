@@ -61,40 +61,9 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Genre <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<li>
-									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
-										<!-- 修改了链接 -->	
-                                            <%# getMovieTypeHtmls() %>
-                                            <%--<li><a href="action.html">Action</a></li>
-											<li><a href="biography.html">Biography</a></li>
-											<li><a href="crime.html">Crime</a></li>
-											<li><a href="family.html">Family</a></li>
-											<li><a href="horror.html">Horror</a></li>
-											<li><a href="romance.html">Romance</a></li>
-											<li><a href="Sports.html">Sports</a></li>
-											<li><a href="war.html">War</a></li>--%>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
-											<%--<li><a href="genre.html">Adventure</a></li>
-											<li><a href="comedy.html">Comedy</a></li>
-											<li><a href="genre.html">Documentary</a></li>
-											<li><a href="genre.html">Fantasy</a></li>
-											<li><a href="genre.html">Thriller</a></li>--%>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<ul class="multi-column-dropdown">
-											<%--<li><a href="genre.html">Animation</a></li>
-											<li><a href="genre.html">Costume</a></li>
-											<li><a href="genre.html">Drama</a></li>
-											<li><a href="genre.html">History</a></li>
-											<li><a href="genre.html">Musical</a></li>
-											<li><a href="genre.html">Psychological</a></li>--%>
-										</ul>
-									</div>
-									<div class="clearfix"></div>
+                                        <%# getGenreHtmls() %>
+                                       
+									    <div class="clearfix"></div>
 									</li>
 								</ul>
 							</li><!-- 恢复注释 -->

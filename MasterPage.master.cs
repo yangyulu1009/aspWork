@@ -296,5 +296,33 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 }
             }*/
         }
-   
+
+    public String getGenreHtmls()
+    {
+        String html = "";
+        List<Genre> genres = Genre.get();
+        for (int i = 0; i < genres.Count;)
+        {
+            int len = Math.Min(8, genres.Count - i);
+            html += getGenreHtmls(genres.GetRange(i, len));
+            i += len;
+        }
+        return html;
+    }
+
+    private String getGenreHtmls(List<Genre> genres)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendFormat("<div class=\"col-sm-4\">");
+        sb.AppendFormat("    <ul class=\"multi-column-dropdown\">");
+        for (int i = 0; i < genres.Count; i++)
+        {
+            String name = genres.ElementAt(i).name;
+            sb.AppendFormat("<li><a href=\"Genre?name={0:s}\">{1:s}</a></li>", name, name);
+        }
+        sb.AppendFormat("    </ul>");
+        sb.AppendFormat("</div>");
+        return sb.ToString();
+    }
+
 }

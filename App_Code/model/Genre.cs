@@ -25,6 +25,19 @@ public class Genre
         return genres;
     }
 
+    public static List<Genre> get()
+    {
+        List<Genre> genres = new List<Genre>();
+        DataTable table = SqlData.getInstance().datasetExecute("select * from genre", "genre");
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            Genre genre = new Genre(table.Rows[i]);
+            genres.Add(genre);
+        }
+        return genres;
+
+    }
+
     public static List<String> get2(String id)
     {
         List<String> genres = new List<String>();
