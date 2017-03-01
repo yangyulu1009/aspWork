@@ -58,32 +58,6 @@
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
 
-                        <asp:TemplateField HeaderText="导演" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <ItemTemplate>
-                                <%# getDirector(Container.DataItem) %>
-                            </ItemTemplate>
-
-                            <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="TextBoxDirector" Text="<%# getDirector(Container.DataItem) %>" />
-                            </EditItemTemplate>
-                            <HeaderStyle CssClass="gridheader" />
-                            <ItemStyle CssClass="griditem" />
-                        </asp:TemplateField>
-
-
-
-                        <asp:TemplateField HeaderText="主演" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <ItemTemplate>
-                                <%# getActor(Container.DataItem) %>
-                            </ItemTemplate>
-
-                            <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="TextBoxActor" Text="<%# getActor(Container.DataItem) %>" />
-                            </EditItemTemplate>
-                            <HeaderStyle CssClass="gridheader" />
-                            <ItemStyle CssClass="griditem" />
-                        </asp:TemplateField>
-
 
 
                         <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">

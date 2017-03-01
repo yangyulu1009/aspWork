@@ -86,14 +86,7 @@ public class SqlData
         int id = 0;
         if (reader.Read())
         {
-            String str = reader[0].ToString();
-            try
-            {
-                id = int.Parse(reader[0].ToString());
-            } catch (Exception e)
-            {
-            }
-           
+            id = int.Parse(reader[0].ToString());
         }
         
         reader.Close();

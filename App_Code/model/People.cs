@@ -42,10 +42,13 @@ public class People
     public static String add(String name, String url)
     {
         name = name.Trim();
-        if (name.Length <= 0)
+        url = url.Trim();
+
+        if (name.Length > 0)
         {
-            return null;
+            people = getByName(name);
         }
+
         int id = SqlData.getInstance().getMaxId("people") + 1;
         String sql = String.Format("insert into people (id,name,url) values('{0:d}','{1:s}','{2:s}')", id, name, url);
         SqlData.getInstance().ExecuteSQL(sql);
@@ -54,13 +57,16 @@ public class People
 
     public static String add(String name)
     {
-        People people = getByName(name);
+        People people = null;
+
+        
+        
         if (people != null)
         {
             return people.id;
         } else
         {
-            return add(name, " ");
+            return add(name, "");
         }
     }
 }
