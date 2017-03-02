@@ -47,6 +47,16 @@
         .tbDesc {
             font-size: 20px;
         }
+
+        .long-text {
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+
+        .long-text-edit {
+            
+        }
     </style>
 </asp:Content>
 
@@ -150,10 +160,16 @@
                         </asp:TemplateField>
 
 
-                        <asp:BoundField DataField="content" HeaderText="新闻内容" SortExpression="content" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:TemplateField HeaderText="新闻内容" SortExpression="content">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("content") %>' Width="400px" CssClass="long-text-edit" TextMode="MultiLine" Height="200px"></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("content") %>' CssClass="long-text" Width="400px"></asp:Label>
+                            </ItemTemplate>
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
-                        </asp:BoundField>
+                        </asp:TemplateField>
 
 
                         <asp:TemplateField HeaderText="新闻链接" SortExpression="url">
@@ -168,7 +184,10 @@
                         </asp:TemplateField>
 
 
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%"></asp:CommandField>
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%">
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" Width="20%" />
+                        </asp:CommandField>
                     </Columns>
                     <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                     <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
