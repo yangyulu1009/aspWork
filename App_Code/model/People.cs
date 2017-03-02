@@ -46,7 +46,11 @@ public class People
 
         if (name.Length > 0)
         {
-            people = getByName(name);
+            People people = getByName(name);
+            if (people != null)
+            {
+                return people.id;
+            }
         }
 
         int id = SqlData.getInstance().getMaxId("people") + 1;
@@ -54,19 +58,5 @@ public class People
         SqlData.getInstance().ExecuteSQL(sql);
         return id.ToString();
     }
-
-    public static String add(String name)
-    {
-        People people = null;
-
-        
-        
-        if (people != null)
-        {
-            return people.id;
-        } else
-        {
-            return add(name, "");
-        }
-    }
+    
 }

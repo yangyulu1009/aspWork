@@ -15,6 +15,7 @@ public partial class PeopleManager : System.Web.UI.Page
     protected void ButtonAddPeople_Click(object sender, EventArgs e)
     {
         int id = SqlData.getInstance().getMaxId("people");
-        People.add("");
+        People.add("", "");
+        GridViewPeople.DataBind();
     }
 }

@@ -100,10 +100,11 @@ public class Role
 
     private static void insert(String movieId, String role, String name)
     {
+        /*
         String peopleId = People.add(name);
         int id = SqlData.getInstance().getMaxId("role") + 1;
         String sql = String.Format("insert into role (id,movie_id,people_id,role) values('{0:d}','{1:s}','{2:s}','{3:s}')", id, movieId, peopleId, role);
-        SqlData.getInstance().ExecuteSQL(sql);
+        SqlData.getInstance().ExecuteSQL(sql);*/
     }
 
     public static void removeAll(String movieId)
