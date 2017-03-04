@@ -11,7 +11,6 @@ using System.Text;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
-    public List<String> mGenreList;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,7 +21,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
             return;
         }
 
-        mGenreList = new List<String>();
         processAction();
         Page.DataBind();
     }
@@ -227,97 +225,29 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Response.Redirect(Request.Url.ToString());
     }
 
-    public String getMovieTypeHtmls()
-    {
-        StringBuilder sb = new StringBuilder();
-
-        mGenreList = Genre.getAllGenre();
-
-        if (mGenreList == null)
-        {
-            return sb.ToString();
-        }
-        
-        for (int i = 0; i < mGenreList.Count; i++)
-        {
-            sb.Append(getMovieTypeHtml(mGenreList.ElementAt(i)));
-        }
-        return sb.ToString();
-    }
-
-    private String getMovieTypeHtml(String genre)
-    {
-        StringBuilder sb = new StringBuilder();
-        
-
-        sb.AppendFormat("<li>");
-        sb.AppendFormat("<a href=\"Movietype.aspx?name={0:s}\">{1:s}</a></li>", genre, genre);
-        return sb.ToString();
-    }
-
-    protected void BtnLogin_Click(object sender, EventArgs e)
-    {
-        /*
-            string eMail = EmailBox1.Value.Trim();
-            string password = PasswordBox1.Value.Trim();
-            MyLog.v("eMai :" + eMail + " password : " + password);
-    
-
-            if (eMail.Length == 0)
-            {
-                ScriptManager.RegisterStartupScript(EmailBox1, this.GetType(), "", "alert('请输入用户名!')", true);
-            }
-            else if (password.Length == 0)
-            {
-                ScriptManager.RegisterStartupScript(PasswordBox1, this.GetType(), "", "alert('请输入密码!')", true);
-            }
-            else
-            {
-                string sqlstring = "select * from users where email='" + eMail + "' and passWord='" + password + "'";
-                DataTable ds = SqlData.getInstance().datasetExecute(sqlstring, "users");
-
-                if (ds.DataSet.Tables["users"] == null || ds.DataSet.Tables["users"].Rows.Count == 0)
-                {
-                if (ds.DataSet.Tables["users"] == null)
-                {
-                    MyLog.v("null");
-                }
-                else {
-                    MyLog.v("row.count == 0");
-                }
-                    ScriptManager.RegisterStartupScript(EmailBox1, this.GetType(), "", "alert('输入的姓名或密码错误误！请重新输入')", true);
-                }
-                else
-                {
-                    user_info = new Users(ds.Rows[0]);
-                    Session["UserName"] = user_info.name;
-                    MyLog.v("login success"+ Session["UserName"]);
-                    Response.Redirect("Reload.aspx");
-                }
-            }*/
-        }
-
     public String getGenreHtmls()
     {
         String html = "";
-        List<Genre> genres = Genre.get();
+        
+        List<String> genres = Movie.getAllGenres();
         for (int i = 0; i < genres.Count;)
         {
             int len = Math.Min(8, genres.Count - i);
             html += getGenreHtmls(genres.GetRange(i, len));
             i += len;
         }
+
         return html;
     }
 
-    private String getGenreHtmls(List<Genre> genres)
+    private String getGenreHtmls(List<String> genres)
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendFormat("<div class=\"col-sm-4\">");
         sb.AppendFormat("    <ul class=\"multi-column-dropdown\">");
         for (int i = 0; i < genres.Count; i++)
         {
-            String name = genres.ElementAt(i).name;
+            String name = genres.ElementAt(i);
             sb.AppendFormat("<li><a href=\"Genre?name={0:s}\">{1:s}</a></li>", name, name);
         }
         sb.AppendFormat("    </ul>");

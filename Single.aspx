@@ -89,7 +89,7 @@
                                 <p class="fexi_header_para">
                                     <span>Key Words
                                 <label>:</label></span>
-                                    <%# getMovie().getKeywords() %>
+                                    <%# getMovie().keywords %>
                                 </p>
                                 <p class="fexi_header_para fexi_header_para1">
                                     <span>Star Rating

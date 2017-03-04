@@ -19,30 +19,25 @@ public partial class MovieManager : System.Web.UI.Page
         GridView1.DataBind();
     }
 
-    public String getKeywords(object dataItem)
-    {
-        String id = DataBinder.Eval(dataItem, "id").ToString();
-        List<String> words = Keywords.get2(id);
-        return StringUtils.join(words);
-    }
-
-    public String getGenres(object dataItem)
-    {
-        String id = DataBinder.Eval(dataItem, "id").ToString();
-        List<String> genres = Genre.get2(id);
-        return StringUtils.join(genres);
-    }
-
-    protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         GridViewRow row = GridView1.Rows[e.RowIndex];
-        updateKeywords(row);
-        updateGenres(row);
-        updateDirector(row);
-        updateActor(row);
-        GridView1.DataBind();
+        String id = (row.Cells[0]).Text;
+        Movie.removeAll(id);
     }
 
+    /*
+    protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+       // GridViewRow row = GridView1.Rows[e.RowIndex];
+       // updateKeywords(row);
+        //updateGenres(row);
+      //  updateDirector(row);
+       // updateActor(row);
+        //GridView1.DataBind();
+    }
+
+    
     private void updateGenres(GridViewRow row)
     {
         String id = (row.Cells[0]).Text;
@@ -102,12 +97,7 @@ public partial class MovieManager : System.Web.UI.Page
 
         String key = ((TextBox)row.Cells[8].FindControl("TextBoxKeys")).Text;
         MyLog.v("key = " + key);
-    }
+    }*/
 
-    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
-        GridViewRow row = GridView1.Rows[e.RowIndex];
-        String id = (row.Cells[0]).Text;
-        Movie.removeAll(id);
-    }
+
 }

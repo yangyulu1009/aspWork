@@ -52,7 +52,7 @@ public class SqlData
         {
             SqlDataAdapter da = new SqlDataAdapter(str, con);
             DataSet ds = new DataSet();
-            MyLog.v("datasetExecute: " + str);
+         //   MyLog.v("datasetExecute: " + str);
             da.Fill(ds, tableName);
             return ds.Tables[tableName];
         }
@@ -62,53 +62,31 @@ public class SqlData
         }
     }
 
-    public SqlDataReader ExecuteRead(string str)
+    public DataSet getDataSource(string str, string tableName)
     {
         try
         {
-            cmd = new SqlCommand(str, con);
-            cmd.CommandTimeout = 600;
-            SqlDataReader sdr = cmd.ExecuteReader();
-            return sdr;
-        }
-
-        finally
-        {
-         //   con.Close();
-        }
-    }
-
-
-    public int getMaxId(string tablename)
-    {
-        SqlDataReader reader = SqlData.getInstance().ExecuteRead("select max(id) from " + tablename);
-
-        int id = 0;
-        if (reader.Read())
-        {
-            id = int.Parse(reader[0].ToString());
-        }
-        
-        reader.Close();
-        return id;
-    }
-    /*
-    public DataSet ExecuteDateSet(string str)
-    {
-        try
-        {
-            cmd = new SqlCommand(str, con);
-            da = new SqlDataAdapter();
-            da.SelectCommand = cmd;
+            SqlDataAdapter da = new SqlDataAdapter(str, con);
             DataSet ds = new DataSet();
-            da.Fill(ds);
+            da.Fill(ds, tableName);
             return ds;
         }
         finally
         {
-        //    con.Close();
+            con.Close();
         }
-    }*/
+    }
+
+    public int getMaxId(string tablename)
+    {
+        DataTable table = datasetExecute("select max(id) from " + tablename, tablename);
+        if (table.Rows.Count == 0)
+        {
+            return 0;
+        }
+        String id = table.Rows[0][0].ToString();
+        return id.Length > 0 ? int.Parse(id) : 0;
+    }
 
     public void update(String tableName, String id, String colName, String value)
     {

@@ -42,10 +42,10 @@
 
             <ContentTemplate>
                 <h1 style="float: left; padding: 5px;">电影</h1>
-                <asp:Button runat="server" ID="btnAdd" OnClick="btnAdd_Click" Text="添加电影" CssClass="addbtn" />
+                
 
 
-                <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting">
+                <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="SqlDataSourceMovie" Width="100%" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" OnRowDeleting="GridView1_RowDeleting">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" HeaderStyle-HorizontalAlign="Center" HeaderStyle-CssClass="gridheader" ReadOnly="True" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle HorizontalAlign="Center" CssClass="gridheader"></HeaderStyle>
@@ -60,57 +60,49 @@
 
 
 
-                        <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
+                        <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="country" HeaderText="国家" SortExpression="country" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
+                        <asp:BoundField DataField="country" HeaderText="国家" SortExpression="country" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="star" HeaderText="星级" SortExpression="star" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
-                        </asp:BoundField>
-
-
-
-
-                        <asp:BoundField DataField="allsales" HeaderText="票房" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
+                        <asp:BoundField DataField="star" HeaderText="星级" SortExpression="star" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
 
 
-                        <asp:TemplateField HeaderText="类型" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
-                            <ItemTemplate>
-                                <%# getGenres(Container.DataItem) %>
-                            </ItemTemplate>
 
+
+                        <asp:BoundField DataField="allsales" HeaderText="票房" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+                            <ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+
+
+                        <asp:TemplateField HeaderText="类型" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="TextBoxGenres" Text="<%# getGenres(Container.DataItem) %>" />
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("genre") %>'></asp:TextBox>
                             </EditItemTemplate>
-
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("genre") %>'></asp:Label>
+                            </ItemTemplate>
                         </asp:TemplateField>
 
 
-                        <asp:TemplateField HeaderText="关键词" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
-                            <ItemTemplate>
-                                <%# getKeywords(Container.DataItem) %>
-                            </ItemTemplate>
-
+                        <asp:TemplateField HeaderText="关键词" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <EditItemTemplate>
-                                <asp:TextBox runat="server" ID="TextBoxKeys" Text="<%# getKeywords(Container.DataItem) %>" />
+                                <asp:TextBox ID="TextBoxKeywords" runat="server" Text='<%# Bind("keywords") %>'></asp:TextBox>
                             </EditItemTemplate>
-                            <HeaderStyle CssClass="gridheader" />
-                            <ItemStyle CssClass="griditem" />
+                            <ItemTemplate>
+                                <asp:Label ID="LabelKeywords" runat="server" Text='<%# Bind("keywords") %>'></asp:Label>
+                            </ItemTemplate>
                         </asp:TemplateField>
 
 
@@ -121,7 +113,7 @@
                         </asp:CommandField>
 
 
-                        <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="EditMovie.aspx?id={0}" Text="编辑其它" Target="_blank">
+                        <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="EditMovie.aspx?id={0}" Text="编辑其它" Target="_blank" ItemStyle-Width="10%">
                             <ItemStyle CssClass="gridEdit" />
                         </asp:HyperLinkField>
 
@@ -137,10 +129,39 @@
                     <SortedDescendingHeaderStyle BackColor="#7E0000" />
                 </asp:GridView>
 
+                <asp:Button runat="server" ID="btnAdd" OnClick="btnAdd_Click" Text="添加电影" CssClass="addbtn" />
+
                 <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
-                    SelectCommand="SELECT movie.* FROM movie"
-                    DeleteCommand="DELETE FROM movie WHERE (id = @id)"
-                    UpdateCommand="Update movie set name=@name, allsales=@allsales, country=@country, star=@star, year=@year WHERE (id=@id)"></asp:SqlDataSource>
+                    SelectCommand="SELECT * FROM [movie]"
+                    DeleteCommand="DELETE FROM [movie] WHERE [id] = @id"
+                    UpdateCommand="UPDATE [movie] SET [name] = @name, [allsales] = @allsales, [description] = @description, [country] = @country, [star] = @star, [year] = @year, [keywords] = @keywords, [genre] = @genre WHERE [id] = @id" 
+                    InsertCommand="INSERT INTO [movie] ([id], [name], [allsales], [description], [country], [star], [year], [keywords], [genre]) VALUES (@id, @name, @allsales, @description, @country, @star, @year, @keywords, @genre)">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="name" Type="String" />
+                        <asp:Parameter Name="allsales" Type="String" />
+                        <asp:Parameter Name="description" Type="String" />
+                        <asp:Parameter Name="country" Type="String" />
+                        <asp:Parameter Name="star" Type="Double" />
+                        <asp:Parameter Name="year" Type="Int32" />
+                        <asp:Parameter Name="keywords" Type="String" />
+                        <asp:Parameter Name="genre" Type="String" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="name" Type="String" />
+                        <asp:Parameter Name="allsales" Type="String" />
+                        <asp:Parameter Name="description" Type="String" />
+                        <asp:Parameter Name="country" Type="String" />
+                        <asp:Parameter Name="star" Type="Double" />
+                        <asp:Parameter Name="year" Type="Int32" />
+                        <asp:Parameter Name="keywords" Type="String" />
+                        <asp:Parameter Name="genre" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
 
             </ContentTemplate>
         </asp:UpdatePanel>

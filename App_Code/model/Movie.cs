@@ -21,6 +21,8 @@ public class Movie
     public String description;
     public String genre;
 
+    public String keywords;
+
     public static Movie get(String id)
     {
         DataTable table = SqlData.getInstance().datasetExecute("select * from movie where id=" + id, "movie");
@@ -45,7 +47,7 @@ public class Movie
         Image.removeAll(id);
         Video.removeAll(id);
         Responses.removeAll(id);
-        Keywords.removeAll(id);
+   
         News.removeAll(id);
         Sales.removeAll(id);
         Role.removeAll(id);
@@ -81,6 +83,27 @@ public class Movie
         allSales = row["allSales"].ToString();
         description = row["description"].ToString();
         country = row["country"].ToString();
+        genre = row["genre"].ToString();
+        keywords = row["keywords"].ToString();
+    }
+
+    public static List<String> getAllGenres()
+    {
+        List<String> genres = new List<String>();
+        DataTable table = SqlData.getInstance().datasetExecute("select genre from movie", "movie");
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            String genre = table.Rows[i]["genre"].ToString();
+            String[] texts = genre.Split(Constants.SEPS);
+            foreach (String text in texts)
+            {
+                if (!genres.Contains(text))
+                {
+                    genres.Add(text);
+                }
+            }
+        }
+        return genres;
     }
 
     public String getImage(int index)
@@ -118,11 +141,6 @@ public class Movie
     public String getOperaImage(int index)
     {
         return getImages().ElementAt(index + 1).url;
-    }
-
-    public String getKeywords()
-    {
-        return StringUtils.join(Keywords.get2(id));
     }
 
     public static void insert()

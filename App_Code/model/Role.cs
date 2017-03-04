@@ -34,6 +34,12 @@ public class Role
         return roles;
     }
 
+    public static void update(String id, String name, String role)
+    {
+        People people = People.getByName(name);
+        SqlData.getInstance().ExecuteSQL(String.Format("update role set people_id='{0:s}', role='{1:s}' where id='{2:s}'", people.id, role, id));
+    }
+
     public static String get(String id, String roleName)
     {
         List<Role> roles = Role.get(id);

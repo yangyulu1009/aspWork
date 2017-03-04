@@ -16,15 +16,20 @@
 
          <asp:UpdatePanel runat="server" ID="UpdatePanelDesc" UpdateMode="Conditional">
             <ContentTemplate>
-                    <asp:ImageButton ID="Image1" runat="server" ImageUrl="images/1.jpg"/>
-                 <asp:FileUpload ID="imageUpload" runat="server" Visible="True"/>
-                 <asp:Button ID="Button1" runat="server" Text="上传" OnClick="Button1_Click" />
+                   <asp:GridView ID="GridView1" runat="server">
+
+                       <Columns>
+                           <asp:TemplateField HeaderText="ID"></asp:TemplateField>
+                           <asp:TemplateField HeaderText="人名"></asp:TemplateField>
+                           <asp:HyperLinkField Text="编辑" />
+                           <asp:HyperLinkField Text="删除" />
+                       </Columns>
+
+                   </asp:GridView>
                 
             </ContentTemplate>
 
-             <Triggers>
-                 <asp:PostBackTrigger ControlID="Button1" />
-             </Triggers>
+             
 
         </asp:UpdatePanel>
 

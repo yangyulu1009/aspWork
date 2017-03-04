@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,30 +10,20 @@ public partial class Default3 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        if (imageUpload.HasFile)
+       if (IsPostBack)
         {
-            String fileName = NameUtils.get(imageUpload.FileName);
+            return;
+        }
 
-            string savePath = Server.MapPath(Constants.IMAGE_UPLOAD_ROOT);
-                                                         
-            if (!System.IO.Directory.Exists(savePath))
-            {
-                System.IO.Directory.CreateDirectory(savePath);
-            }
-          
-            savePath = savePath + fileName;
-            MyLog.v(savePath);
-            imageUpload.SaveAs(savePath);
-        
-            Image1.ImageUrl = Constants.IMAGE_UPLOAD_ROOT + fileName;
-  
-        } 
-        
+        BindGridView();
     }
 
+    private void BindGridView()
+    {
+        DataSet set = SqlData.getInstance().getDataSource("select * from role where movie_id=1", "role");
+        GridView1.DataSource = set;
+        GridView1.DataBind();
+    }
+
+  
 }

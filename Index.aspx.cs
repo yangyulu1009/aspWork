@@ -12,7 +12,6 @@ public partial class Index : System.Web.UI.Page
 {
 
     public Movie[] mMovie = new Movie[10];
-    public List<String> mGenreList;
 
     protected void loadMovie()
     {
@@ -240,16 +239,11 @@ public partial class Index : System.Web.UI.Page
     {
         StringBuilder sb = new StringBuilder();
 
-        mGenreList = Genre.getAllGenre();
+        List<String> genres = Movie.getAllGenres();
 
-        if (mGenreList == null)
+        for (int i = 0; i < genres.Count; i++)
         {
-            return sb.ToString();
-        }
-
-        for (int i = 0; i < mGenreList.Count; i++)
-        {
-            sb.Append(getMovieTypeHtml(mGenreList.ElementAt(i)));
+            sb.Append(getMovieTypeHtml(genres.ElementAt(i)));
         }
         return sb.ToString();
     }
@@ -267,7 +261,7 @@ public partial class Index : System.Web.UI.Page
     public String getGenreHtmls()
     {
         String html = "";
-        List<Genre> genres = Genre.get();
+        List<String> genres = Movie.getAllGenres();
         for (int i = 0; i < genres.Count; )
         {
             int len = Math.Min(8, genres.Count - i);
@@ -277,14 +271,14 @@ public partial class Index : System.Web.UI.Page
         return html;
     }
 
-    private String getGenreHtmls(List<Genre> genres)
+    private String getGenreHtmls(List<String> genres)
     {
         StringBuilder sb = new StringBuilder();
         sb.AppendFormat("<div class=\"col-sm-4\">");
         sb.AppendFormat("    <ul class=\"multi-column-dropdown\">");
         for (int i = 0; i < genres.Count; i++)
         {
-            String name = genres.ElementAt(i).name;
+            String name = genres.ElementAt(i);
             sb.AppendFormat("<li><a href=\"Genre?name={0:s}\">{1:s}</a></li>", name, name);
         }
         sb.AppendFormat("    </ul>");

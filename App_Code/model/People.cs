@@ -22,6 +22,17 @@ public class People
         return people;
     }
 
+    public static List<String> getAllPeople()
+    {
+        List<String> peoples = new List<String>();
+        DataTable table = SqlData.getInstance().datasetExecute("select name from people", "people");
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            peoples.Add(table.Rows[i]["name"].ToString());
+        }
+        return peoples;
+    }
+
     public People(DataRow row)
     {
         //
@@ -32,7 +43,7 @@ public class People
         url = row["url"].ToString();
     }
 
-    private static People getByName(String name)
+    public static People getByName(String name)
     {
         String sql = String.Format("select * from people where name='{0:s}'", name);
         DataTable table = SqlData.getInstance().datasetExecute(sql, "people");
