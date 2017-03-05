@@ -19,6 +19,10 @@ public class People
     {
         String sql = "select * from people where id=" + id;
         DataTable table = SqlData.getInstance().datasetExecute(sql, "people");
+        if (table.Rows.Count == 0)
+        {
+            return null;
+        }
         People people = new People(table.Rows[0]);
         return people;
     }

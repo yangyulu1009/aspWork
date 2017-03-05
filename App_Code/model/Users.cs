@@ -26,11 +26,26 @@ public class Users
         return user;
     }
 
+    public static void updatePwd(String userId, String pwd)
+    {
+        if (pwd.Length > 0)
+        {
+            String sql = String.Format("update users set password='{0:s}' where id='{1:s}'", pwd, userId);
+            SqlData.getInstance().ExecuteSQL(sql);
+        }
+    }
+
     public static Users getByName(String name)
     {
         String sql = String.Format("select * from users where name='{0:s}'", name);
         DataTable table = SqlData.getInstance().datasetExecute(sql, "users");
         return new Users(table.Rows[0]);
+    }
+
+    public static void updateHead(String userId, String url)
+    {
+        String sql = String.Format("update users set head='{0:s}' where id='{1:s}'", url, userId);
+        SqlData.getInstance().ExecuteSQL(sql);
     }
 
     public static bool exist(String key, String value)
@@ -51,6 +66,12 @@ public class Users
     {
         return exist("email", email);
     }
+
+    public Users()
+    {
+
+    }
+
     public Users(DataRow row)
     {
         //

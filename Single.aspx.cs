@@ -95,14 +95,14 @@ public partial class Single : System.Web.UI.Page
 
         sb.AppendFormat("<div class=\"media response-info\">");
         sb.AppendFormat("    <div class=\"media-left response-text-left\">");
-        sb.AppendFormat("        <img class=\"media-object\" src=\"{0:s}\">", response.user.head);
+        sb.AppendFormat("        <img class=\"media-object\" style=\"height:100px\" src=\"{0:s}\">", response.user.head);
         sb.AppendFormat("        <h5>{0:s}</h5>", response.user.name);
         sb.AppendFormat("    </div>");
         sb.AppendFormat("    <div class=\"media-body response-text-right\">");
         sb.AppendFormat("        <p>{0:s}</p>", response.comment);
         sb.AppendFormat("        <ul>");
         sb.AppendFormat("            <li>{0:s}</li>", response.reply_time);
-        sb.AppendFormat("            <li><a href=\"?id={0:s}\">Delete</a></li>", response.id);
+       // sb.AppendFormat("            <li><a href=\"?id={0:s}\">Delete</a></li>", response.id);
         sb.AppendFormat("        </ul>");
         sb.AppendFormat("    </div>");
         sb.AppendFormat("    <div class=\"clearfix\"></div>");

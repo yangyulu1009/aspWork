@@ -29,6 +29,12 @@ public class News
         return news;
     }
 
+    public static String getNewId()
+    {
+        int id = SqlData.getInstance().getMaxId("news") + 1;
+        return id.ToString();
+    }
+
     public News(DataRow row)
     {
         //

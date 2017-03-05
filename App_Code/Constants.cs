@@ -21,6 +21,8 @@ public class Constants
 
     public static char[] SEPS_WITHNO_SPACE = new char[] { ',', ';', ':' };
 
+    public static String KEY_USER = "key.user";
+
 
     public static String[] IMAGE_DESC =
     {
