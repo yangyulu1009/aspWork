@@ -562,7 +562,7 @@
 
 
 
-        <asp:UpdatePanel ID="UpdatePanelResponse" runat="server" UpdateMode="Conditional">
+        <asp:UpdatePanel ID="UpdatePanelResponse" runat="server" UpdateMode="Conditional"  Visible="<%# showResponses() %>">
             <ContentTemplate>
                 <h1 style="padding: 5px; margin-top: 100px">电影评论</h1>
 

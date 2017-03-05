@@ -88,6 +88,17 @@ public class SqlData
         return id.Length > 0 ? int.Parse(id) : 0;
     }
 
+    public int getCount(String sql, string tablename)
+    {
+        DataTable table = datasetExecute(sql, tablename);
+        if (table.Rows.Count == 0)
+        {
+            return 0;
+        }
+        String value = table.Rows[0][0].ToString();
+        return value.Length > 0 ? int.Parse(value) : 0;
+    }
+
     public void update(String tableName, String id, String colName, String value)
     {
         String str = String.Format("update {0:s} set {1:s}='{2:s}' where id={3:s}", tableName, colName, value, id);

@@ -30,6 +30,11 @@ public class Responses
         return responses;
     }
 
+    public static int getResponseCount(String movieId)
+    {
+        return SqlData.getInstance().getCount("select count(*) from responses where movie_id=" + movieId, "responses");
+    }
+
     public Responses(DataRow row)
     {
         //

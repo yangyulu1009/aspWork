@@ -185,4 +185,9 @@ public partial class EditMovie : System.Web.UI.Page
     {
         TableRole.DataBind();
     }
+
+    public Boolean showResponses()
+    {
+        return Responses.getResponseCount(getMovieId()) > 0;
+    }
 }
