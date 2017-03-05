@@ -19,6 +19,11 @@ public partial class MovieManager : System.Web.UI.Page
         GridView1.DataBind();
     }
 
+    public String getSingleMovieUrl(String id)
+    {
+        return "single?id=" + id;
+    }
+
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         GridViewRow row = GridView1.Rows[e.RowIndex];

@@ -52,11 +52,16 @@
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="name" HeaderText="电影名称" SortExpression="name" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
-                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="电影名称" SortExpression="name">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBoxMovieName" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:HyperLink ID="LinkMovieName" runat="server" Text='<%# Bind("name") %>' NavigateUrl='<%# getSingleMovieUrl(Eval("id").ToString()) %>' Target="_blank"></asp:HyperLink>
+                            </ItemTemplate>
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
+                        </asp:TemplateField>
 
 
 
@@ -93,6 +98,8 @@
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("genre") %>'></asp:Label>
                             </ItemTemplate>
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
                         </asp:TemplateField>
 
 
@@ -103,6 +110,8 @@
                             <ItemTemplate>
                                 <asp:Label ID="LabelKeywords" runat="server" Text='<%# Bind("keywords") %>'></asp:Label>
                             </ItemTemplate>
+                            <HeaderStyle CssClass="gridheader" />
+                            <ItemStyle CssClass="griditem" />
                         </asp:TemplateField>
 
 
