@@ -60,6 +60,19 @@ public class Role
         return StringUtils.join(names, ";");
     }
 
+    public static List<People> getRoles(String movieId, String roleName)
+    {
+        String sql = String.Format("select * from role where movie_id='{0:s}' and role='{1:s}'", movieId, roleName);
+        DataTable table = SqlData.getInstance().datasetExecute(sql, "role");
+        List<People> peoples = new List<People>();
+        for (int i = 0; i < table.Rows.Count; i++)
+        {
+            Role role = new Role(table.Rows[i]);
+            peoples.Add(role.people);
+        }
+        return peoples;
+    }
+
     public static String getDirector(String id)
     {
         return get(id, Role.DIRECTOR);
@@ -74,6 +87,7 @@ public class Role
     {
         return get(id, Role.WRITER);
     }
+
 
     public Role(DataRow row)
     {

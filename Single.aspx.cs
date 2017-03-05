@@ -72,6 +72,31 @@ public partial class Single : System.Web.UI.Page
         control.Attributes.Add("class", className);
     }
 
+    public String getRoleHtmls(String roleName)
+    {
+        List<People> peoples = Role.getRoles(getMovieId(), roleName);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < peoples.Count; i++)
+        {
+            People people = peoples.ElementAt(i);
+            String sep = (i != peoples.Count - 1 ? "; " : "");
+            sb.AppendFormat("<a href=\"{0:s}\" target=\"_blank\">{1:s}</a>", people.url, people.name + sep);
+        }
+        return sb.ToString();
+    }
+
+    public String getGenreHtmls()
+    {
+        List<String> genres = getMovie().getMovieGenres();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < genres.Count; i++)
+        {
+            String genre = genres.ElementAt(i);
+            sb.AppendFormat("<a href=\"{0:s}\" target=\"_blank\">{1:s}</a>", "MovieCategory?genre=" + genre, genre + " ");
+        }
+        return sb.ToString();
+    }
+
     public String getResponseHtmls()
     {
         StringBuilder sb = new StringBuilder();

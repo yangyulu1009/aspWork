@@ -87,6 +87,12 @@ public class Movie
         keywords = row["keywords"].ToString();
     }
 
+    public List<String> getMovieGenres()
+    {
+        String[] texts = genre.Split(Constants.SEPS);
+        return new List<String>(texts);
+    }
+
     public static List<String> getAllGenres()
     {
         List<String> genres = new List<String>();

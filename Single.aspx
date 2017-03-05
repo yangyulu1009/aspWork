@@ -30,11 +30,7 @@
         <div class="w3_content_agilleinfo_inner">
             <div class="agile_featured_movies">
                 <div class="inner-agile-w3l-part-head">
-                    <h3 class="w3l-inner-h-title">
-                        <%# getMovie().name %></h3>
-                    <p class="w3ls_head_para">
-                        <%# getMovie().description %>
-                    </p>
+                    <h3 class="w3l-inner-h-title"><%# getMovie().name %></h3>
                 </div>
                 <div class="latest-news-agile-info">
                     <div class="col-md-8 latest-news-agile-left-content">
@@ -54,10 +50,18 @@
                                 </p>
                                 <p class="fexi_header_para"><span>Release On<label>:</label></span><%# getMovie().year %></p>
                                 <p class="fexi_header_para"><span>Country<label>:</label></span><%# getMovie().country %></p>
-                                <p class="fexi_header_para"><span>Director<label>:</label></span><a href="https://en.wikipedia.org/wiki/Scott_DerricksonScott"><%# Role.getDirector(getMovieId()) %></a></p>
-                                <p class="fexi_header_para"><span>Writer<label>:</label></span><a href="https://en.wikipedia.org/wiki/Jon_Spaihts"><%# Role.getWriter(getMovieId()) %></a></p>
-                                <p class="fexi_header_para"><span>Actor<label>:</label></span><a href="https://en.wikipedia.org/wiki/Benedict_Cumberbatch"><%# Role.getActor(getMovieId()) %></a></p>
-                                <p class="fexi_header_para"><span>Genre<label>:</label></span><a href=" http://localhost/zxc/comedy.html "><%# getMovie().genre %></a></p>
+                                <p class="fexi_header_para"><span>Director<label>:</label></span>
+                                    <%# getRoleHtmls(Role.DIRECTOR) %>
+                                </p>
+                                <p class="fexi_header_para"><span>Writer<label>:</label></span>
+                                    <%# getRoleHtmls(Role.WRITER) %>
+                                </p>
+                                <p class="fexi_header_para"><span>Actor<label>:</label></span>
+                                    <%# getRoleHtmls(Role.ACTOR) %>
+                                </p>
+                                <p class="fexi_header_para"><span>Genre<label>:</label></span>
+                                    <%# getGenreHtmls() %>
+                                </p>
                                 <p class="fexi_header_para"><span>Key Words<label>:</label></span><%# getMovie().keywords %></p>
                                 <p class="fexi_header_para fexi_header_para1"><span>Star Rating<label>:</label></span>
                                     <!-- <a href="#"> -->
@@ -103,7 +107,7 @@
                             <ContentTemplate>
                                 <asp:Repeater ID="RepeaterResponses" runat="server" DataSourceID="SqlDataSourceResponses">
                                     <HeaderTemplate>
-                                        <h3 style="margin-top: 20px">Responses</h3>
+                                        <h2 style="margin-top: 40px">Responses</h2>
 
                                     </HeaderTemplate>
                                     <ItemTemplate>
