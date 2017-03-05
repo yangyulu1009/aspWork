@@ -16,8 +16,8 @@ public partial class Index : System.Web.UI.Page
     protected void loadMovie()
     {
         DataTable table = SqlData.getInstance().datasetExecute("select * from movie", "movie");
-
-        for (int index = 0; index < table.Rows.Count; index++)
+        int size = Math.Min(table.Rows.Count, 10);
+        for (int index = 0; index < size; index++)
         {
             Movie movie = new Movie(table.Rows[index]);
             mMovie[index] = movie;
