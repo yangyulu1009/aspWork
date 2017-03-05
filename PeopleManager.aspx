@@ -9,6 +9,9 @@
             margin: 20px 35px 0 0;
         }
 
+        .edit-center {
+            text-align:center;
+        }
 
     </style>
 </asp:Content>
@@ -28,11 +31,10 @@
 
 
                     <Columns>
-                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" ItemStyle-Width="5%">
-                        <ItemStyle Width="5%" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="name" HeaderText="名字" SortExpression="name" />
-                        <asp:TemplateField HeaderText="链接" SortExpression="url">
+                        <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" ItemStyle-Width="5%" />
+                    
+                        <asp:BoundField DataField="name" HeaderText="名字" SortExpression="name" ItemStyle-Width="30%"/>
+                        <asp:TemplateField HeaderText="链接" SortExpression="url" ItemStyle-Width="55%">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("url") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -40,8 +42,9 @@
                                 <asp:HyperLink ID="Label1" runat="server" Text='<%# Bind("url") %>' NavigateUrl='<%# Bind("url") %>' Target="_blank"></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" NewText="添加" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" ItemStyle-Width="10%">
-                        <ItemStyle Width="10%" />
+                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" NewText="添加" 
+                            ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" ItemStyle-Width="10%" ItemStyle-CssClass="edit-center">
+                        <ItemStyle Width="10%"/>
                         </asp:CommandField>
                     </Columns>
 
@@ -69,11 +72,24 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
 
+                <table runat="server" style="width:100%">
+                    <tr>
+                        <td style="width:5%">
+                            <asp:Label runat="server" ID="LabelPeopleId" Text="<%# getNewPeopleId() %>" />
+                        </td>
+                        <td style="width:30%">
+                            <asp:TextBox runat="server" ID="TextBoxName"  Width="70%"/>
+                        </td>
+                        <td style="width:55%">
+                            <asp:TextBox runat="server" ID="TextBoxUrl"  Width="100%" />
+                        </td>
+                        <td style="width:10%;text-align:center">
+                            <asp:LinkButton runat="server" ID="LinkButtonAdd"  OnClick="LinkButtonAdd_Click" Text="添加"/>
+                        </td>
+                    </tr>
 
-                <div style="text-align:right">
-                     <asp:Button ID="ButtonAddPeople" runat="server" CssClass="add-people-btn" Text="添加明星" OnClick="ButtonAddPeople_Click"/>
-                </div>
-               
+                </table>
+
 
             </ContentTemplate>
 

@@ -12,10 +12,16 @@ public partial class PeopleManager : System.Web.UI.Page
 
     }
 
-    protected void ButtonAddPeople_Click(object sender, EventArgs e)
+    public String getNewPeopleId()
     {
-        int id = SqlData.getInstance().getMaxId("people");
-        People.add("", "");
+        int id = SqlData.getInstance().getMaxId("people") + 1;
+        return id.ToString();
+    }
+
+    protected void LinkButtonAdd_Click(object sender, EventArgs e)
+    {
+        String peopleid = LabelPeopleId.Text;
+        People.add(TextBoxName.Text.Trim(), TextBoxUrl.Text.Trim());
         GridViewPeople.DataBind();
     }
 }
