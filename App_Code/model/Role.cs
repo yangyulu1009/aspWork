@@ -11,9 +11,9 @@ using System.Web;
 public class Role
 {
 
-    public static String ACTOR = "actor";
-    public static String DIRECTOR = "director";
-    public static String WRITER = "writer";
+    public static String ACTOR = "Actor";
+    public static String DIRECTOR = "Director";
+    public static String WRITER = "Writer";
 
     public String id;
     public String movie;

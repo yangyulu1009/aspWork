@@ -48,52 +48,18 @@
                             <div class="player-text side-bar-info">
                                 <p class="fexi_header">Me Before You</p>
                                 <p class="fexi_header_para">
-                                    <span>Story Line
+                                    <span class="conjuring_w3">Story Line
                                 <label>:</label></span>
                                     <%# getMovie().description %>
                                 </p>
-                                <p class="fexi_header_para">
-                                    <span>Release On
-                                <label>:</label></span>
-                                    <%# getMovie().year %>
-                                </p>
-                                <p class="fexi_header_para">
-                                    <span>Country
-                                <label>:</label></span>
-                                    <%# getMovie().country %>
-                                </p>
-                                <p class="fexi_header_para">
-                                    <span>Director
-                                <label>:</label></span>
-                                    <a href="https://en.wikipedia.org/wiki/Scott_DerricksonScott">
-                                        <%# Role.getDirector(getMovieId()) %></a>
-                                </p>
-                                <p class="fexi_header_para">
-                                    <span>Writer
-                                <label>:</label></span>
-                                    <a href="https://en.wikipedia.org/wiki/Jon_Spaihts">
-                                        <%# Role.getWriter(getMovieId()) %></a>
-                                </p>
-                                <p class="fexi_header_para">
-                                    <span>Actor
-                                <label>:</label></span>
-                                    <a href="https://en.wikipedia.org/wiki/Benedict_Cumberbatch">
-                                        <%# Role.getActor(getMovieId()) %></a>
-                                </p>
-                                <p class="fexi_header_para">
-                                    <span>Genre
-                                <label>:</label></span>
-                                    <a href=" http://localhost/zxc/comedy.html ">
-                                        <%# getMovie().genre %></a>
-                                </p>
-                                <p class="fexi_header_para">
-                                    <span>Key Words
-                                <label>:</label></span>
-                                    <%# getMovie().keywords %>
-                                </p>
-                                <p class="fexi_header_para fexi_header_para1">
-                                    <span>Star Rating
-                                <label>:</label></span>
+                                <p class="fexi_header_para"><span>Release On<label>:</label></span><%# getMovie().year %></p>
+                                <p class="fexi_header_para"><span>Country<label>:</label></span><%# getMovie().country %></p>
+                                <p class="fexi_header_para"><span>Director<label>:</label></span><a href="https://en.wikipedia.org/wiki/Scott_DerricksonScott"><%# Role.getDirector(getMovieId()) %></a></p>
+                                <p class="fexi_header_para"><span>Writer<label>:</label></span><a href="https://en.wikipedia.org/wiki/Jon_Spaihts"><%# Role.getWriter(getMovieId()) %></a></p>
+                                <p class="fexi_header_para"><span>Actor<label>:</label></span><a href="https://en.wikipedia.org/wiki/Benedict_Cumberbatch"><%# Role.getActor(getMovieId()) %></a></p>
+                                <p class="fexi_header_para"><span>Genre<label>:</label></span><a href=" http://localhost/zxc/comedy.html "><%# getMovie().genre %></a></p>
+                                <p class="fexi_header_para"><span>Key Words<label>:</label></span><%# getMovie().keywords %></p>
+                                <p class="fexi_header_para fexi_header_para1"><span>Star Rating<label>:</label></span>
                                     <!-- <a href="#"> -->
                                     <i runat="server" id="star1" class="fa fa-star" aria-hidden="true"></i>
                                     <!-- <a href="#"> -->
@@ -137,15 +103,13 @@
                             <ContentTemplate>
                                 <asp:Repeater ID="RepeaterResponses" runat="server" DataSourceID="SqlDataSourceResponses">
                                     <HeaderTemplate>
-                                        <h3 style="margin-top:20px">Responses</h3>
-                                        
+                                        <h3 style="margin-top: 20px">Responses</h3>
+
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <%# getResponseHtml(Container.ItemIndex) %>
-
                                     </ItemTemplate>
                                     <FooterTemplate>
-                                        
                                     </FooterTemplate>
                                 </asp:Repeater>
                                 <%--  --%>
