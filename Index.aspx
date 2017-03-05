@@ -202,31 +202,7 @@
                                 <p><%# mMovie[0].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                           
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                           
-                                        </li>
-                                        <li>
-                                           
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                            
-                                        </li>
-                                        <li>
-                                           
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            
-                                        </li>
-                                        <li>
-                                           
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                           
-                                        </li>
-                                        <li>
-                                           
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                           
-                                        </li>
+                                        <%# getStarRatingHtmls(0) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -256,31 +232,7 @@
                                 <p><%# mMovie[1].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                           
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                          
-                                        </li>
-                                        <li>
-                                           
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                          
-                                        </li>
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                          
-                                        </li>
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            
-                                        </li>
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                            
-                                        </li>
+                                        <%# getStarRatingHtmls(1) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -310,31 +262,7 @@
                                 <p><%# mMovie[2].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                         
-                                        </li>
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                          
-                                        </li>
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                          
-                                        </li>
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                          
-                                        </li>
-                                        <li>
-                                            <!-- <a href="#">-->
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                         
-                                        </li>
+                                        <%# getStarRatingHtmls(2) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -364,21 +292,7 @@
                                 <p><%# mMovie[3].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
+                                        <%# getStarRatingHtmls(3) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -407,21 +321,7 @@
                                 <p><%# mMovie[4].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
+                                        <%# getStarRatingHtmls(4) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -445,21 +345,7 @@
                                 <p><%# mMovie[5].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
+                                        <%# getStarRatingHtmls(5) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -489,21 +375,7 @@
                                 <p><%# mMovie[6].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
+                                        <%# getStarRatingHtmls(6) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -533,21 +405,7 @@
                                 <p><%# mMovie[7].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
+                                        <%# getStarRatingHtmls(7) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -577,21 +435,7 @@
                                 <p><%# mMovie[8].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
+                                        <%# getStarRatingHtmls(8) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>
@@ -621,21 +465,7 @@
                                 <p><%# mMovie[9].year %></p>
                                 <div class="block-stars">
                                     <ul class="w3l-ratings">
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
-                                        <li>
-                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        </li>
+                                        <%# getStarRatingHtmls(9) %>
                                     </ul>
                                 </div>
                                 <div class="clearfix"></div>

@@ -286,4 +286,39 @@ public partial class Index : System.Web.UI.Page
         return sb.ToString();
     }
 
+    public String getStarRatingHtmls(int index)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        Movie movie = mMovie[index];
+        int star = (int)(float.Parse(movie.star) * 2);
+
+        sb.AppendFormat("        <li><i class=\"{0:s}\" aria-hidden=\"true\"></i></li>", getStarClass(star)); star -= 2;
+        sb.AppendFormat("        <li><i class=\"{0:s}\" aria-hidden=\"true\"></i></li>", getStarClass(star)); star -= 2;
+        sb.AppendFormat("        <li><i class=\"{0:s}\" aria-hidden=\"true\"></i></li>", getStarClass(star)); star -= 2;
+        sb.AppendFormat("        <li><i class=\"{0:s}\" aria-hidden=\"true\"></i></li>", getStarClass(star)); star -= 2;
+        sb.AppendFormat("        <li><i class=\"{0:s}\" aria-hidden=\"true\"></i></li>", getStarClass(star)); star -= 2;
+
+
+        return sb.ToString();
+    }
+
+    private String getStarClass(int star)
+    {
+        String className = "";
+        if (star >= 2)
+        {
+            className = "fa fa-star";
+        }
+        else if (star == 1)
+        {
+            className = "fa fa-star-half-o";
+        }
+        else
+        {
+            className = "fa fa-star-o";
+        }
+        return className;
+    }
+
 }
