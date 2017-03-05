@@ -91,7 +91,7 @@
                         </asp:TemplateField>
 
 
-                        
+
 
                         <asp:CommandField CancelText="取消" DeleteText="" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%" />
                     </Columns>
@@ -129,49 +129,110 @@
         </asp:UpdatePanel>
 
 
+        
 
 
 
+        <asp:UpdatePanel runat="server" ID="UpdatePanelRole" UpdateMode="Conditional">
+
+            
+
+
+            <ContentTemplate>
+                <h1 style="padding: 5px; margin-top: 50px">相关明星</h1>
+
+                <asp:GridView runat="server" ID="GridViewRole" AutoGenerateColumns="False" DataKeyNames="id"  DataSourceID="SqlDataSourceRole">
 
 
 
+                    <Columns>
+                        <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" ItemStyle-Width="10%"/>
+                        <asp:TemplateField HeaderText="名称" ItemStyle-Width="50%">
+                            <ItemTemplate>
+                                <asp:Label ID="LabelPeopleName" runat="server"><%# getPeopleName(Container.DataItem) %></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="角色" ItemStyle-Width="30%">
+                            <ItemTemplate>
+                                <asp:Label ID="LabelRoleName" runat="server" Text='<%# Bind("role") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
-        <h1 style="padding: 5px; margin-top: 50px">相关明星</h1>
+                        <asp:CommandField ShowDeleteButton="True" DeleteText="删除" ShowCancelButton="False" ItemStyle-Width="10%"/>
+
+                    </Columns>
 
 
-        <asp:GridView runat="server" ID="GridViewRole" AutoGenerateColumns="False" DataKeyNames="id" OnRowDataBound="GridViewRole_RowDataBound" OnRowUpdating="GridViewRole_RowUpdating" OnRowCommand="GridViewRole_RowCommand" OnRowDeleting="GridViewRole_RowDeleting" OnRowEditing="GridViewRole_RowEditing">
+
+                </asp:GridView>
+
+                <asp:SqlDataSource ID="SqlDataSourceRole" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>" DeleteCommand="DELETE FROM [role] WHERE [id] = @id" InsertCommand="INSERT INTO [role] ([id], [movie_id], [people_id], [role]) VALUES (@id, @movie_id, @people_id, @role)" SelectCommand="SELECT * FROM [role] WHERE ([movie_id] = @movie_id)" UpdateCommand="UPDATE [role] SET [movie_id] = @movie_id, [people_id] = @people_id, [role] = @role WHERE [id] = @id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="Int32" />
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="people_id" Type="Int32" />
+                        <asp:Parameter Name="role" Type="String" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:QueryStringParameter DefaultValue="1" Name="movie_id" QueryStringField="id" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="movie_id" Type="Int32" />
+                        <asp:Parameter Name="people_id" Type="Int32" />
+                        <asp:Parameter Name="role" Type="String" />
+                        <asp:Parameter Name="id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
 
 
+               <table style="width: 100%" runat="server">
+                    <tr>
+                        <td>
+                            <asp:Label runat="server" ID="LabelRoleId" Text='<%# getMaxRoleId() %>'></asp:Label>
+                        </td>
+                        <td style="width: 50%">
+                            <asp:DropDownList runat="server" Width="50%" ID="DPLPeople" AutoPostBack="false" />
+                        </td>
 
-            <Columns>
-                <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                <asp:TemplateField HeaderText="名称">
-                    <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListRole" runat="server"></asp:DropDownList>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="LabelPeopleName" runat="server"><%# getPeopleName(Container.DataItem) %></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                        <td style="width:30%">
+                            <asp:DropDownList runat="server" Width="50%" ID="DPLRole" AutoPostBack="false">
+                                <asp:ListItem Value="Director" Text="Director" />
+                                <asp:ListItem Value="Actor" Text="Actor" />
+                                <asp:ListItem Value="Writer" Text="Writer" />
+                            </asp:DropDownList>
+                        </td>
 
+                        <td style="width: 10%">
+                            <asp:LinkButton runat="server" ID="ButtonAddRole" OnClick="ButtonAddRole_Click" Text="添加" />
+                        </td>
+                    </tr>
+                </table>
+
+         
+               
+               
                 
-                
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" CancelText="取消" DeleteText="删除" EditText="编辑" UpdateText="更新" />
+            </ContentTemplate>
 
-                
-                
-            </Columns>
+           
 
 
+        </asp:UpdatePanel>
 
-        </asp:GridView>
-
-        <asp:Button runat="server" ID="ButtonAddRole" OnClick="btnAddRole_Click" Text="添加明星" CssClass="addbtn" />
+         
 
 
 
+        
 
 
+
+         <!--
+                        
+                            -->
 
 
 

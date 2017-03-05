@@ -25,25 +25,33 @@ public partial class EditMovie : System.Web.UI.Page
         Movie movie = Movie.get(id);
         Application[Constants.MOVIE] = movie;
 
-        bindGridView();
-
+        bindRole();
         Page.DataBind();
     }
 
-    private void bindGridView()
+    private void bindRole()
     {
-        DataSet set = SqlData.getInstance().getDataSource("select * from role where movie_id=" + getMovieId(), "role");
-        GridViewRole.DataSource = set;
-        GridViewRole.DataBind();
+        List<String> people = People.getAllPeople();
+        people.Sort();
+
+        foreach (String name in people)
+        {
+            DPLPeople.Items.Add(name.Trim());
+        }
     }
 
-    protected void btnAddRole_Click(object sender, EventArgs e)
+    public void ButtonAddRole_Click(object sender, EventArgs e)
     {
-        int id = SqlData.getInstance().getMaxId("role") + 1;
-        String sqlstr = String.Format("INSERT INTO role(id, movie_id) VALUES ('{0:d}', '{1:s}')",
-            id, getMovieId());
+        String roleId = LabelRoleId.Text;
+        String peopleName = DPLPeople.SelectedValue;
+        String peopleid = People.getByName(peopleName).id;
+        String roleName = DPLRole.SelectedValue;
+        String sqlstr = String.Format("INSERT INTO role(id, movie_id, people_id, role) VALUES ('{0:s}', '{1:s}', '{2:s}', '{3:s}')",
+            roleId, getMovieId(), peopleid, roleName);
     
         SqlData.getInstance().ExecuteSQL(sqlstr);
+        int id = SqlData.getInstance().getMaxId("role") + 1;
+        LabelRoleId.Text = id.ToString();
         GridViewRole.DataBind();
     }
 
@@ -173,54 +181,16 @@ public partial class EditMovie : System.Web.UI.Page
         return People.get(peopleId).name;
     }
 
-    protected void GridViewRole_RowDataBound(object sender, GridViewRowEventArgs e)
+
+
+    public String getMaxRoleId()
     {
-        GridViewRow row = e.Row;
-        DropDownList drop = (DropDownList) row.Cells[1].FindControl("DropDownListRole");
-        if (drop != null)
-        {
-            List<String> peoples = People.getAllPeople();
-            for (int i = 0; i < peoples.Count; i++)
-            {
-                drop.Items.Add(peoples.ElementAt(i));
-            }
-        }
+        int id = SqlData.getInstance().getMaxId("role") + 1;
+        return id.ToString();
     }
 
-    protected void GridViewRole_RowCommand(object sender, GridViewCommandEventArgs e)
+    protected void DPLPeople_SelectedIndexChanged(object sender, EventArgs e)
     {
-        MyLog.v("rowCommand " + e.CommandName + "," + e.CommandArgument);
-    }
-
-    protected void GridViewRole_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    {
-        MyLog.v("rowUpdating " + e.RowIndex);
-        GridViewRow row = GridViewRole.Rows[e.RowIndex];
-
-        DropDownList ddName = (DropDownList)row.Cells[1].FindControl("DropDownListRole");
-        String name = ddName.SelectedValue;
-
-        String id = row.Cells[0].Text;
-
-        MyLog.v(String.Format("rowUpdating id={0:s} name={1:s} role={2:s}", id, name, "role"));
-
-        Role.update(id, name, "role");
-
-        GridViewRole.EditIndex = -1;
-        GridViewRole.DataBind();
-
-    }
-
-    protected void GridViewRole_RowDeleting(object sender, GridViewDeleteEventArgs e)
-    {
-        GridViewRow row = GridViewRole.Rows[e.RowIndex];
-        SqlData.getInstance().ExecuteSQL("delete from role where id=" + row.Cells[0].Text);
-        bindGridView();
-    }
-
-    protected void GridViewRole_RowEditing(object sender, GridViewEditEventArgs e)
-    {
-        GridViewRole.EditIndex = e.NewEditIndex;
-        bindGridView();
+        MyLog.v("DPLPeople_SelectedIndexChanged " + e.ToString());
     }
 }

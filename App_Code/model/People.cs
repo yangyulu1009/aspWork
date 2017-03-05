@@ -45,7 +45,7 @@ public class People
 
     public static People getByName(String name)
     {
-        String sql = String.Format("select * from people where name='{0:s}'", name);
+        String sql = String.Format("select * from people where name='{0:s}'", name.Replace("'", "''"));
         DataTable table = SqlData.getInstance().datasetExecute(sql, "people");
         return table.Rows.Count > 0 ? new People(table.Rows[0]) : null;
     }
@@ -65,7 +65,7 @@ public class People
         }
 
         int id = SqlData.getInstance().getMaxId("people") + 1;
-        String sql = String.Format("insert into people (id,name,url) values('{0:d}','{1:s}','{2:s}')", id, name, url);
+        String sql = String.Format("insert into people (id,name,url) values('{0:d}','{1:s}','{2:s}')", id, name.Replace("'", "''"), url);
         SqlData.getInstance().ExecuteSQL(sql);
         return id.ToString();
     }
