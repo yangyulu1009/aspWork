@@ -181,16 +181,8 @@ public partial class EditMovie : System.Web.UI.Page
         return People.get(peopleId).name;
     }
 
-
-
-    public String getMaxRoleId()
+    protected void GridViewRole_RowDeleted(object sender, GridViewDeletedEventArgs e)
     {
-        int id = SqlData.getInstance().getMaxId("role") + 1;
-        return id.ToString();
-    }
-
-    protected void DPLPeople_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        MyLog.v("DPLPeople_SelectedIndexChanged " + e.ToString());
+        TableRole.DataBind();
     }
 }

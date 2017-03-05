@@ -141,7 +141,7 @@
             <ContentTemplate>
                 <h1 style="padding: 5px; margin-top: 50px">相关明星</h1>
 
-                <asp:GridView runat="server" ID="GridViewRole" AutoGenerateColumns="False" DataKeyNames="id"  DataSourceID="SqlDataSourceRole">
+                <asp:GridView runat="server" ID="GridViewRole" AutoGenerateColumns="False" DataKeyNames="id"  DataSourceID="SqlDataSourceRole" OnRowDeleted="GridViewRole_RowDeleted">
 
 
 
@@ -188,10 +188,10 @@
                 </asp:SqlDataSource>
 
 
-               <table style="width: 100%" runat="server">
+               <table style="width: 100%" runat="server" id="TableRole">
                     <tr>
                         <td>
-                            <asp:Label runat="server" ID="LabelRoleId" Text='<%# getMaxRoleId() %>'></asp:Label>
+                            <asp:Label runat="server" ID="LabelRoleId" Text='<%# Role.getNewId() %>'></asp:Label>
                         </td>
                         <td style="width: 50%">
                             <asp:DropDownList runat="server" Width="50%" ID="DPLPeople" AutoPostBack="false" />

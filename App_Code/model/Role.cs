@@ -34,6 +34,12 @@ public class Role
         return roles;
     }
 
+    public static String getNewId()
+    {
+        int id = SqlData.getInstance().getMaxId("role") + 1;
+        return id.ToString();
+    }
+
     public static void update(String id, String name, String role)
     {
         People people = People.getByName(name);
