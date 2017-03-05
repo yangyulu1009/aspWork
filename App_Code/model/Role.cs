@@ -118,4 +118,10 @@ public class Role
         String sql = String.Format("delete from role where movie_id='{0:s}'", movieId);
         SqlData.getInstance().ExecuteSQL(sql);
     }
+
+    public static void removePeople(String peopleId)
+    {
+        String sql = String.Format("delete from role where people_id='{0:s}'", peopleId);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
 }

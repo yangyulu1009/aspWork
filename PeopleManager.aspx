@@ -27,7 +27,7 @@
 
             <ContentTemplate>
 
-                <asp:GridView runat="server" ID="GridViewPeople" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourcePeople">
+                <asp:GridView runat="server" ID="GridViewPeople" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourcePeople" OnRowDeleting="GridViewPeople_RowDeleting" OnRowDeleted="GridViewPeople_RowDeleted">
 
 
                     <Columns>
@@ -72,10 +72,10 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
 
-                <table runat="server" style="width:100%">
+                <table runat="server" style="width:100%" id="Table1">
                     <tr>
                         <td style="width:5%">
-                            <asp:Label runat="server" ID="LabelPeopleId" Text="<%# getNewPeopleId() %>" />
+                            <asp:Label runat="server" ID="LabelPeopleId" Text="<%# People.getNewId() %>" />
                         </td>
                         <td style="width:30%">
                             <asp:TextBox runat="server" ID="TextBoxName"  Width="70%"/>

@@ -17,9 +17,16 @@ public class People
 
     public static People get(String id)
     {
-        DataTable table = SqlData.getInstance().datasetExecute("select * from people where id=" + id, "people");
+        String sql = "select * from people where id=" + id;
+        DataTable table = SqlData.getInstance().datasetExecute(sql, "people");
         People people = new People(table.Rows[0]);
         return people;
+    }
+
+    public static String getNewId()
+    {
+        int id = SqlData.getInstance().getMaxId("people") + 1;
+        return id.ToString();
     }
 
     public static List<String> getAllPeople()
@@ -50,24 +57,26 @@ public class People
         return table.Rows.Count > 0 ? new People(table.Rows[0]) : null;
     }
 
-    public static String add(String name, String url)
+    public static void add(String peopleId, String name, String url)
     {
         name = name.Trim();
         url = url.Trim();
 
-        if (name.Length > 0)
+        if (name.Length == 0)
         {
-            People people = getByName(name);
-            if (people != null)
-            {
-                return people.id;
-            }
+            return;
         }
 
-        int id = SqlData.getInstance().getMaxId("people") + 1;
-        String sql = String.Format("insert into people (id,name,url) values('{0:d}','{1:s}','{2:s}')", id, name.Replace("'", "''"), url);
+
+        People people = getByName(name);
+        if (people != null)
+        {
+            return;
+        }
+
+
+        String sql = String.Format("insert into people (id,name,url) values('{0:d}','{1:s}','{2:s}')", peopleId, name.Replace("'", "''"), url);
         SqlData.getInstance().ExecuteSQL(sql);
-        return id.ToString();
     }
-    
+
 }
