@@ -248,7 +248,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         for (int i = 0; i < genres.Count; i++)
         {
             String name = genres.ElementAt(i);
-            sb.AppendFormat("<li><a href=\"Genre?name={0:s}\">{1:s}</a></li>", name, name);
+            sb.AppendFormat("<li><a href=\"Movietype?genre={0:s}\">{1:s}</a></li>", name, name);
         }
         sb.AppendFormat("    </ul>");
         sb.AppendFormat("</div>");
