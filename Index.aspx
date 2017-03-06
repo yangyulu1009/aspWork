@@ -127,14 +127,7 @@
                                 <input type="email" name="email" placeholder="E-mail" required=""/>
                                 <input type="password" name="password" placeholder="Password" required=""/>
                                 <div class="tp">
-                                    <input type="submit" value="LOGIN NOW"/></div>
-                                <div class="forgot-grid">
-                                    <div class="log-check">
-                                        <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"/>Remember me</label></div>
-                                    <div class="forgot">
-                                        <a href="#" data-toggle="modal" data-target="#myModal2">Forgot Password?</a></div>
-                                    <div class="clearfix"></div>
+                                    <input type="submit" value="LOGIN NOW"/>
                                 </div>
                             </form>
                         </div>
