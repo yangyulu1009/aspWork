@@ -6,7 +6,7 @@
     <div class="w3_content_agilleinfo_inner">
         <div class="agile_featured_movies">
             <!--/tv-movies-->
-            <h3 class="agile_w3_title hor-t">Action<span>Movies</span></h3>
+            <h3 class="agile_w3_title hor-t">Action<span><%# getActionName() %></span></h3>
             <div class="wthree_agile-requested-movies tv-movies">
                 <%# getMovietypeHtmls() %>
                 <div class="clearfix"></div>

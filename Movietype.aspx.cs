@@ -28,6 +28,11 @@ public partial class Movietype : System.Web.UI.Page
         Page.DataBind();
     }
 
+    public String getActionName()
+    {
+        return mGenre != null ? mGenre : "NULL";
+    }
+
     public String getMovietypeHtmls()
     {
         int size = Math.Min(10, mMovies.Count);
