@@ -92,7 +92,7 @@ public partial class Single : System.Web.UI.Page
         for (int i = 0; i < genres.Count; i++)
         {
             String genre = genres.ElementAt(i);
-            sb.AppendFormat("<a href=\"{0:s}\" target=\"_blank\">{1:s}</a>", "MovieCategory?genre=" + genre, genre + " ");
+            sb.AppendFormat("<a href=\"{0:s}\" target=\"_blank\">{1:s}</a>", "Movietype?genre=" + genre, genre + " ");
         }
         return sb.ToString();
     }

@@ -30,6 +30,27 @@ public class Movie
         return new Movie(row);
     }
 
+    public static List<Movie> getMovieByGenre(String genre)
+    {
+        List<Movie> movies = get();
+
+        if (genre == null || genre.Length == 0)
+        {
+            return movies;
+        }
+
+        List<Movie> result = new List<Movie>();
+
+        foreach (Movie movie in movies)
+        {
+            if (movie.genre.Contains(genre))
+            {
+                result.Add(movie);
+            }
+        }
+        return result;
+    }
+
     public static List<Movie> get()
     {
         DataTable table = SqlData.getInstance().datasetExecute("select * from movie", "movie");
