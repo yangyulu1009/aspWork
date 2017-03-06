@@ -30,7 +30,7 @@ public partial class Movietype : System.Web.UI.Page
 
     public String getActionName()
     {
-        return mGenre != null ? mGenre : "NULL";
+        return mGenre != null ? mGenre : "ALL";
     }
 
     public String getMovietypeHtmls()

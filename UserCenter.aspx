@@ -48,7 +48,7 @@
                         <tr>
 
                             <td style="width: 40%">
-                                <asp:ImageButton ID="ImageHead" runat="server" ImageUrl='<%# getUser().head %>' CssClass="user-head" />
+                                <asp:ImageButton ID="ImageHead" runat="server" ImageUrl='<%# getUserHead() %>' CssClass="user-head" />
 
                                 <asp:FileUpload ID="ImageUpload" runat="server" Visible="True" CssClass="user-head-upload" />
 

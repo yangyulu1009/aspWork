@@ -35,6 +35,16 @@ public partial class UserCenter : System.Web.UI.Page
         return user != null ? user : new Users();
     }
 
+    public String getUserHead()
+    {
+        String head = getUser().head;
+        if (head != null && head.Length > 0)
+        {
+            return head;
+        }
+        return "images/admin.jpg";
+    }
+
     protected void ButtonUpload_Click(object sender, EventArgs e)
     {
         if (ImageUpload.HasFile)
