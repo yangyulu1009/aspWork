@@ -40,6 +40,12 @@ public partial class EditMovie : System.Web.UI.Page
         }
     }
 
+    public String getMovieUrl(object item)
+    {
+        String movieId = DataBinder.Eval(item, "id").ToString();
+        return "Single?id=" + movieId;
+    }
+
     public void ButtonAddRole_Click(object sender, EventArgs e)
     {
         String roleId = LabelRoleId.Text;

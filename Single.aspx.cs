@@ -148,7 +148,7 @@ public partial class Single : System.Web.UI.Page
         {
             News news = newz.ElementAt(i);
             sb.AppendFormat("<li>");
-            sb.AppendFormat("    <a href=\"{0:s}\">{1:s}</a>", news.url, news.content);
+            sb.AppendFormat("    <a href=\"{0:s}\" target=\"_black\">{1:s}</a>", news.url, news.content);
             sb.AppendFormat("    <p>{0:s}</p>", DateUtils.getDate(news.reldate));
             sb.AppendFormat("</li>");
         }

@@ -75,10 +75,13 @@
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:BoundField ConvertEmptyStringToNull="False" DataField="name" HeaderText="电影名称" ItemStyle-Width="15%" ReadOnly="True" SortExpression="name" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="电影名称" SortExpression="name">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLinkMovieName" runat="server" Text='<%# Bind("name") %>' NavigateUrl='<%# getMovieUrl(Container.DataItem) %>' Target="_blank"></asp:HyperLink>
+                            </ItemTemplate>
                             <HeaderStyle CssClass="gridheader" />
-                            <ItemStyle CssClass="griditem" />
-                        </asp:BoundField>
+                            <ItemStyle CssClass="griditem" Width="15%" />
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="电影简介" SortExpression="description" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("description") %>' TextMode="MultiLine" Width="100%"></asp:TextBox>
@@ -93,7 +96,10 @@
 
 
 
-                        <asp:CommandField CancelText="取消" DeleteText="" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%" />
+                        <asp:CommandField CancelText="取消" DeleteText="" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%" >
+                        <HeaderStyle CssClass="gridheader" />
+                        <ItemStyle CssClass="griditem" Width="20%" />
+                        </asp:CommandField>
                     </Columns>
 
 
