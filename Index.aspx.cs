@@ -262,6 +262,7 @@ public partial class Index : System.Web.UI.Page
     {
         String html = "";
         List<String> genres = Movie.getAllGenres();
+        genres.Insert(0, "All");
         for (int i = 0; i < genres.Count; )
         {
             int len = Math.Min(8, genres.Count - i);

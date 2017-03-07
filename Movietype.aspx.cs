@@ -11,6 +11,7 @@ public partial class Movietype : System.Web.UI.Page
 
     private String mGenre;
     private List<Movie> mMovies;
+    private int mPageIndex;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -22,22 +23,76 @@ public partial class Movietype : System.Web.UI.Page
         if (Request.QueryString["genre"] != null)
         {
             mGenre = Request.QueryString["genre"].ToString();
+            if (mGenre.Equals("All"))
+            {
+                mGenre = "";
+            }
         }
+
+        if (Request.QueryString["page"] != null)
+        {
+            mPageIndex = int.Parse(Request.QueryString["page"].ToString());
+        }
+
+        mPageIndex = Math.Max(mPageIndex, 1);
         
         mMovies = Movie.getMovieByGenre(mGenre);
         Page.DataBind();
     }
 
+    private int getPageCount()
+    {
+        return 1 + (mMovies.Count - 1) / 10; ;
+    }
+
+    public String getPageHtmls()
+    {
+        StringBuilder sb = new StringBuilder();
+        int page = getPageCount();
+        for (int i = 1; i <= page; i++)
+        {
+            String url = String.Format("?genre={0:s}&page={1:d}", mGenre, i);
+            String className = (i == mPageIndex ? "myselect" : "");
+            sb.AppendFormat("<li><a href=\"{0:s}\" class=\"{1:s}\">{2:d}</a></li>", url, className, i);
+        }
+        return sb.ToString();
+    }
+
+    public String getPrevUrl()
+    {
+        if (mPageIndex > 1)
+        {
+            return String.Format("?genre={0:s}&page={1:d}", mGenre, mPageIndex - 1);
+        } else
+        {
+            return "#";
+        }
+    }
+
+    public String getNextUrl()
+    {
+        if (mPageIndex < getPageCount())
+        {
+            return String.Format("?genre={0:s}&page={1:d}", mGenre, mPageIndex + 1);
+        }
+        else
+        {
+            return "#";
+        }
+    }
+
     public String getActionName()
     {
-        return mGenre != null ? mGenre : "ALL";
+        return mGenre != null && mGenre.Length > 0 ? mGenre : "ALL";
     }
 
     public String getMovietypeHtmls()
     {
-        int size = Math.Min(10, mMovies.Count);
+        int start = (mPageIndex - 1) * 10;
+        int size = Math.Min(mMovies.Count - start, 10);
+        int end = start + size;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < size; i++)
+        for (int i = start; i < end; i++)
         {
             sb.Append(getMovietypeHtml(i));
         }
