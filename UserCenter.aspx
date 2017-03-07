@@ -110,6 +110,7 @@
                         <div runat="server" id="ManagerContainer">
                             <p class="extra-manager"><a href="MovieManager.aspx" target="_blank">电影管理</a></p>
                             <p class="extra-manager"><a href="UsersManager.aspx" target="_blank">用户管理</a></p>
+                            <p class="extra-manager"><a href="PeopleManager.aspx" target="_blank">明星管理</a></p>
                         </div>
                     </td>
 
