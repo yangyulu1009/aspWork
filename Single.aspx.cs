@@ -118,13 +118,13 @@ public partial class Single : System.Web.UI.Page
     {
         StringBuilder sb = new StringBuilder();
 
-        sb.AppendFormat("<div class=\"media response-info\">");
-        sb.AppendFormat("    <div class=\"media-left response-text-left\">");
-        sb.AppendFormat("        <img class=\"media-object\" style=\"height:100px\" src=\"{0:s}\">", response.user.head);
-        sb.AppendFormat("        <h5>{0:s}</h5>", response.user.name);
+        sb.AppendFormat("<div class=\"media response-info\" style=\"margin-top:2em\">");
+        sb.AppendFormat("    <div class=\"media-left response-text-left\" style=\"width:auto;padding-right:0px\">");
+        sb.AppendFormat("        <img class=\"media-object response-head\" src=\"{0:s}\">", response.user.head);
+        sb.AppendFormat("        <h5 style=\"text-align: center\">{0:s}</h5>", response.user.name);
         sb.AppendFormat("    </div>");
         sb.AppendFormat("    <div class=\"media-body response-text-right\">");
-        sb.AppendFormat("        <p>{0:s}</p>", response.comment);
+        sb.AppendFormat("        <p style=\"margin-left: 32px\">{0:s}</p>", response.comment);
         sb.AppendFormat("        <ul>");
         sb.AppendFormat("            <li>{0:s}</li>", response.reply_time);
        // sb.AppendFormat("            <li><a href=\"?id={0:s}\">Delete</a></li>", response.id);

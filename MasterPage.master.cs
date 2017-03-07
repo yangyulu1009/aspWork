@@ -87,7 +87,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (Request.QueryString["action"] != null)
         {
             String actionName = Request.QueryString["action"].ToString();
-            MyLog.v("process action " + actionName);
+            MyLog.v("process action in master: " + actionName);
 
             if (actionName.Equals("register"))
             {
@@ -132,10 +132,41 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 MyLog.v("query: " + query);
                 search(query);
                 return true;
+            } else if (actionName.Equals("modpwd"))
+            {
+                String oldPwd = Request.Form["OldPassword"].ToString();
+                String newPwd = Request.Form["NewPassword"].ToString();
+                modPassword(oldPwd, newPwd);
             }
         }
 
         return false;
+    }
+
+    private void modPassword(String oldPwd, String newPwd)
+    {
+        if (oldPwd.Length == 0 || newPwd.Length == 0)
+        {
+            alert("密码不能为空");
+            return;
+        } else
+        {
+            String userId = Session[Constants.SESSION_USERID].ToString();
+            if (Users.checkPwd(userId, oldPwd))
+            {
+                Users.updatePwd(userId, newPwd);
+                alert("密码修改成功！");
+            } else
+            {
+                alert("旧密码错误！");
+            }
+        }
+    }
+
+    public void alert(String msg)
+    {
+        String s = String.Format("<script>alert(\"{0:s}\");</script>", msg);
+        Response.Write(s);
     }
 
     protected void search(String query)

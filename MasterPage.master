@@ -136,7 +136,7 @@
                             <div class="login-form">
                                 <form action="?action=login" method="post">
                                     <input type="email" name="email" placeholder="E-mail" required="" />
-                                    <input type="password" name="password" placeholder="Password" required="" />
+                                    <input type="password" name="password" placeholder="Password" required="" autocomplete="off"/>
                                     <div class="tp">
                                         <input type="submit" value="LOGIN NOW"  />
                                     </div>

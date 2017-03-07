@@ -19,6 +19,12 @@
         .opera-img {
             width: 100px;
         }
+
+        .response-head {
+            width: 80px;
+            height: 80px;
+            border-radius:40px;
+        }
     </style>
 </asp:Content>
 

@@ -9,6 +9,22 @@ public partial class UserCenter : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
+        if (Request.QueryString["action"] != null)
+        {
+            String action = Request.QueryString["action"].ToString();
+
+            MyLog.v("process action in usercenter: " + action);
+            
+            if ("modpwd".Equals(action))
+            {
+                String oldPwd = Request.Form["OldPassword"].ToString();
+                String newPwd = Request.Form["NewPassword"].ToString();
+                modPassword(oldPwd, newPwd);
+            }
+            return;
+        }*/
+
         if (IsPostBack)
         {
             return;
@@ -17,6 +33,7 @@ public partial class UserCenter : System.Web.UI.Page
         if (Session[Constants.SESSION_USERID] == null)
         {
             RootContainer.Visible = false;
+            UpdatePanelResponses.Visible = false;
             return;
         }
         String userId = Session[Constants.SESSION_USERID].ToString();
@@ -25,6 +42,8 @@ public partial class UserCenter : System.Web.UI.Page
             Users user = Users.get(userId);
             Application[Constants.KEY_USER] = user;
         }
+
+        
 
         Page.DataBind();
     }
@@ -78,21 +97,6 @@ public partial class UserCenter : System.Web.UI.Page
     public String getRegTime()
     {
         return getUser().regtime;
-    }
-
-    protected void ButtonModPwd_Click(object sender, EventArgs e)
-    {
-        if (ButtonModPwd.Text.Equals("修改密码"))
-        {
-            ButtonModPwd.Text = "更新密码";
-            TextBoxPwd.Visible = true;
-        } else if (ButtonModPwd.Text.Equals("更新密码"))
-        {
-            ButtonModPwd.Text = "修改密码";
-            String pwd = TextBoxPwd.Text.Trim();
-            TextBoxPwd.Visible = false;
-            Users.updatePwd(getUser().id, pwd);
-        }
     }
 
     public String getMovieName(object item)

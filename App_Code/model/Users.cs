@@ -35,6 +35,12 @@ public class Users
         }
     }
 
+    public static Boolean checkPwd(String userId, String pwd)
+    {
+        Users user = Users.get(userId);
+        return user.password.Equals(pwd);
+    }
+
     public static Users getByName(String name)
     {
         String sql = String.Format("select * from users where name='{0:s}'", name);
