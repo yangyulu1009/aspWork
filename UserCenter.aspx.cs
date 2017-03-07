@@ -7,43 +7,43 @@ using System.Web.UI.WebControls;
 
 public partial class UserCenter : System.Web.UI.Page
 {
+
+    private void onLogout()
+    {
+        RootContainer.Visible = false;
+        UpdatePanelResponses.Visible = false;
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        /*
         if (Request.QueryString["action"] != null)
         {
             String action = Request.QueryString["action"].ToString();
-
-            MyLog.v("process action in usercenter: " + action);
-            
-            if ("modpwd".Equals(action))
+            if ("logout".Equals(action))
             {
-                String oldPwd = Request.Form["OldPassword"].ToString();
-                String newPwd = Request.Form["NewPassword"].ToString();
-                modPassword(oldPwd, newPwd);
+                onLogout();
+                return;
             }
-            return;
-        }*/
-
-        if (IsPostBack)
-        {
-            return;
         }
 
         if (Session[Constants.SESSION_USERID] == null)
         {
-            RootContainer.Visible = false;
-            UpdatePanelResponses.Visible = false;
+            onLogout();
             return;
         }
+
         String userId = Session[Constants.SESSION_USERID].ToString();
         if (userId.Length > 0)
         {
             Users user = Users.get(userId);
             Application[Constants.KEY_USER] = user;
+            ManagerContainer.Visible = user.level.Equals("0");
         }
 
-        
+        if (IsPostBack)
+        {
+            return;
+        }
 
         Page.DataBind();
     }
