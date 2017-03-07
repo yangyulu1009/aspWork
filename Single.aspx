@@ -15,6 +15,10 @@
             border: none;
             width: 170px;
         }
+
+        .opera-img {
+            width: 100px;
+        }
     </style>
 </asp:Content>
 
@@ -42,7 +46,7 @@
                             </div>
                             <!-- <h4>Force 2 | Official Trailer | John Abraham, Sonakshi Sinha and Tahir Raj Bhasin</h4> -->
                             <div class="player-text side-bar-info">
-                                <p class="fexi_header">Me Before You</p>
+                                <p class="fexi_header"><%# getMovie().name %></p>
                                 <p class="fexi_header_para">
                                     <span class="conjuring_w3">Story Line
                                 <label>:</label></span>
@@ -80,22 +84,22 @@
                         <div class="clearfix"></div>
                         <div class="admin-text">
                             <h5>Photographs</h5>
-                            <img src="<%# getMovie().getOperaImage(0) %>" width="178" height="200" alt="" />
-                            <img src="<%# getMovie().getOperaImage(1) %>" width="178" height="200" alt="" />
-                            <img src="<%# getMovie().getOperaImage(2) %>" width="178" height="200" alt="" />
-                            <img src="<%# getMovie().getOperaImage(3) %>" width="178" height="200" alt="" />
+                            <img src="<%# getMovie().getOperaImage(0) %>" class="opera-img" />
+                            <img src="<%# getMovie().getOperaImage(1) %>" class="opera-img" />
+                            <img src="<%# getMovie().getOperaImage(2) %>" class="opera-img" />
+                            <img src="<%# getMovie().getOperaImage(3) %>" class="opera-img" />
                             <div class="clearfix"></div>
                         </div>
                         <div class="admin-text">
                             <h5>Videos</h5>
                             <a href="<%# Video.getVideoUrl(getMovieId(), 1) %>">
-                                <img src="<%# Video.getImageUrl(getMovieId(), 1) %>" width="178" height="200" alt="" /></a>
+                                <img src="<%# Video.getImageUrl(getMovieId(), 1) %>" class="opera-img" /></a>
                             <a href="<%# Video.getVideoUrl(getMovieId(), 2) %>">
-                                <img src="<%# Video.getImageUrl(getMovieId(), 2) %>" width="178" height="200" alt="" /></a>
+                                <img src="<%# Video.getImageUrl(getMovieId(), 2) %>" class="opera-img" /></a>
                             <a href="<%# Video.getVideoUrl(getMovieId(), 3) %>">
-                                <img src="<%# Video.getImageUrl(getMovieId(), 3) %>" width="178" height="200" alt="" /></a>
+                                <img src="<%# Video.getImageUrl(getMovieId(), 3) %>" class="opera-img" /></a>
                             <a href="<%# Video.getVideoUrl(getMovieId(), 4) %>">
-                                <img src="<%# Video.getImageUrl(getMovieId(), 4) %>" width="178" height="200" alt="" /></a>
+                                <img src="<%# Video.getImageUrl(getMovieId(), 4) %>" class="opera-img" /></a>
                             <div class="clearfix"></div>
                         </div>
 

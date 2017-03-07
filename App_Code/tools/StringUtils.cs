@@ -20,6 +20,12 @@ public class StringUtils
         return join(strs, " ");
     }
 
+    public static String join(String[] strs, String sep)
+    {
+        List<String> list = new List<String>(strs);
+        return join(list, sep);
+    }
+
     public static String join(List<String> strs, String sep)
     {
         String text = "";

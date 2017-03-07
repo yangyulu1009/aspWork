@@ -94,8 +94,14 @@ public class DateUtils
 
     public static String getDate(String text)
     {
+        return getDate(text, "-");
+    }
+
+    public static String getDate(String text, String sep)
+    {
         MyDate date = parse(text).date;
-        return String.Format("{0:d}-{1:d}-{2:d}", date.year, date.month, date.day);
+        
+        return StringUtils.join(new String[] { date.year.ToString(), date.month.ToString(), date.day.ToString() }, sep);
     }
 
     public static String getWeekDay(String date)

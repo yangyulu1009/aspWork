@@ -166,7 +166,7 @@ public partial class Single : System.Web.UI.Page
         {
             Sales sales = salez.ElementAt(i);
             sb.AppendFormat("<tr>");
-            sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getDate(sales.date));
+            sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getDate(sales.date, "/"));
             sb.AppendFormat("    <td>{0:s}</td>", DateUtils.getWeekDay(sales.date));
             sb.AppendFormat("    <td>${0:s}</td>", sales.sale);
             sb.AppendFormat("</tr>");
@@ -177,9 +177,11 @@ public partial class Single : System.Web.UI.Page
 
     public String getTillDate()
     {
+        /*
         List<Sales> salez = Sales.get(getMovieId());
         Sales sale = salez.ElementAt(0);
-        return DateUtils.getDate(sale.date);
+        return DateUtils.getDate(sale.date);*/
+        return DateTime.Now.ToShortDateString();
     }
 
     public String getSendResponseHtml()
