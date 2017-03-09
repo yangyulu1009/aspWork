@@ -120,7 +120,8 @@ public partial class Single : System.Web.UI.Page
 
         sb.AppendFormat("<div class=\"media response-info\" style=\"margin-top:2em\">");
         sb.AppendFormat("    <div class=\"media-left response-text-left\" style=\"width:auto;padding-right:0px\">");
-        sb.AppendFormat("        <img class=\"media-object response-head\" src=\"{0:s}\">", response.user.head);
+        String head = response.user.head.Length > 0 ? response.user.head : "images/admin.jpg";
+        sb.AppendFormat("        <img class=\"media-object response-head\" src=\"{0:s}\">", head);
         sb.AppendFormat("        <h5 style=\"text-align: center\">{0:s}</h5>", response.user.name);
         sb.AppendFormat("    </div>");
         sb.AppendFormat("    <div class=\"media-body response-text-right\">");

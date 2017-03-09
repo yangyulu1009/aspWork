@@ -116,13 +116,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
                         alert("用户名或密码错误！");
                     } else
                     {
-                        alert("登录成功!");
+                        //  alert("登录成功!");
+                        Response.Redirect(Request.Url.ToString());
                     }
-           //         Response.Redirect(Request.Url.ToString());
+                    
                 }
             } else if (actionName.Equals("logout"))
             {
                 setUserSession(null);
+                Response.Redirect("Index");
             } else if (actionName.Equals("userCenter"))
             {
                 Response.Redirect("UserCenter.aspx?id=" + getLoginedUserId());

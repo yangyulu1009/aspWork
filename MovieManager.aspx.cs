@@ -10,7 +10,11 @@ public partial class MovieManager : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        if (Session[Constants.SESSION_USERID] == null)
+        {
+            UpdatePanel1.Visible = false;
+            return;
+        }
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)

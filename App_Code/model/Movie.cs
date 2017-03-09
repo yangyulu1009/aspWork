@@ -167,7 +167,7 @@ public class Movie
 
     public String getOperaImage(int index)
     {
-        return getImages().ElementAt(index + 1).url;
+        return String.Format("{0:s}?f={1:s}", getImages().ElementAt(index + 1).url, DateTime.Now.Ticks.ToString());
     }
 
     public static void insert()

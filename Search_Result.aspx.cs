@@ -183,7 +183,7 @@ public partial class Search_Result : System.Web.UI.Page
 
 
         sb.AppendFormat("<tr>");
-        sb.AppendFormat("    <td>{0:d}</td>", i);
+        sb.AppendFormat("    <td>{0:d}</td>", i + 1);
         sb.AppendFormat("       <td class=\"w3-list-img\">");
      //   sb.AppendFormat("       <a href=\"single.html?id={0:s}\">", movie.id);
         sb.AppendFormat("       <img src=\"{0:s}\" width=\"16%\" />", movie.getIndexImage());

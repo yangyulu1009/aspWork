@@ -17,7 +17,8 @@
         }
 
         .opera-img {
-            width: 100px;
+            width: 178px;
+            height: 200px;
         }
 
         .response-head {

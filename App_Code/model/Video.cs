@@ -74,6 +74,6 @@ public class Video
 
     public static String getImageUrl(String movieId, int index)
     {
-        return get(movieId).ElementAt(index).image;
+        return String.Format("{0:s}?f={1:s}", get(movieId).ElementAt(index).image, DateTime.Now.Ticks.ToString());
     }
 }

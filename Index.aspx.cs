@@ -127,13 +127,14 @@ public partial class Index : System.Web.UI.Page
                         alert("用户名或密码错误!");
                     } else
                     {
-                        alert("登录成功！");
+                        Response.Redirect(Request.Url.ToString());
                     }
                 }
             }
             else if (actionName.Equals("logout"))
             {
                 setUserSession(null);
+                Response.Redirect("Index");
             }
             else if (actionName.Equals("userCenter"))
             {
