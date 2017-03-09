@@ -93,7 +93,7 @@ public partial class Index : System.Web.UI.Page
         return text;
     }
 
-    private bool processAction()
+    private void processAction()
     {
         if (Request.QueryString["action"] != null)
         {
@@ -108,9 +108,7 @@ public partial class Index : System.Web.UI.Page
                     String email = Request.Form["email"].ToString();
                     String password = Request.Form["password"].ToString();
                     register(name, email, password);
-                    return true;
                 }
-                return false;
             }
             else if (actionName.Equals("login"))
             {
@@ -124,30 +122,36 @@ public partial class Index : System.Web.UI.Page
                 if (email.Length > 0 && password.Length > 0)
                 {
                     MyLog.v(String.Format("{0:s}: email = {1:s}, password = {2:s}", actionName, email, password));
-                    login(email, password);
-                    return true;
+                    if (!login(email, password))
+                    {
+                        alert("用户名或密码错误!");
+                    } else
+                    {
+                        alert("登录成功！");
+                    }
                 }
-                return false;
             }
             else if (actionName.Equals("logout"))
             {
                 setUserSession(null);
-                return true;
             }
             else if (actionName.Equals("userCenter"))
             {
                 Response.Redirect("UserCenter.aspx?id=" + getLoginedUserId());
-                return true;
             }
             else if (actionName.Equals("search"))
             {
                 String query = Request.Form["Search"].ToString();
                 MyLog.v("query: " + query);
                 search(query);
-                return true;
             }
         }
-        return false;
+    }
+
+    public void alert(String msg)
+    {
+        String s = String.Format("<script>alert(\"{0:s}\");</script>", msg);
+        Response.Write(s);
     }
 
     protected void search(String query)
@@ -225,14 +229,13 @@ public partial class Index : System.Web.UI.Page
         Response.Redirect(Request.Url.ToString());
     }
 
-    protected void login(String email, String password)
+    protected bool login(String email, String password)
     {
         MyLog.v(String.Format("login: email = {0:s}, password = {1:s}", email, password));
 
         String id = Users.login(email, password);
         setUserSession(id);
-
-        Response.Redirect(Request.Url.ToString());
+        return id != null;
     }
 
     public String getMovieTypeHtmls()

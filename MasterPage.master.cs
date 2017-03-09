@@ -82,7 +82,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         return text;
     }
 
-    private bool processAction()
+    private void processAction()
     {
         if (Request.QueryString["action"] != null)
         {
@@ -97,9 +97,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     String email = Request.Form["email"].ToString();
                     String password = Request.Form["password"].ToString();
                     register(name, email, password);
-                    return true;
                 }
-                return false;
             }
             else if (actionName.Equals("login"))
             {
@@ -113,25 +111,27 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 if (email.Length > 0 && password.Length > 0)
                 {
                     MyLog.v(String.Format("{0:s}: email = {1:s}, password = {2:s}", actionName, email, password));
-                    login(email, password);
-                    return true;
+                    if (!login(email, password))
+                    {
+                        alert("用户名或密码错误！");
+                    } else
+                    {
+                        alert("登录成功!");
+                    }
+           //         Response.Redirect(Request.Url.ToString());
                 }
-                return false;
             } else if (actionName.Equals("logout"))
             {
                 setUserSession(null);
-                return true;
             } else if (actionName.Equals("userCenter"))
             {
                 Response.Redirect("UserCenter.aspx?id=" + getLoginedUserId());
-                return true;
             }
             else if (actionName.Equals("search"))
             {
                 String query = Request.Form["Search"].ToString();
                 MyLog.v("query: " + query);
                 search(query);
-                return true;
             } else if (actionName.Equals("modpwd"))
             {
                 String oldPwd = Request.Form["OldPassword"].ToString();
@@ -139,8 +139,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 modPassword(oldPwd, newPwd);
             }
         }
-
-        return false;
     }
 
     private void modPassword(String oldPwd, String newPwd)
@@ -246,14 +244,16 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Response.Redirect(Request.Url.ToString());
     }
 
-    protected void login(String email, String password)
+    protected bool login(String email, String password)
     {
         MyLog.v(String.Format("login: email = {0:s}, password = {1:s}", email, password));
 
         String id = Users.login(email, password);
         setUserSession(id);
 
-        Response.Redirect(Request.Url.ToString());
+        
+
+        return id != null;
     }
 
     public String getGenreHtmls()
