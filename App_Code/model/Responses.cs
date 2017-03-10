@@ -58,7 +58,8 @@ public class Responses
     {
         int id = SqlData.getInstance().getMaxId("responses") + 1;
         String sql = String.Format("insert into responses values('{0:d}', '{1:s}', '{2:s}', '{3:s}', '{4:s}')", 
-            id, movieId, userId, DateTime.Now.ToString(), response);
+            id, movieId, userId, DateTime.Now.ToString(), response.Replace("'", "''"));
+        
         SqlData.getInstance().ExecuteSQL(sql);
     }
 }

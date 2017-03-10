@@ -76,7 +76,7 @@ public class Movie
 
     public static void updateDesc(String movieId, String desc)
     {
-        String sql = String.Format("update movie set description='{0:s}' where id='{1:s}'", desc, movieId);
+        String sql = String.Format("update movie set description='{0:s}' where id='{1:s}'", desc.Replace("'", "''"), movieId);
         SqlData.getInstance().ExecuteSQL(sql);
     }
 
