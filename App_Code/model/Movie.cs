@@ -30,6 +30,34 @@ public class Movie
         return new Movie(row);
     }
 
+    public static List<Movie> search(String query)
+    {
+        List<Movie> movies = new List<Movie>();
+        String sqlstr = String.Format("select * from movie where name like '%{0:s}%' or description like '%{1:s}%' or keywords like '%{2:s}%'", query, query, query);
+        DataTable table = SqlData.getInstance().datasetExecute(sqlstr, "movie");
+
+        for (int index = 0; index < table.Rows.Count; index++)
+        {
+            Movie movie = new Movie(table.Rows[index]);
+            movies.Add(movie);
+        }
+
+        sqlstr = "select * from movie where id in (select movie_id from role where people_id in (select id from people where name like '%" + query + "%'))";
+
+        table = SqlData.getInstance().datasetExecute(sqlstr, "movie");
+
+        for (int index = 0; index < table.Rows.Count; index++)
+        {
+            Movie movie = new Movie(table.Rows[index]);
+            if (!movies.Contains(movie))
+            {
+                movies.Add(movie);
+            }
+        }
+
+        return movies;
+    }
+
     public static List<Movie> getMovieByGenre(String genre)
     {
         List<Movie> movies = get();

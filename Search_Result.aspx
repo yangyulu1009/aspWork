@@ -29,7 +29,7 @@
                             <div class="agile-news-table">
                                 <div class="w3ls-news-result">
                                     <h4>Search Results :
-                                        <span><%# mMovieCount %></span></h4>
+                                        <span><%# getMovieCount() %></span></h4>
                                 </div>
                                 <table id="table-breakpoint">
                                     <thead>
@@ -37,9 +37,10 @@
                                             <th>No.</th>
                                             <th>Movie Name</th>
                                             <th>Year</th>
-                                            <th>Director</th>
                                             <th>Country</th>
+                                            <th>Director</th>
                                             <th>Actor</th>
+                                            <th>Writer</th>
                                             <th>Rating</th></tr>
                                     </thead>
                                     <tbody>
