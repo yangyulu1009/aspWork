@@ -26,20 +26,20 @@ public class Constants
 
     public static String[] IMAGE_DESC =
     {
-        "首页电影图标",
-        "电影剧照1",
-        "电影剧照2",
-        "电影剧照3",
-        "电影剧照4"
+        "Homepage Poster",
+        "Stage Photo1",
+        "Stage Photo2",
+        "Stage Photo3",
+        "Stage Photo4"
     };
 
     public static String[] VIDEO_DESC =
     {
-        "电影正片",
-        "相关视频1",
-        "相关视频2",
-        "相关视频3",
-        "相关视频4"
+        "Feature Film",
+        "Related Video1",
+        "Related Video2",
+        "Related Video3",
+        "Related Video4"
     };
 
     /*

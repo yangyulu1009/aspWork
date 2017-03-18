@@ -113,7 +113,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                     MyLog.v(String.Format("{0:s}: email = {1:s}, password = {2:s}", actionName, email, password));
                     if (!login(email, password))
                     {
-                        alert("用户名或密码错误！");
+                        alert("Username or Password error！");
                     } else
                     {
                         //  alert("登录成功!");
@@ -147,7 +147,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         if (oldPwd.Length == 0 || newPwd.Length == 0)
         {
-            alert("密码不能为空");
+            alert("Password can not be null");
             return;
         } else
         {
@@ -155,10 +155,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
             if (Users.checkPwd(userId, oldPwd))
             {
                 Users.updatePwd(userId, newPwd);
-                alert("密码修改成功！");
+                alert("Change password successfully！");
             } else
             {
-                alert("旧密码错误！");
+                alert("Old password error！");
             }
         }
     }
@@ -223,19 +223,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         if (Users.existEmail(email))
         {
-            Response.Write("<script>alert('邮件已存在！')</script>");
+            Response.Write("<script>alert('Email already exist！')</script>");
             return;
         }
 
         if (Users.existName(name))
         {
-            Response.Write("<script>alert('用户名已存在！')</script>");
+            Response.Write("<script>alert('Username already exist！')</script>");
             return;
         }
 
         if (password.Length == 0)
         {
-            Response.Write("<script>alert('密码不能为空，请重新输入!')</script>");
+            Response.Write("<script>alert('Password can not be null!')</script>");
             return;
         }
 

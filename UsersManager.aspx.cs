@@ -22,7 +22,7 @@ public partial class UsersManager : System.Web.UI.Page
     public String getLevelName(object item)
     {
         int level = int.Parse(DataBinder.Eval(item, "level").ToString());
-        return level == 0 ? "管理员" : "普通用户";
+        return level == 0 ? "Admin" : "Common User";
     }
 
     protected void GridViewUser_RowUpdated(object sender, GridViewUpdatedEventArgs e)

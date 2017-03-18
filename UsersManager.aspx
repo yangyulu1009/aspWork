@@ -26,21 +26,21 @@
                                 <asp:Image ID="Image1" runat="server"  ImageUrl='<%# getHeadIcon(Container.DataItem) %>' CssClass="user-head"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="name" HeaderText="昵称" SortExpression="name" ReadOnly="true"/>
-                        <asp:TemplateField HeaderText="级别" SortExpression="level">
+                        <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" ReadOnly="true"/>
+                        <asp:TemplateField HeaderText="Level" SortExpression="level">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="DropDownListLevel" runat="server">
-                                    <asp:ListItem Value="0">管理员</asp:ListItem>
-                                    <asp:ListItem Value="1">普通用户</asp:ListItem>
+                                    <asp:ListItem Value="0">Admin</asp:ListItem>
+                                    <asp:ListItem Value="1">Common User</asp:ListItem>
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# getLevelName(Container.DataItem) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="regtime" HeaderText="注册时间" SortExpression="regtime"  ReadOnly="true"/>
-                        <asp:BoundField DataField="email" HeaderText="邮箱" SortExpression="email"  ReadOnly="true"/>
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" />
+                        <asp:BoundField DataField="regtime" HeaderText="Register Time" SortExpression="regtime"  ReadOnly="true"/>
+                        <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email"  ReadOnly="true"/>
+                        <asp:CommandField CancelText="Cancel" DeleteText="Delete" EditText="Edit" ShowDeleteButton="True" ShowEditButton="True" UpdateText="Update" />
                     </Columns>
                 </asp:GridView>
 

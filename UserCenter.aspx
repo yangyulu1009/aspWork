@@ -66,13 +66,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>修改密码</h4>
+                    <h4>Change Password</h4>
                     <div class="login-form">
                         <form action="?action=modpwd" method="post">
                             <input type="password" name="OldPassword" placeholder="Old Password" required="" autocomplete="off" />
                             <input type="password" name="NewPassword" placeholder="New Password" required="" autocomplete="off" />
                             <div class="tp">
-                                <input type="submit" value="确定" />
+                                <input type="submit" value="Submit" />
                             </div>
                         </form>
                     </div>
@@ -92,25 +92,25 @@
 
                         <asp:FileUpload ID="ImageUpload" runat="server" Visible="True" CssClass="user-head-upload" />
 
-                        <asp:Button ID="ButtonUpload" runat="server" Text="上传" CssClass="user-head-submit" OnClick="ButtonUpload_Click" />
+                        <asp:Button ID="ButtonUpload" runat="server" Text="Upload" CssClass="user-head-submit" OnClick="ButtonUpload_Click" />
                     </td>
 
                     <td style="width: 40%">
-                        <p class="user-info">昵称：<asp:Label ID="LabelNick" runat="server" Text='<%# getUser().name %>' /></p>
-                        <p class="user-info">邮箱：<asp:Label ID="LabelEmail" runat="server" Text='<%# getUser().email %>' /></p>
-                        <p class="user-info">权限：<asp:Label ID="LabelPrevilage" runat="server" Text='<%# getPrevilage() %>' /></p>
-                        <p class="user-info">注册：<asp:Label ID="LabelTime" runat="server" Text='<%# getRegTime() %>' /></p>
+                        <p class="user-info">Name：<asp:Label ID="LabelNick" runat="server" Text='<%# getUser().name %>' /></p>
+                        <p class="user-info">Email：<asp:Label ID="LabelEmail" runat="server" Text='<%# getUser().email %>' /></p>
+                        <p class="user-info">Level：<asp:Label ID="LabelPrevilage" runat="server" Text='<%# getPrevilage() %>' /></p>
+                        <p class="user-info">Register Time：<asp:Label ID="LabelTime" runat="server" Text='<%# getRegTime() %>' /></p>
                         <p class="user-info">
-                            <a href="#" class="mod-pwd" data-toggle="modal" data-target="#myModalRePwd">修改密码</a>
+                            <a href="#" class="mod-pwd" data-toggle="modal" data-target="#myModalRePwd">Change Password</a>
                         </p>
 
                     </td>
 
                     <td style="width: 30%">
                         <div runat="server" id="ManagerContainer">
-                            <p class="extra-manager"><a href="MovieManager.aspx" target="_blank">电影管理</a></p>
-                            <p class="extra-manager"><a href="UsersManager.aspx" target="_blank">用户管理</a></p>
-                            <p class="extra-manager"><a href="PeopleManager.aspx" target="_blank">明星管理</a></p>
+                            <p class="extra-manager"><a href="MovieManager.aspx" target="_blank">Movie Manager</a></p>
+                            <p class="extra-manager"><a href="UsersManager.aspx" target="_blank">User Manager</a></p>
+                            <p class="extra-manager"><a href="PeopleManager.aspx" target="_blank">Star Manager</a></p>
                         </div>
                     </td>
 
@@ -130,21 +130,21 @@
 
         <asp:UpdatePanel runat="server" ID="UpdatePanelResponses">
             <ContentTemplate>
-                <p class="grid-response-header">我的评论</p>
+                <p class="grid-response-header">My Comment</p>
                 <asp:GridView runat="server" ID="GridViewResponses" Width="80%" CssClass="grid-response" DataSourceID="SqlDataSourceResponses" AutoGenerateColumns="False" DataKeyNames="id" OnRowUpdating="GridViewResponses_RowUpdating">
 
 
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" ItemStyle-Width="10%" ReadOnly="true" SortExpression="id" />
-                        <asp:TemplateField HeaderText="电影名称" SortExpression="movie_id" ItemStyle-Width="30%">
+                        <asp:TemplateField HeaderText="Movie Title" SortExpression="movie_id" ItemStyle-Width="30%">
                             <ItemTemplate>
                                 <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# getMovieName(Container.DataItem) %>'
                                     NavigateUrl='<%# getMovieUrl(Container.DataItem) %>' Target="_blank"></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField ApplyFormatInEditMode="True" DataField="comment" HeaderText="评论内容" SortExpression="comment" />
-                        <asp:BoundField DataField="reply_time" HeaderText="评论时间" ReadOnly="True" SortExpression="reply_time" ItemStyle-Width="20%" />
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" ItemStyle-Width="10%" />
+                        <asp:BoundField ApplyFormatInEditMode="True" DataField="comment" HeaderText="Comment" SortExpression="comment" />
+                        <asp:BoundField DataField="reply_time" HeaderText="Response Time" ReadOnly="True" SortExpression="reply_time" ItemStyle-Width="20%" />
+                        <asp:CommandField CancelText="Cancel" DeleteText="Delete" EditText="Edit" ShowDeleteButton="True" ShowEditButton="True" UpdateText="Update" ItemStyle-Width="10%" />
                     </Columns>
 
 

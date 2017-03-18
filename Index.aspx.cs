@@ -124,7 +124,7 @@ public partial class Index : System.Web.UI.Page
                     MyLog.v(String.Format("{0:s}: email = {1:s}, password = {2:s}", actionName, email, password));
                     if (!login(email, password))
                     {
-                        alert("用户名或密码错误!");
+                        alert("Name of Password error!");
                     } else
                     {
                         Response.Redirect(Request.Url.ToString());
@@ -207,19 +207,19 @@ public partial class Index : System.Web.UI.Page
 
         if (Users.existEmail(email))
         {
-            Response.Write("<script>alert('邮件已存在！')</script>");
+            Response.Write("<script>alert('Email already exist！')</script>");
             return;
         }
 
         if (Users.existName(name))
         {
-            Response.Write("<script>alert('用户名已存在！')</script>");
+            Response.Write("<script>alert('Username already exist！')</script>");
             return;
         }
 
         if (password.Length == 0)
         {
-            Response.Write("<script>alert('密码不能为空，请重新输入!')</script>");
+            Response.Write("<script>alert('Password can not be null!')</script>");
             return;
         }
 

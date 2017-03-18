@@ -68,21 +68,21 @@
 
         <asp:UpdatePanel ID="UpdatePanelDesc" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                <h1 style="padding: 5px;">电影简介</h1>
+                <h1 style="padding: 5px;">Storyline</h1>
                 <asp:GridView ID="GridViewDesc" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceDesc">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="电影名称" SortExpression="name">
+                        <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Movie Title" SortExpression="name">
                             <ItemTemplate>
                                 <asp:HyperLink ID="HyperLinkMovieName" runat="server" Text='<%# Bind("name") %>' NavigateUrl='<%# getMovieUrl(Container.DataItem) %>' Target="_blank"></asp:HyperLink>
                             </ItemTemplate>
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" Width="15%" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="电影简介" SortExpression="description" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:TemplateField HeaderText="Storyline" SortExpression="description" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("description") %>' TextMode="MultiLine" Width="100%"></asp:TextBox>
                             </EditItemTemplate>
@@ -96,7 +96,7 @@
 
 
 
-                        <asp:CommandField CancelText="取消" DeleteText="" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%" >
+                        <asp:CommandField CancelText="Cancel" DeleteText="" EditText="Edit" ShowEditButton="True" UpdateText="Update" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%" >
                         <HeaderStyle CssClass="gridheader" />
                         <ItemStyle CssClass="griditem" Width="20%" />
                         </asp:CommandField>
@@ -145,7 +145,7 @@
 
 
             <ContentTemplate>
-                <h1 style="padding: 5px; margin-top: 50px">相关明星</h1>
+                <h1 style="padding: 5px; margin-top: 50px">Related Stars</h1>
 
                 <asp:GridView runat="server" ID="GridViewRole" AutoGenerateColumns="False" DataKeyNames="id"  DataSourceID="SqlDataSourceRole" OnRowDeleted="GridViewRole_RowDeleted">
 
@@ -153,18 +153,18 @@
 
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" ItemStyle-Width="10%"/>
-                        <asp:TemplateField HeaderText="名称" ItemStyle-Width="50%">
+                        <asp:TemplateField HeaderText="Name" ItemStyle-Width="50%">
                             <ItemTemplate>
                                 <asp:Label ID="LabelPeopleName" runat="server"><%# getPeopleName(Container.DataItem) %></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="角色" ItemStyle-Width="30%">
+                        <asp:TemplateField HeaderText="Role" ItemStyle-Width="30%">
                             <ItemTemplate>
                                 <asp:Label ID="LabelRoleName" runat="server" Text='<%# Bind("role") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:CommandField ShowDeleteButton="True" DeleteText="删除" ShowCancelButton="False" ItemStyle-Width="10%"/>
+                        <asp:CommandField ShowDeleteButton="True" DeleteText="Delete" ShowCancelButton="False" ItemStyle-Width="10%"/>
 
                     </Columns>
 
@@ -246,7 +246,7 @@
 
             <ContentTemplate>
 
-                <h1 style="padding: 5px; margin-top: 100px">相关新闻</h1>
+                <h1 style="padding: 5px; margin-top: 100px">Related News</h1>
 
                 <asp:GridView ID="GridViewNews" runat="server" DataSourceID="SqlDataSourceNews" Width="100%" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px">
                     <Columns>
@@ -256,7 +256,7 @@
                         </asp:BoundField>
 
 
-                        <asp:TemplateField HeaderText="发布时间" SortExpression="reldate" ItemStyle-Width="10%">
+                        <asp:TemplateField HeaderText="Publish Time" SortExpression="reldate" ItemStyle-Width="10%">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxNewsDate" runat="server" Text='<%# Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -268,7 +268,7 @@
                         </asp:TemplateField>
 
 
-                        <asp:TemplateField HeaderText="新闻内容" SortExpression="content">
+                        <asp:TemplateField HeaderText="News Content" SortExpression="content">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("content") %>' Width="400px" CssClass="long-text-edit" TextMode="MultiLine" Height="200px"></asp:TextBox>
                             </EditItemTemplate>
@@ -280,7 +280,7 @@
                         </asp:TemplateField>
 
 
-                        <asp:TemplateField HeaderText="新闻链接" SortExpression="url">
+                        <asp:TemplateField HeaderText="News Link" SortExpression="url">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxNewsLink" runat="server" Text='<%# Bind("url") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -292,7 +292,7 @@
                         </asp:TemplateField>
 
 
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%">
+                        <asp:CommandField CancelText="Cancel" DeleteText="Delete" EditText="Edit" ShowDeleteButton="True" ShowEditButton="True" UpdateText="Update" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" Width="20%" />
                         </asp:CommandField>
@@ -308,7 +308,7 @@
                     <SortedDescendingHeaderStyle BackColor="#7E0000" />
                 </asp:GridView>
 
-                <asp:Button runat="server" ID="ButtonAddNews" OnClick="btnAddNews_Click" Text="添加新闻" CssClass="addbtn" />
+                <asp:Button runat="server" ID="ButtonAddNews" OnClick="btnAddNews_Click" Text="Add News" CssClass="addbtn" />
 
 
                 <asp:SqlDataSource ID="SqlDataSourceNews" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
@@ -356,7 +356,7 @@
         <asp:UpdatePanel runat="server" ID="UpdatePanelSales" UpdateMode="Conditional">
 
             <ContentTemplate>
-                <h1 style="padding: 5px; margin-top: 100px">电影票房</h1>
+                <h1 style="padding: 5px; margin-top: 100px">Box Offices</h1>
 
 
 
@@ -368,7 +368,7 @@
                         </asp:BoundField>
 
 
-                        <asp:TemplateField HeaderText="日期" ItemStyle-Width="10%">
+                        <asp:TemplateField HeaderText="Date" ItemStyle-Width="10%">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxSale" runat="server" Text='<%#  Bind("reldate", "{0:yyyy-MM-dd}") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -380,18 +380,18 @@
                         </asp:TemplateField>
 
 
-                        <asp:TemplateField HeaderText="星期" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:TemplateField HeaderText="Week" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <ItemTemplate>
                                 <%# getWeek(Container.DataItem) %>
                             </ItemTemplate>
                         </asp:TemplateField>
 
 
-                        <asp:BoundField DataField="sales" HeaderText="票房" SortExpression="sales" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="sales" HeaderText="Daily Sales" SortExpression="sales" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:CommandField CancelText="取消" DeleteText="删除" EditText="编辑" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%">
+                        <asp:CommandField CancelText="Cancel" DeleteText="Delete" EditText="Edit" ShowDeleteButton="True" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:CommandField>
@@ -407,7 +407,7 @@
                     <SortedDescendingHeaderStyle BackColor="#7E0000" />
                 </asp:GridView>
 
-                <asp:Button runat="server" ID="ButtonAddSale" OnClick="btnAddSaleClick" Text="添加票房" CssClass="addbtn" />
+                <asp:Button runat="server" ID="ButtonAddSale" OnClick="btnAddSaleClick" Text="Add" CssClass="addbtn" />
 
 
                 <asp:SqlDataSource ID="SqlDataSourceSales" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
@@ -454,7 +454,7 @@
         <asp:UpdatePanel runat="server" ID="UpdatePanelImage" UpdateMode="Conditional">
             <ContentTemplate>
 
-                <h1 style="padding: 5px; margin-top: 100px">相关图片</h1>
+                <h1 style="padding: 5px; margin-top: 100px">Related Pictures</h1>
                 <asp:GridView ID="GridViewImage" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceImage" OnRowUpdating="GridViewImage_RowUpdating">
 
 
@@ -463,16 +463,16 @@
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:BoundField>
-                        <asp:ImageField DataImageUrlField="url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="100px">
+                        <asp:ImageField DataImageUrlField="url" HeaderText="Image" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="100px">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:ImageField>
-                        <asp:TemplateField HeaderText="图片描述" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
+                        <asp:TemplateField HeaderText="Image Description" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
                             <ItemTemplate>
                                 <%# getImageDesc(Container.DataItemIndex) %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%">
+                        <asp:CommandField CancelText="Cancel" EditText="Edit" ShowEditButton="True" UpdateText="Update" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle CssClass="griditem" />
                         </asp:CommandField>
@@ -514,21 +514,21 @@
         <asp:UpdatePanel runat="server" ID="UpdatePanelVideos" UpdateMode="Conditional">
             <ContentTemplate>
 
-                <h1 style="padding: 5px; margin-top: 50px">相关视频</h1>
+                <h1 style="padding: 5px; margin-top: 50px">Related Videos</h1>
                 <asp:GridView ID="GridViewVideos" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceVideo" OnRowUpdating="GridViewVideos_RowUpdating">
 
 
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%"></asp:BoundField>
-                        <asp:ImageField DataImageUrlField="image_url" HeaderText="图片" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="100px">
+                        <asp:ImageField DataImageUrlField="image_url" HeaderText="Image" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Height="100px">
                         </asp:ImageField>
-                        <asp:BoundField DataField="video_url" HeaderText="播放地址" SortExpression="video_url" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
-                        <asp:TemplateField HeaderText="视频描述" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
+                        <asp:BoundField DataField="video_url" HeaderText="Video Url" SortExpression="video_url" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" />
+                        <asp:TemplateField HeaderText="Video Description" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="10%">
                             <ItemTemplate>
                                 <%# getVideoDesc(Container.DataItemIndex) %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField CancelText="取消" EditText="编辑" ShowEditButton="True" UpdateText="更新" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%" />
+                        <asp:CommandField CancelText="Cancel" EditText="Edit" ShowEditButton="True" UpdateText="Update" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="20%" />
                     </Columns>
 
 
@@ -570,20 +570,20 @@
 
         <asp:UpdatePanel ID="UpdatePanelResponse" runat="server" UpdateMode="Conditional"  Visible="<%# showResponses() %>">
             <ContentTemplate>
-                <h1 style="padding: 5px; margin-top: 100px">电影评论</h1>
+                <h1 style="padding: 5px; margin-top: 100px">Movie Comment</h1>
 
                 <asp:GridView runat="server" ID="GridViewResponse" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceResponse">
 
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" ItemStyle-Width="5%" />
-                        <asp:TemplateField HeaderText="用户" SortExpression="user_id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:TemplateField HeaderText="User" SortExpression="user_id" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <ItemTemplate>
                                 <asp:Label ID="LabelResponse" runat="server" Text='<%# getUserName(Container.DataItem) %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="reply_time" HeaderText="评论时间" ReadOnly="True" SortExpression="reply_time" />
-                        <asp:BoundField DataField="comment" HeaderText="评论" ReadOnly="True" SortExpression="comment" />
-                        <asp:CommandField DeleteText="删除" ShowDeleteButton="True" ItemStyle-Width="20%" />
+                        <asp:BoundField DataField="reply_time" HeaderText="Response Time" ReadOnly="True" SortExpression="reply_time" />
+                        <asp:BoundField DataField="comment" HeaderText="Comment" ReadOnly="True" SortExpression="comment" />
+                        <asp:CommandField DeleteText="Delete" ShowDeleteButton="True" ItemStyle-Width="20%" />
                     </Columns>
 
                 </asp:GridView>

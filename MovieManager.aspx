@@ -41,7 +41,7 @@
         <asp:UpdatePanel runat="server" ID="UpdatePanel1">
 
             <ContentTemplate>
-                <h1 style="float: left; padding: 5px;">电影</h1>
+                <h1 style="float: left; padding: 5px;">Movies</h1>
                 
 
 
@@ -52,7 +52,7 @@
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:TemplateField HeaderText="电影名称" SortExpression="name">
+                        <asp:TemplateField HeaderText="Movie Title" SortExpression="name">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxMovieName" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -65,33 +65,33 @@
 
 
 
-                        <asp:BoundField DataField="year" HeaderText="年份" SortExpression="year" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="year" HeaderText="Year" SortExpression="year" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="country" HeaderText="国家" SortExpression="country" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
+                        <asp:BoundField DataField="country" HeaderText="Country" SortExpression="country" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
-                        <asp:BoundField DataField="star" HeaderText="星级" SortExpression="star" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
-                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
-
-                            <ItemStyle CssClass="griditem"></ItemStyle>
-                        </asp:BoundField>
-
-
-
-
-                        <asp:BoundField DataField="allsales" HeaderText="票房" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:BoundField DataField="star" HeaderText="Rating" SortExpression="star" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem" >
                             <HeaderStyle CssClass="gridheader"></HeaderStyle>
 
                             <ItemStyle CssClass="griditem"></ItemStyle>
                         </asp:BoundField>
 
 
-                        <asp:TemplateField HeaderText="类型" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+
+
+                        <asp:BoundField DataField="allsales" HeaderText="Total Sales" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                            <HeaderStyle CssClass="gridheader"></HeaderStyle>
+
+                            <ItemStyle CssClass="griditem"></ItemStyle>
+                        </asp:BoundField>
+
+
+                        <asp:TemplateField HeaderText="Genre" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("genre") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -103,7 +103,7 @@
                         </asp:TemplateField>
 
 
-                        <asp:TemplateField HeaderText="关键词" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
+                        <asp:TemplateField HeaderText="Key Words" HeaderStyle-CssClass="gridheader" ItemStyle-CssClass="griditem">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBoxKeywords" runat="server" Text='<%# Bind("keywords") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -116,13 +116,13 @@
 
 
 
-                        <asp:CommandField EditText="编辑" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="取消" UpdateText="更新" InsertText="添加" NewText="添加" HeaderStyle-CssClass="gridheader" ItemStyle-Width="10%" DeleteText="删除" ShowDeleteButton="True">
+                        <asp:CommandField EditText="Edit" ItemStyle-CssClass="griditem" ShowEditButton="True" CancelText="Cancel" UpdateText="Update" InsertText="Add" NewText="Add" HeaderStyle-CssClass="gridheader" ItemStyle-Width="10%" DeleteText="Delete" ShowDeleteButton="True">
                             <HeaderStyle CssClass="gridheader" />
                             <ItemStyle />
                         </asp:CommandField>
 
 
-                        <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="EditMovie.aspx?id={0}" Text="编辑其它" Target="_blank" ItemStyle-Width="10%">
+                        <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="EditMovie.aspx?id={0}" Text="Edit Detail" Target="_blank" ItemStyle-Width="10%">
                             <ItemStyle CssClass="gridEdit" />
                         </asp:HyperLinkField>
 
@@ -138,7 +138,7 @@
                     <SortedDescendingHeaderStyle BackColor="#7E0000" />
                 </asp:GridView>
 
-                <asp:Button runat="server" ID="btnAdd" OnClick="btnAdd_Click" Text="添加电影" CssClass="addbtn" />
+                <asp:Button runat="server" ID="btnAdd" OnClick="btnAdd_Click" Text="Add Movie" CssClass="addbtn" />
 
                 <asp:SqlDataSource ID="SqlDataSourceMovie" runat="server" ConnectionString="<%$ ConnectionStrings:movie %>"
                     SelectCommand="SELECT * FROM [movie]"

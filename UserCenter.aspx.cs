@@ -91,7 +91,7 @@ public partial class UserCenter : System.Web.UI.Page
     public String getPrevilage()
     {
         String level = getUser().level;
-        return "0".Equals(level) ? "管理员" : "普通用户";
+        return "0".Equals(level) ? "Admin" : "Common User";
     }
 
     public String getRegTime()
