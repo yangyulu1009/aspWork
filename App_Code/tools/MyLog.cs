@@ -10,16 +10,16 @@ using System.Web;
 public class MyLog
 {
 
-    private static String path = "c:\\mylog.txt";
+  //  private static String path = "c:\\mylog.txt";
 
-    private static StreamWriter mWriter = File.CreateText(path);
+   // private static StreamWriter mWriter = File.CreateText(path);
 
 
 
     public static void v(String msg)
     {
-        mWriter.WriteLine(String.Format("{0:s}: {1:s}", System.DateTime.Now.ToString(), msg));
-        mWriter.Flush();
+     //   mWriter.WriteLine(String.Format("{0:s}: {1:s}", System.DateTime.Now.ToString(), msg));
+       // mWriter.Flush();
     }
 
 
