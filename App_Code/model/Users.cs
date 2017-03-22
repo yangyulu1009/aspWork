@@ -48,6 +48,13 @@ public class Users
         return new Users(table.Rows[0]);
     }
 
+    public static Users getByEmail(String email)
+    {
+        String sql = String.Format("select * from users where email='{0:s}'", email);
+        DataTable table = SqlData.getInstance().datasetExecute(sql, "users");
+        return new Users(table.Rows[0]);
+    }
+
     public static void updateHead(String userId, String url)
     {
         String sql = String.Format("update users set head='{0:s}' where id='{1:s}'", url, userId);

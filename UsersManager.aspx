@@ -18,7 +18,7 @@
 
      
 
-                <asp:GridView runat="server" ID="GridViewUser" RowStyle-Height="60px" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceUser" OnRowDeleted="GridViewUser_RowDeleted" OnRowUpdated="GridViewUser_RowUpdated" OnRowDataBound="GridViewUser_RowDataBound" OnRowUpdating="GridViewUser_RowUpdating">
+                <asp:GridView runat="server" ID="GridViewUser" RowStyle-Height="60px" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourceUser" OnRowDeleted="GridViewUser_RowDeleted" OnRowUpdated="GridViewUser_RowUpdated" OnRowDataBound="GridViewUser_RowDataBound" OnRowUpdating="GridViewUser_RowUpdating" OnRowDeleting="GridViewUser_RowDeleting">
 
                     <Columns>
                         <asp:TemplateField>

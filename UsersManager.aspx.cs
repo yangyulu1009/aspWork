@@ -10,7 +10,18 @@ public partial class UsersManager : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (IsPostBack)
+        {
+            return;
+        }
 
+        if (Session[Constants.SESSION_USERID] == null)
+        {
+            Response.Redirect("Index");
+            return;
+        }
+
+        Page.DataBind();
     }
 
     public String getHeadIcon(object item)
@@ -32,6 +43,7 @@ public partial class UsersManager : System.Web.UI.Page
 
     protected void GridViewUser_RowDeleted(object sender, GridViewDeletedEventArgs e)
     {
+        
         GridViewUser.DataBind();
     }
 
@@ -67,5 +79,13 @@ public partial class UsersManager : System.Web.UI.Page
         DropDownList ddp = (DropDownList) row.Cells[2].FindControl("DropDownListLevel");
         String sql = String.Format("update users set level='{0:s}' where id='{1:s}'", ddp.SelectedValue, id);
         SqlData.getInstance().ExecuteSQL(sql);
+    }
+
+    protected void GridViewUser_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        GridViewRow row = GridViewUser.Rows[e.RowIndex];
+        String email = (row.Cells[4]).Text;
+        MyLog.v(email);
+        Responses.removeAllByUser(email);
     }
 }

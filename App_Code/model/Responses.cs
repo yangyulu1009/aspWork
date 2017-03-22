@@ -54,6 +54,13 @@ public class Responses
         SqlData.getInstance().ExecuteSQL(sql);
     }
 
+    public static void removeAllByUser(String email)
+    {
+        Users user = Users.getByEmail(email);
+        String sql = String.Format("delete from responses where user_id='{0:s}'", user.id);
+        SqlData.getInstance().ExecuteSQL(sql);
+    }
+
     public static void insert(String movieId, String userId, String response)
     {
         int id = SqlData.getInstance().getMaxId("responses") + 1;
